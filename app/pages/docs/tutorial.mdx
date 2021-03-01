@@ -13,7 +13,7 @@ blitz -v
 
 Si Blitz está instalado, deberías ver la versión de tu instalación. Y si no lo tienes, obtendrás un error como "comando no encontrado".
 
-## Creando una nueva App
+## Creando una nueva App {#creating-a-new-app}
 
 Desde la terminal, haz `cd` hacia el directorio donde te gustaría crear tu aplicación y corre el siguiente comando:
 
@@ -107,7 +107,7 @@ Estos archivos son:
 
 - `tsconfig.json` es nuestra configuración recomendada para TypeScript.
 
-## El servidor de desarrollo
+## El servidor de desarrollo {#the-development-server}
 
 Ahora, asegúrate de estás dentro del directorio `my-blitz-app` y corre el siguiente comando:
 
@@ -130,13 +130,13 @@ event - compiled successfully
 
 Eso significa que el servidor de desarrollo está corriendo. Ve a [localhost:3000](http://localhost:3000) en tu navegador. Si ves una página de bienvenida con el logo de Blitz, ¡funcionó!
 
-## Registrarse como un usuario
+## Registrarse como un usuario {#sign-up-as-a-user}
 
 Las aplicaciones Blitz son creadas con registros e inicios de sesión ya integrados. Vamos a probarlos. Haz click en **Sign Up**. Pon un email y una contraseña cualquiera y presiona **Create Account**. Luego, serás redirigido de vuelta al inicio, donde verás el `id` y el `role` de tu usuario.
 
 Si quieres, puedes probar a cerrar la sesión, volver a iniciarla, e incluso hacer click en **Forgot your password?** y ver cómo funciona.
 
-## Escribe tu primera página
+## Escribe tu primera página {#write-your-first-page}
 
 Vamos a crear tu primera página.
 
@@ -162,13 +162,13 @@ const Home: BlitzPage = () => {
 
 Guarda el archivo y verás la página actualizarse en tu navegador. Puedes personalizar esto cuanto quieras. Cuando estés listo, continúa hacia la siguiente sección.
 
-## Preparación de la Base de Datos
+## Preparación de la Base de Datos {#database-setup}
 
 ¡Excelentes noticias, una base de tados SQLite ya ha sido creada para ti! Puedes correr `blitz prisma studio` en la terminal y verás una interfaz web donde podrás ver los datos de tu base de datos.
 
 Ten en cuenta que cuando comiences un proyecto real, es posible que necesites una base de datos más escalable, como PostgreSQL, para evitar cambiar de base de datos en la mitad de tu proyecto. Para más información, lee [Sobre las Bases de Datos](database-overview). Por ahora, continuaremos con SQLite.
 
-## Código base para nuestros modelos
+## Código base para nuestros modelos {#scaffolding-code-for-our-models}
 
 Blitz provee un conveniente comando llamado [`generate`](cli-generate) para crear código base para luego escribir nuestras necesidades. Usaremos `generate` para crear dos modelos: `Question` y `Choice`. Una `Question` tiene el texto de la pregunta y una lista de opciones. Una `Choice` tiene el texto de la opción, un contador de votos y una pregunta asociada. Blitz generará un ID, una campo `createdAt` y uno `updatedAt` a cada modelo automáticamente.
 
@@ -272,7 +272,7 @@ model Question {
 
 Y luego, corre `blitz prisma generate` para actualizar el cliente de Prisma con los últimos cambios. Esto no requiere una migración de la base de datos porque ningún campo se ha añadido al model `Question` dentro de la base de datos.
 
-## Jugando con el cliente de Prisma
+## Jugando con el cliente de Prisma {#playing-with-the-prisma-database-client}
 
 Entremos a la terminal interactiva de Blitz y veamos qué podemos hacer con Prisma, el cliente por defecto que Blitz nos brinda. Para abrir la terminal, ejecuta este comando:
 
@@ -325,7 +325,7 @@ undefined
 ]
 ```
 
-## Actualizar el código generado para nuestras necesidades
+## Actualizar el código generado para nuestras necesidades {#update-generated-code-for-our-model-attributes}
 
 :::info
 Antes de ejecutar nuestra app de nuevo, necesitamos modificar ciertas partes del código que ha sido generado. Al final, este cambio no serán necesitados, pero por ahora, necesitamos tratar un par de cuestiones pendientes.
@@ -333,7 +333,7 @@ Antes de ejecutar nuestra app de nuevo, necesitamos modificar ciertas partes del
 
 El contenido de la página generado no contiene los atributos que definimos. Pronto lo hará, pero mientras tanto, vamos a arreglar las páginas generadas.
 
-### Página de `Question`
+### Página de `Question` {#question-pages}
 
 [//]: # "Remove the following section once `generate` uses actual model attributes"
 
@@ -431,7 +431,7 @@ export function QuestionForm<S extends z.ZodType<any, any>>(props: FormProps<S>)
 }
 ```
 
-### Mutación `createQuestion`
+### Mutación `createQuestion` {#create-question-mutation}
 
 En `app/questions/mutations/createQuestion.ts`, necesitamos actualizar el esquema de Zod `CreateQuestion` para que use `text` en vez de `name`.
 
@@ -448,7 +448,7 @@ const CreateQuestion = z
 // ...
 ```
 
-### Mutación `updateQuestion`
+### Mutación `updateQuestion` {#update-question-mutation}
 
 En `app/questions/mutations/updateQuestion.ts`, necesitamos actualizar el esquema de Zod `UpdateQuestion` para que use `text` en vez de `name`.
 
@@ -466,8 +466,7 @@ const UpdateQuestion = z
 // ...
 ```
 
-
-### Mutación `deleteQuestion`
+### Mutación `deleteQuestion` {#delete-question-mutation}
 
 [//]: # "Remove this section once Prisma supports cascading deletes. Follow prisma issue #2810"
 
@@ -501,7 +500,7 @@ Esta mutación eliminará las opciones asociadas a la pregunta justo antes de bo
 
 ¡Increíble! Ahora corre tu aplicación. Para ejecutarla, corre `blitz dev` en tu terminal y ve a `localhost:3000/questions`. Prueba creando preguntas, editándolas y eliminándolas.
 
-## Agregando opciones al formulario de las preguntas
+## Agregando opciones al formulario de las preguntas {#adding-choices-to-the-question-form}
 
 ¡Lo estás haciendo genial! Lo siguiente que haremos será añadir opciones a el formulario de las preguntas. Abre `app/questions/components/QuestionForm.tsx` en tu editor de texto.
 
@@ -557,7 +556,7 @@ const CreateQuestion = z
 export default resolver.pipe(
   resolver.zod(CreateQuestion),
   resolver.authorize(),
-  async ({ id }) => {
+  async (input) => {
 -   const question = await db.question.create({ data: input })
 +   const question = await db.question.create({
 +      data: {
@@ -575,7 +574,7 @@ export default resolver.pipe(
 
 Puedes ir a `localhost:3000/question/new` y crear una nueva pregunta con opciones.
 
-## Listar las opciones
+## Listar las opciones {#listing-choices}
 
 Es momento de algo facilito. Vuelve a `localhost:3000/questions` en tu navegador y mira todas las preguntas que has creado. ¿Qué te parece si mostramos las opciones junto a las preguntas? Primero, necesitamos modificar la consulta de las preguntas. En Prisma, necesitas especificarle manualmente que quieres recibir objetos relacionados. Cambia tu `getQuestion.ts` y `getQuestions.ts` para que se vean así:
 
@@ -656,7 +655,7 @@ Ahora vuelve a nuestra página principal de preguntas (`app/pages/questions/inde
 
 Ahora ve a `/questions` en tu navegador. **¡Magia!**
 
-## Hagamos un último cambio: ¡dejemos que la gente vote las preguntas!
+## Hagamos un último cambio: ¡dejemos que la gente vote las preguntas! {#let-people-vote-on-questions}
 
 Abre `app/pages/questions/[questionId].tsx` en tu editor. Primero, vamos a mejorar esta página un poquito.
 
@@ -719,12 +718,9 @@ En nuestro `li`, añade un `button` de este modo:
 
 Importa la mutación `updateChoice` que actualizamos y crea una función `handleVote` en nuestra página:
 
-```tsx
+```diff
 // app/pages/questions/[questionId].tsx
-
-// highlight-start
-import updateChoice from "app/choices/mutations/updateChoice"
-// highlight-end
++import updateChoice from "app/choices/mutations/updateChoice"
 
 //...
 
@@ -733,19 +729,16 @@ export const Question = () => {
   const questionId = useParam("questionId", "number")
   const [deleteQuestionMutation] = useMutation(deleteQuestion)
   const [question] = useQuery(getQuestion, { id: questionId })
-  // highlight-start
-  const [updateChoiceMutation] = useMutation(updateChoice)
-
-  const handleVote = async (id: number) => {
-    try {
-      const updated = await updateChoiceMutation({ id })
-      refetch()
-      alert("Success!")
-    } catch (error) {
-      alert("Error updating choice " + JSON.stringify(error, null, 2))
-    }
-  }
-  // highlight-end
++  const [updateChoiceMutation] = useMutation(updateChoice)
++
++  const handleVote = async (id: number) => {
++    try {
++      await updateChoiceMutation({ id })
++      refetch()
++    } catch (error) {
++      alert("Error updating choice " + JSON.stringify(error, null, 2))
++    }
++  }
 
   return (
 ```
@@ -781,7 +774,6 @@ export const Question = () => {
     try {
       await updateChoiceMutation({ id })
       refetch()
-      alert("Success!")
     } catch (error) {
       alert("Error updating choice " + JSON.stringify(error, null, 2))
     }
@@ -826,7 +818,54 @@ export const Question = () => {
 }
 ```
 
-## Conclusión
+## Lastly, let's allow editing choices for an existing question {#edit-choices-for-question}
+
+If you click the **Edit** button on one of your existing questions, you'll see it uses the same form as creating questions. So that part is already done! We only need to update our mutation.
+
+Open `app/questions/mutations/updateQuestion.ts` and make the following changes:
+
+```diff
+//app/questions/mutations/updateQuestion.ts
+import { resolver } from "blitz"
+import db from "db"
+import * as z from "zod"
+
+const UpdateQuestion = z
+  .object({
+    id: z.number(),
+    text: z.string(),
++   choices: z.array(z.object({ id: z.number().optional(), text: z.string() }).nonstrict()),
+  })
+  .nonstrict()
+
+export default resolver.pipe(
+  resolver.zod(UpdateQuestion),
+  resolver.authorize(),
+  async ({ id, ...data }) => {
+-   const question = await db.question.update({ where: { id }, data })
++   const question = await db.question.update({
++     where: { id },
++     data: {
++       ...data,
++       choices: {
++         upsert: data.choices.map((choice) => ({
++           // Appears to be a prisma bug because `|| 0` shouldn't be needed
++           where: { id: choice.id || 0 },
++           create: { text: choice.text },
++           update: { text: choice.text },
++         })),
++       },
++     },
++   })
+
+    return question
+  }
+)
+```
+
+[`upsert`](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#upsert) is a special operation that means, "If this item exists, update it. Else create it". This is perfect for this case because we didn't require the user to add three choices when creating the question. So if later the user adds another choice by editing the question, then it'll be created here.
+
+## Conclusión {#conclusion}
 
 🥳 ¡Felicitaciones! Has creado tu primera app con Blitz. Diviértete jugando con ella, o compartíendosela a tus amigos. Ahora que terminaste este tutorial, ¿por qué no intentas mejorar tu app aún más? Puedes probar:
 

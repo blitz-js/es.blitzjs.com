@@ -22,7 +22,7 @@ export function Search({ className = "" }) {
   const [isOpen, setIsOpen] = useState(false)
   const searchButtonRef = useRef()
   const [initialQuery, setInitialQuery] = useState(null)
-  const [actionKey, setActionKey] = useState()
+  const [, setActionKey] = useState()
 
   const onOpen = useCallback(() => {
     setIsOpen(true)
@@ -67,7 +67,7 @@ export function Search({ className = "" }) {
         type="button"
         ref={searchButtonRef}
         onClick={onOpen}
-        className={`py-2 px-3 rounded-md focus:outline-none focus:ring-inset focus:ring-white focus:ring-2 inline-block hover:bg-purple-light dark:hover:bg-purple-off-black ${className}`}
+        className={`py-2 px-3 rounded-md focus:outline-none focus:ring-inset focus:ring-white focus:ring-2 inline-block hover:bg-purple-light dark:hover:bg-purple-off-black hover:text-white ${className}`}
       >
         <BiSearch size="1.375rem" className="inline" />{" "}
         <span className="hidden mx-1 text-base lg:inline">Search</span>
@@ -97,8 +97,16 @@ export function Search({ className = "" }) {
 
                 const hash = a.hash === "#content-wrapper" ? "" : a.hash
 
+                // The titles are parset to plain text, so these HTML tags needs to be converted.
+                const hierarchy = { ...item.hierarchy }
+                hierarchy.lvl0 = hierarchy.lvl0
+                  .replace(/&amp;/g, "&")
+                  .replace(/&lt;/g, "<")
+                  .replace(/&gt;/g, ">")
+
                 return {
                   ...item,
+                  hierarchy,
                   url: `${a.pathname}${hash}`,
                 }
               })

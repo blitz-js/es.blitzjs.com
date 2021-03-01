@@ -110,7 +110,7 @@ const Home = ({ randomContributors }) => {
               </FeatureIcon>
             </div>
             <div className="grid w-full gap-5 px-6 mx-auto text-white xl:gap-10 max-w-7xl lg:grid-cols-2">
-              <Link href="#" passHref>
+              <Link href="/#" passHref>
                 <StyledLink className="flex items-center justify-between pb-1 text-lg border-b border-opacity-50 border-blue-mid lg:col-span-2 font-secondary xl:text-xl">
                   <span>Top Videos</span>
 
@@ -346,7 +346,7 @@ const Home = ({ randomContributors }) => {
                 <h2 className="relative text-3xl font-semibold xl:text-5xl">
                   <Hand
                     variant="sponsors-left"
-                    className="hidden xl:block -left-80"
+                    className="hidden xl:block -left-80 pointer-events-none"
                     style={{ top: "-18.05rem" }}
                   />
                   Our Sponsors
@@ -364,12 +364,12 @@ const Home = ({ randomContributors }) => {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Sponsor or Donate
+                    Support Blitz
                   </ButtonLink>
                 </div>
               </div>
 
-              <div className="xl:max-w-2xl mx-auto -mt-10">
+              <div className="xl:max-w-2xl mx-auto">
                 <SponsorPack />
               </div>
             </div>
