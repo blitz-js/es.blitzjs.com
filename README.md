@@ -1,5 +1,10 @@
 # Blitzjs.com - Website & Docs
 
+## Traducción
+
+- [Guía Magnífica Para Traducir Elegantemente](translation/guia_magnifica.md)
+- [Glosario](translation/glosario.md)
+
 ### Installation
 
 ```bash
