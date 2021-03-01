@@ -36,6 +36,6 @@ jobs:
         env:
           CI: true
       - name: Lint Blitz Website
-        run: yarn lint
+        run: yarn lint:code
         env:
           CI: true
