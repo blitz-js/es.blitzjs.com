@@ -818,14 +818,15 @@ export const Question = () => {
 }
 ```
 
-## Lastly, let's allow editing choices for an existing question {#edit-choices-for-question}
+## Finalmente, permitamos editar las opciones {#edit-choices-for-question}
 
-If you click the **Edit** button on one of your existing questions, you'll see it uses the same form as creating questions. So that part is already done! We only need to update our mutation.
+Si haces click en el botón **Edit** en una de tus preguntas, verás que se utiliza el mismo formulario que al crear una pregunta. ¡Así que eso ya está hecho! Solo necesitamos modificar nuestra mutación.
 
-Open `app/questions/mutations/updateQuestion.ts` and make the following changes:
+Abre `app/questions/mutations/updateQuestion.ts` y haz los siguientes cambios:
 
 ```diff
-//app/questions/mutations/updateQuestion.ts
+// app/questions/mutations/updateQuestion.ts
+
 import { resolver } from "blitz"
 import db from "db"
 import * as z from "zod"
@@ -849,7 +850,7 @@ export default resolver.pipe(
 +       ...data,
 +       choices: {
 +         upsert: data.choices.map((choice) => ({
-+           // Appears to be a prisma bug because `|| 0` shouldn't be needed
++           // Ponemos `|| 0` debido a un bug de Prisma
 +           where: { id: choice.id || 0 },
 +           create: { text: choice.text },
 +           update: { text: choice.text },
@@ -863,7 +864,7 @@ export default resolver.pipe(
 )
 ```
 
-[`upsert`](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#upsert) is a special operation that means, "If this item exists, update it. Else create it". This is perfect for this case because we didn't require the user to add three choices when creating the question. So if later the user adds another choice by editing the question, then it'll be created here.
+[`upsert`](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#upsert) es una operación especial, equivalente a "si este objeto existe, entonces acutalízalo; de lo contrario, créalo". Es perfecto para nuestro caso porque no le exigimos al usuario crear tres opciones desde un principio. Por ende, si el usuario añane otra opción al editar la pregunta, simplemente se creará.
 
 ## Conclusión {#conclusion}
 
