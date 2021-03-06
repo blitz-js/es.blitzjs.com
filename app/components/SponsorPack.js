@@ -141,7 +141,7 @@ export const SponsorPack = () => {
                             }
                           >
                             <p className="whitespace-nowrap font-bold">{circle.data.name}</p>
-                            <p className="whitespace-nowrap">${circle.data.cost} / month</p>
+                            <p className="whitespace-nowrap">${circle.data.cost} / mes</p>
                           </div>
                         </a>
                       )
