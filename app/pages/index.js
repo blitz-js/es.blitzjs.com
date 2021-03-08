@@ -171,7 +171,7 @@ const Home = ({ randomContributors }) => {
                         estilos o bibliotecas de formularios utilizar.
                       </p>
                     </Feature>
-                    <Feature title="Convención en la configuración">
+                    <Feature title="Convención sobre configuración">
                       <p>
                         Blitz realiza todas las tareas aburridas de configuración y montaje por ti.
                         La estructura común del proyecto y los patrones arquitectóncos hacen que sea
@@ -224,7 +224,7 @@ const Home = ({ randomContributors }) => {
             <div className="relative flex flex-col px-6 mx-auto text-white lg:flex-row max-w-7xl space-y-14 lg:space-x-24 lg:space-y-0 xl:space-x-40">
               <div className="space-y-14 lg:w-1/2">
                 <h2 className="z-10 font-medium text-transparent text-5xl-squashed font-secondary bg-clip-text bg-gradient-to-r from-blue-gradient-white to-blue-gradient-light-blue xl:text-6xl">
-                  La comunidad de Blitz - Nuestro aspecto más importante
+                  La comunidad de Blitz: nuestro aspecto más importante
                 </h2>
                 <div className="z-10 grid grid-cols-5 gap-1 md:grid-cols-6 lg:grid-cols-5 grid-rows-8 overflow-clip">
                   {randomContributors.map((contributor) => (
@@ -256,7 +256,7 @@ const Home = ({ randomContributors }) => {
                       Por favor lee nuestro{" "}
                       <Link href="/docs/code-of-conduct" passHref>
                         <StyledLink className="underline text-off-white hover:text-blue-light">
-                          Código de conducta
+                          Código de Conducta
                         </StyledLink>
                       </Link>
                       .
