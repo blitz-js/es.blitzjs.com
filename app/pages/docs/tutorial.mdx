@@ -6,7 +6,7 @@ sidebar_label: Tutorial
 En este tutorial, crearemos una aplicación de votación básica.
 
 Asumiremos que ya tienes [Blitz instalado](./get-started). Para saber si
-lo tienes instalado, corre el siguiente comando en tu terminal:
+lo tienes instalado, ejecuta el siguiente comando en tu terminal:
 
 ```sh
 blitz -v
@@ -18,7 +18,7 @@ no lo tienes, obtendrás un error como "comando no encontrado".
 ## Creando una nueva App {#creating-a-new-app}
 
 Desde la terminal, haz `cd` hacia el directorio donde te gustaría crear tu
-aplicación y corre el siguiente comando:
+aplicación y ejecuta el siguiente comando:
 
 ```sh
 blitz new my-blitz-app
@@ -97,16 +97,16 @@ my-blitz-app
 Estos archivos son:
 
 - La carpeta `app/` es un contenedor para la mayor parte de tu proyecto.
-  Allí es dónde pondrás tus páginas y tus rutas API.
+  Allí es donde pondrás tus páginas y tus rutas API.
 
 - La carpeta `app/pages/` es la carpeta primaria para guardar páginas. Si
   has usado Next.js, inmediatamente notarás que es diferente. En Blitz,
   puedes tener varias carpetas `pages` que serán fusionadas al compilar.
 
 - La carpeta `app/core/` es el lugar principal para poner tus componentes,
-  hooks, etcétera que son utilizados a lo largo de tu aplicación.
+  hooks, etcétera que se utilizan a lo largo de tu aplicación.
 
-- `db/` es dónde la configuración de tu base de datos se aloja. Si
+- `db/` es donde la configuración de tu base de datos se aloja. Si
   escribes modelos o manejas migraciones, este es el lugar donde ponerlo.
 
 - En `public/` van todos tus archivos estáticos. Si tienes imágenes,
@@ -122,8 +122,8 @@ Estos archivos son:
 
 ## El servidor de desarrollo {#the-development-server}
 
-Ahora, asegúrate de estás dentro del directorio `my-blitz-app` y corre el
-siguiente comando:
+Ahora, asegúrate de estás dentro del directorio `my-blitz-app` y ejecuta
+el siguiente comando:
 
 ```sh
 blitz dev
@@ -142,7 +142,7 @@ info  - Using external babel configuration from /my-blitz-app/babel.config.js
 event - compiled successfully
 ```
 
-Eso significa que el servidor de desarrollo está corriendo. Ve a
+Eso significa que el servidor de desarrollo se está ejecutando. Ve a
 [localhost:3000](http://localhost:3000) en tu navegador. Si ves una página
 de bienvenida con el logo de Blitz, ¡funcionó!
 
@@ -188,9 +188,9 @@ siguiente sección.
 
 ## Preparación de la Base de Datos {#database-setup}
 
-¡Excelentes noticias, una base de tados SQLite ya ha sido creada para ti!
-Puedes correr `blitz prisma studio` en la terminal y verás una interfaz
-web donde podrás ver los datos de tu base de datos.
+¡Excelentes noticias, una base de datos SQLite ya ha sido creada para ti!
+Puedes ejecutar `blitz prisma studio` en la terminal y verás una interfaz
+web en la que podrás ver los datos de tu base de datos.
 
 Ten en cuenta que cuando comiences un proyecto real, es posible que
 necesites una base de datos más escalable, como PostgreSQL, para evitar
@@ -200,8 +200,8 @@ continuaremos con SQLite.
 
 ## Código base para nuestros modelos {#scaffolding-code-for-our-models}
 
-Blitz provee un conveniente comando llamado [`generate`](cli-generate)
-para crear código base para luego escribir nuestras necesidades. Usaremos
+Blitz provee un comando muy útil llamado [`generate`](cli-generate) para
+crear código base, que luego ajustaremos a nuestras necesidades. Usaremos
 `generate` para crear dos modelos: `Question` y `Choice`. Una `Question`
 tiene el texto de la pregunta y una lista de opciones. Una `Choice` tiene
 el texto de la opción, un contador de votos y una pregunta asociada. Blitz
@@ -214,9 +214,10 @@ automáticamente.
 blitz generate all question text:string
 ```
 
-Y cuando te lo pregunten, presiona **Enter** para correr `prisma migrate`
-y actualizar el esquema de tu base de datos. Te preguntará por un nombre
-para la migración; pon algo como "question creada".
+Y cuando te lo pregunten, presiona **Enter** para ejecutar
+`prisma migrate` y actualizar el esquema de tu base de datos. Te
+preguntará por un nombre para la migración; pon algo como "question
+creada".
 
 ```
 CREATE    app/pages/questions/[questionId].tsx
@@ -313,7 +314,7 @@ model Question {
 }
 ```
 
-Y luego, corre `blitz prisma generate` para actualizar el cliente de
+Y luego, ejecuta `blitz prisma generate` para actualizar el cliente de
 Prisma con los últimos cambios. Esto no requiere una migración de la base
 de datos porque ningún campo se ha añadido al model `Question` dentro de
 la base de datos.
@@ -339,7 +340,7 @@ Ya dentro, explora el cliente de la base de datos:
 ⚡ > let q = await db.question.create({data: {text: "What's new?"}})
 undefined
 
-# Mira el objecto
+# Mira el objeto completo
 ⚡ > q
 {
   id: 1,
@@ -348,7 +349,7 @@ undefined
   text: "What's new?"
 }
 
-# O accede una propieda específica
+# O accede una propiedad específica
 ⚡ > q.text
 "What's new?"
 
@@ -378,7 +379,7 @@ undefined
 <!-- prettier-ignore-start -->
 :::info
 Antes de ejecutar nuestra app de nuevo, necesitamos modificar ciertas
-partes del código que ha sido generado. Al final, este cambio no serán
+partes del código que ha sido generado. Al final, estos cambios no serán
 necesitados, pero por ahora, necesitamos tratar un par de cuestiones
 pendientes.
 :::
@@ -479,7 +480,7 @@ export const QuestionsList = () => {
 
 Ahora, vamos a hacer los mismo con
 `app/questions/components/QuestionForm.tsx`. En el formulario, reemplaza
-`LabeledTextField` `name` a `"text"`
+`LabeledTextField` `name` por `"text"`
 
 ```diff
 export function QuestionForm<S extends z.ZodType<any, any>>(
@@ -535,8 +536,8 @@ const UpdateQuestion = z
   #
   "Remove this section once Prisma supports cascading deletes. Follow prisma issue #2810"
 
-Por el momento, Prisma no soporta soporta la "eliminación en cascada". En
-el contexto de este tutorial, significa que las `Choice` no se borrar
+Por el momento, Prisma no soporta la "eliminación en cascada". En el
+contexto de este tutorial, significa que las `Choice` no se borrar
 automáticamente al borrar una `Question`. Necesitamos modificar
 `deleteQuestion` temporalmente para solucionar esto. Abre
 `app/questions/mutations/deleteQuestions.ts` y añade lo siguiente justo
@@ -568,9 +569,10 @@ de borrar la pregunta en cuestión.
 
 #### Ahora prueba a crear, actualizar y borrar preguntas
 
-¡Increíble! Ahora corre tu aplicación. Para ejecutarla, corre `blitz dev`
-en tu terminal y ve a `localhost:3000/questions`. Prueba creando
-preguntas, editándolas y eliminándolas.
+¡Increíble! Ahora ejecuta tu aplicación. Para ejecutarla, escribe
+`blitz dev` en tu terminal, presiona Enter y ve a
+`localhost:3000/questions`. Prueba creando preguntas, editándolas y
+eliminándolas.
 
 ## Agregando opciones al formulario de las preguntas {#adding-choices-to-the-question-form}
 
@@ -650,8 +652,8 @@ export default resolver.pipe(
 
 #### Pruébalo
 
-Puedes ir a `localhost:3000/question/new` y crear una nueva pregunta con
-opciones.
+Ahora puedes ir a `localhost:3000/questions/new` y crear una nueva
+pregunta con opciones.
 
 ## Listar las opciones {#listing-choices}
 
@@ -757,7 +759,7 @@ Ahora ve a `/questions` en tu navegador. **¡Magia!**
 Abre `app/pages/questions/[questionId].tsx` en tu editor. Primero, vamos a
 mejorar esta página un poquito.
 
-1. Reemplaza `<h1>Question {question.id}</h1>` with
+1. Reemplaza `<h1>Question {question.id}</h1>` por
    `<h1>{question.text}</h1>`.
 
 2. Borra el elemento `pre` y copia la lista de opciones que escribimos
@@ -987,9 +989,9 @@ simplemente se creará.
 
 ## Conclusión {#conclusion}
 
-🥳 ¡Felicitaciones! Has creado tu primera app con Blitz. Diviértete
-jugando con ella, o compartíendosela a tus amigos. Ahora que terminaste
-este tutorial, ¿por qué no intentas mejorar tu app aún más? Puedes probar:
+🥳 ¡Felicidades! Has creado tu primera app con Blitz. Diviértete jugando
+con ella, o compartíendosela a tus amigos. Ahora que has concluido este
+tutorial, ¿por qué no intentas mejorar tu app aún más? Puedes probar:
 
 - Añadiendo estilos (Pista, prueba `blitz install tailwind` o
   `blitz install chakra-ui`)
@@ -1000,5 +1002,5 @@ este tutorial, ¿por qué no intentas mejorar tu app aún más? Puedes probar:
 Si quieres compartir tu proyecto con la comunidad de Blitz, no hay mejor
 lugar que Discord.
 
-Visita [discord.blitzjs.com](https://discord.blitzjs.com). Luego, comparte
-el link en el canal **#built-with-blitz** para que todos puedan verla!
+Visita [discord.blitzjs.com](https://discord.blitzjs.com). ¡Comparte el
+link en el canal **#built-with-blitz** para que todos puedan verla!
