@@ -49,7 +49,7 @@ const Home = ({ randomContributors }) => {
               <div className="grid grid-cols-1 gap-10 px-6 mx-auto max-w-7xl lg:grid-cols-3 xl:grid-cols-2 md:gap-6 xl:-mt-10">
                 <div className="z-10 space-y-10 lg:w-full">
                   <h2 className="-mt-8 font-medium text-5xl-squashed lg:-mt-0 font-secondary xl:text-6xl xl:font-medium dark:text-transparent bg-clip-text bg-gradient-to-r from-blue-gradient-white to-blue-gradient-light-blue">
-                    El Framework FullStack con React
+                    El Framework FullStack de React
                   </h2>
                   <p className="text-lg xl:text-xl xl:font-medium text-off-white lg:text-transparent lg:bg-clip-text lg:bg-gradient-to-r lg:from-blue-gradient-white lg:to-blue-gradient-light-blue xl:w-4/5">
                     Blitz es un framework todo en uno y listo para su uso, que está inspirado en
@@ -97,8 +97,8 @@ const Home = ({ randomContributors }) => {
               <FeatureIcon icon="layers">
                 “Zero-API” te permite{" "}
                 <strong>importar el código del servidor directamente a tus componentes</strong> en
-                lugar de tener que hacerlo manualmente desde la API, realizar la búsqueda y
-                almacenarlo en caché en el lado del cliente.
+                lugar de tener que crear cada ruta API, realizar las peticiones desde el cliente y
+                manejar el caché.
               </FeatureIcon>
               <FeatureIcon icon="lighteningBolt">
                 ¡Las nuevas aplicaciones Blitz vienen con{" "}
@@ -146,17 +146,17 @@ const Home = ({ randomContributors }) => {
                         sola aplicación. Sólo un proyecto para desarrollo, sólo un proyecto para
                         desplegar a producción.
                       </p>
-                      <p>Y puedes publicar tu proyecto en un servidor o sin él.</p>
+                      <p>Y puedes publicar tu proyecto en tu servidor o serverless.</p>
                     </Feature>
                     <Feature title="Sin necesidad de API">
                       <p>
                         En lugar de obtener los datos del backend, importa el código de tu servidor
                         directamente en tus componentes. En el momento de la compilación, esta
-                        función, importa e intercambia los datos con una API HTTP generada
+                        función importa e intercambia los datos con una API HTTP generada
                         automáticamente.
                       </p>
                       <p>
-                        La API generada también puede ser utilizada por otras aplicaciones y
+                        La API generada también puede ser utilizada por otras aplicaciones y por
                         terceros.
                       </p>
                     </Feature>
@@ -308,8 +308,8 @@ const Home = ({ randomContributors }) => {
             <div className="absolute w-full h-full row-start-8 row-end-19 xl:row-end-19 -z-20 bg-purple-mid dark:bg-purple-off-black"></div>
             <div className="relative px-6 mx-auto my-6 space-y-12 text-white xl:my-0 max-w-7xl xl:space-y-36">
               <h2 className="text-3xl font-semibold lg:text-transparent lg:bg-clip-text lg:bg-gradient-to-r lg:from-blue-gradient-white lg:to-blue-gradient-light-blue xl:text-5xl">
-                Todo de principio a fin desde <br className="hidden xl:block" />
-                la base de datos al Frontend
+                End-to-End, <br className="hidden xl:block" />
+                desde la base de datos hasta el navegador
               </h2>
               <div className="grid gap-12 md:grid-cols-2 xl:grid-cols-3">
                 <Hand
@@ -318,7 +318,7 @@ const Home = ({ randomContributors }) => {
                 />
                 <FeatureIconTitle icon="thumbsUp" title="Autenticación y Autorización">
                   La autenticación integrada es muy fácil y muy segura. Funciona con cualquier
-                  proovedor de identidad, incluidos el nombre de usuario y contraseña de tu hosting
+                  proveedor de identidad, incluidos el nombre de usuario y contraseña de tu hosting
                   y terceros como Auth0.
                 </FeatureIconTitle>
                 <FeatureIconTitle icon="database" title="Cualquier base de datos">
@@ -337,10 +337,13 @@ const Home = ({ randomContributors }) => {
                   PDF, etc. Actualmente tenemos pocas guías de backend, pero estamos trabajando para
                   desarrollar más patrones y agregar más documentos.
                 </FeatureIconTitle>
-                <FeatureIconTitle icon="typescript" title="Soporte a TypeScript de primera clase">
-                  Blitz está construido con TypeScript y la capa de datos de Blitz es totalmente
-                  end-to-end y segura por tipos. ¡Todos los tipos son completamente estáticos sin
-                  necesidad de un proceso de generación de tipos por separado!.
+                <FeatureIconTitle
+                  icon="typescript"
+                  title="Soporte para TypeScript de primera clase"
+                >
+                  Blitz está construido con TypeScript y la capa de datos de Blitz está
+                  completamente asegurada por tipos. ¡Todos los tipos son completamente estáticos
+                  sin necesidad de un proceso de generación por separado!
                 </FeatureIconTitle>
                 <FeatureIconTitle icon="scaffolding" title="Código Scaffolding">
                   Es pronto, pero el código de Blitz será extremadamente poderoso, ideal tanto para
@@ -452,8 +455,8 @@ const getStaticProps = async () => {
 
 Home.layoutProps = {
   meta: {
-    title: "Blitz.js - The Fullstack React Framework",
-    description: `Blitz is a hyper-productive fullstack React framework that's built on Next.js and features a "Zero-API" data layer.`,
+    title: "Blitz.js - El Framework FullStack de React",
+    description: `Blitz es un framework fullstack de React hiperproductivo construido sobre Next.js y cuenta con la capa de datos "Zero-API".`,
   },
 }
 
