@@ -34,7 +34,7 @@ export const documentationNav = [
   {
     title: (
       <Title
-        title="Introduction"
+        title="Introducción"
         iconPath="/img/introduction.svg"
         iconDarkPath="/img/introduction-white.svg"
       />
@@ -51,7 +51,7 @@ export const documentationNav = [
   {
     title: (
       <Title
-        title="Community"
+        title="Comunidad"
         iconPath="/img/people-purple.svg"
         iconDarkPath="/img/people-white.svg"
       />
@@ -67,7 +67,9 @@ export const documentationNav = [
     ],
   },
   {
-    title: <Title title="Basics" iconPath="/img/basics.svg" iconDarkPath="/img/basics-white.svg" />,
+    title: (
+      <Title title="Esenciales" iconPath="/img/basics.svg" iconDarkPath="/img/basics-white.svg" />
+    ),
     pages: [
       pages["file-structure"],
       pages["app-component"],
@@ -80,7 +82,7 @@ export const documentationNav = [
     ],
   },
   {
-    title: <Title title="Pages" iconPath="/img/pages.svg" iconDarkPath="/img/pages-white.svg" />,
+    title: <Title title="Páginas" iconPath="/img/pages.svg" iconDarkPath="/img/pages-white.svg" />,
     pages: [
       pages["pages"],
       pages["redirects"],
@@ -96,7 +98,7 @@ export const documentationNav = [
   },
   {
     title: (
-      <Title title="Routing" iconPath="/img/routing.svg" iconDarkPath="/img/routing-white.svg" />
+      <Title title="Rutas" iconPath="/img/routing.svg" iconDarkPath="/img/routing-white.svg" />
     ),
     pages: [
       pages["routing"],
@@ -110,7 +112,11 @@ export const documentationNav = [
   },
   {
     title: (
-      <Title title="Auth" iconPath="/img/shield-purple.svg" iconDarkPath="/img/shield-white.svg" />
+      <Title
+        title="Autenticación"
+        iconPath="/img/shield-purple.svg"
+        iconDarkPath="/img/shield-white.svg"
+      />
     ),
     pages: [
       pages["auth"],
@@ -123,7 +129,11 @@ export const documentationNav = [
   },
   {
     title: (
-      <Title title="Database" iconPath="/img/database.svg" iconDarkPath="/img/database-white.svg" />
+      <Title
+        title="Base de Datos"
+        iconPath="/img/database.svg"
+        iconDarkPath="/img/database-white.svg"
+      />
     ),
     pages: [
       pages["database-overview"],
@@ -136,7 +146,7 @@ export const documentationNav = [
   {
     title: (
       <Title
-        title="Queries & Mutations"
+        title="Peticiones & Mutaciones"
         iconPath="/img/queries.svg"
         iconDarkPath="/img/queries-white.svg"
       />
@@ -157,7 +167,7 @@ export const documentationNav = [
   {
     title: (
       <Title
-        title="Backend Architecture"
+        title="Arquitectura Backend"
         iconPath="/img/mutations.svg"
         iconDarkPath="/img/mutations-white.svg"
       />
@@ -171,7 +181,7 @@ export const documentationNav = [
   {
     title: (
       <Title
-        title="Deploying to Production"
+        title="Deploy a Producción"
         iconPath="/img/deploying-to-production.svg"
         iconDarkPath="/img/deploying-to-production-white.svg"
       />
@@ -181,7 +191,7 @@ export const documentationNav = [
   {
     title: (
       <Title
-        title="Recipes"
+        title="Recetas"
         iconPath="/img/recipe-purple.svg"
         iconDarkPath="/img/recipe-white.svg"
       />
@@ -191,7 +201,7 @@ export const documentationNav = [
   {
     title: (
       <Title
-        title="Configuration"
+        title="Configuración"
         iconPath="/img/config-purple.svg"
         iconDarkPath="/img/config-white.svg"
       />
@@ -230,7 +240,7 @@ export const documentationNav = [
   {
     title: (
       <Title
-        title="Templates"
+        title="Plantillas"
         iconPath="/img/template-purple.svg"
         iconDarkPath="/img/template-white.svg"
       />

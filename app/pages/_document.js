@@ -8,7 +8,7 @@ export default class MyDocument extends Document {
 
   render() {
     return (
-      <Html lang="en" className="antialiased">
+      <Html lang="es" className="antialiased">
         <DocumentHead>
           <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
           <link rel="icon" type="image/png" sizes="128x128" href="/128x128-Favicon-Purple.png" />

@@ -80,14 +80,14 @@ const Header = ({
     onNavToggle(newValue)
   }
 
-  const bannerMsg = "Blitz is now in beta! 🎉 1.0 expected this April"
+  const bannerMsg = "¡Blitz está en Beta! 🎉 Se espera que la 1.0 salga en Abril"
 
   const menuLinks = [
     {
-      name: "Documentation",
+      name: "Documentación",
       href: isDesktop ? "/docs/get-started" : "/docs",
     },
-    {name: "Releases", href: "https://github.com/blitz-js/blitz/releases"},
+    {name: "Versiones", href: "https://github.com/blitz-js/blitz/releases"},
     {name: "Wiki", href: "https://github.com/blitz-js/blitz/wiki"},
     {name: "Swag", href: "https://store.blitzjs.com"},
   ]
@@ -100,7 +100,7 @@ const Header = ({
           <div className="pr-8 xl:pr-12 lg:-mt-3">
             <Link href="/">
               <a className="w-10 overflow-hidden md:w-auto">
-                <span className="sr-only">Blitz home page</span>
+                <span className="sr-only">Inicio de Blitz</span>
                 {useColoredLogo && (
                   <ColoredLogo className="w-auto h-12 py-2 fill-current inline dark:hidden" />
                 )}
@@ -130,7 +130,7 @@ const Header = ({
               rel="noopener noreferrer"
               href="https://github.com/sponsors/blitz-js"
             >
-              <FaHeart className="inline mr-1 align-text-top" /> Donate/Sponsor
+              <FaHeart className="inline mr-1 align-text-top" /> Donar/Patrocinar
               <FiArrowUpRight size="0.70rem" className="opacity-50 absolute top-2 right-0" />
             </NavLink>
           </div>
@@ -172,7 +172,8 @@ const Header = ({
               rel="noopener noreferrer"
               href="https://github.com/sponsors/blitz-js"
             >
-              <FaHeart size="1rem" className="inline mr-1 mb-1 align-text-center" /> Donate/Sponsor
+              <FaHeart size="1rem" className="inline mr-1 mb-1 align-text-center" />{" "}
+              Donar/Patrocinar
               <HiExternalLink size="1rem" className="opacity-70 absolute top-3 right-0" />
             </NavLink>
             <div className="py-2">

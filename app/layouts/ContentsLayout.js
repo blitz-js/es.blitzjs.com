@@ -159,7 +159,7 @@ export function ContentsLayout({children, meta, tableOfContents: toc}) {
     <>
       <Link href="/docs">
         <a className="lg:hidden mx-6 text-xxs px-2.5 py-0.5 rounded-sm bg-off-white font-primary inline-flex mb-4 dark:bg-purple-off-black -mt-4 items-center">
-          <BiChevronLeft size={18} /> Back to Documentation Menu
+          <BiChevronLeft size={18} /> Volver al Menú
         </a>
       </Link>
       <div id={meta.containerId} className="pt-4 pb-8 w-full flex">
@@ -209,7 +209,7 @@ export function ContentsLayout({children, meta, tableOfContents: toc}) {
                 rel="noopener noreferrer"
                 className="flex items-center py-2 text-sm"
               >
-                <FaGithub className="mr-3" /> Idea for improving this page? Edit it on Github.
+                <FaGithub className="mr-3" /> ¿Quieres mejorar esta página? Edítala en GitHub.
               </a>
               {(prev || next) && (
                 <>
