@@ -1,5 +1,7 @@
-import { forwardRef, useMemo } from "react"
-import { Code } from "./Code"
+import {forwardRef, useMemo} from "react"
+
+import {Code} from "@/components/Code"
+
 import styles from "./CodeWindow.module.css"
 
 export function CodeWindow({
@@ -39,7 +41,7 @@ export function CodeWindow({
         </div>
         <div className="relative flex flex-col flex-auto min-h-0 border-t border-gray-200 dark:border-gray-800">
           {lineNumbersBackground && (
-            <div className="absolute inset-y-0 left-0 hidden md:block" style={{ width: 50 }} />
+            <div className="absolute inset-y-0 left-0 hidden md:block" style={{width: 50}} />
           )}
           {children}
         </div>
@@ -48,7 +50,7 @@ export function CodeWindow({
   )
 }
 
-CodeWindow.Code = forwardRef(({ tokens, initialLineNumber = 1, ...props }, ref) => {
+CodeWindow.Code = forwardRef(({tokens, initialLineNumber = 1, ...props}, ref) => {
   const lineNumbers = useMemo(() => {
     const t = tokens.flat(Infinity)
     let line = initialLineNumber + 1
@@ -73,7 +75,7 @@ CodeWindow.Code = forwardRef(({ tokens, initialLineNumber = 1, ...props }, ref) 
           <div
             aria-hidden="true"
             className="flex-none hidden py-4 pr-4 font-mono text-right text-black text-opacity-50 select-none dark:text-dark-mode-text md:block"
-            style={{ width: 50 }}
+            style={{width: 50}}
           >
             {lineNumbers}
           </div>
@@ -86,7 +88,7 @@ CodeWindow.Code = forwardRef(({ tokens, initialLineNumber = 1, ...props }, ref) 
   )
 })
 
-export function getClassNameForToken({ types, empty }) {
+export function getClassNameForToken({types, empty}) {
   const typesSize = types.length
   if (typesSize === 1 && types[0] === "plain") {
     return empty ? "inline-block" : undefined
