@@ -5,23 +5,28 @@ sidebar_label: Tutorial
 
 En este tutorial, crearemos una aplicación de votación básica.
 
-Asumiremos que ya tienes [Blitz instalado](./get-started). Para saber si lo tienes instalado, corre el siguiente comando en tu terminal:
+Asumiremos que ya tienes [Blitz instalado](./get-started). Para saber si
+lo tienes instalado, corre el siguiente comando en tu terminal:
 
 ```sh
 blitz -v
 ```
 
-Si Blitz está instalado, deberías ver la versión de tu instalación. Y si no lo tienes, obtendrás un error como "comando no encontrado".
+Si Blitz está instalado, deberías ver la versión de tu instalación. Y si
+no lo tienes, obtendrás un error como "comando no encontrado".
 
 ## Creando una nueva App {#creating-a-new-app}
 
-Desde la terminal, haz `cd` hacia el directorio donde te gustaría crear tu aplicación y corre el siguiente comando:
+Desde la terminal, haz `cd` hacia el directorio donde te gustaría crear tu
+aplicación y corre el siguiente comando:
 
 ```sh
 blitz new my-blitz-app
 ```
 
-Blitz creará un directorio llamado `my-blitz-app` en tu directorio actual. Se te hará elegir una librería para hacer formularios. Para este tutorial, selecciona la librería recomendada: _React Final Form_.
+Blitz creará un directorio llamado `my-blitz-app` en tu directorio actual.
+Se te hará elegir una librería para hacer formularios. Para este tutorial,
+selecciona la librería recomendada: _React Final Form_.
 
 Veamos que creó `blitz new`:
 
@@ -91,25 +96,34 @@ my-blitz-app
 
 Estos archivos son:
 
-- La carpeta `app/` es un contenedor para la mayor parte de tu proyecto. Allí es dónde pondrás tus páginas y tus rutas API.
+- La carpeta `app/` es un contenedor para la mayor parte de tu proyecto.
+  Allí es dónde pondrás tus páginas y tus rutas API.
 
-- La carpeta `app/pages/` es la carpeta primaria para guardar páginas. Si has usado Next.js, inmediatamente notarás que es diferente. En Blitz, puedes tener varias carpetas `pages` que serán fusionadas al compilar.
+- La carpeta `app/pages/` es la carpeta primaria para guardar páginas. Si
+  has usado Next.js, inmediatamente notarás que es diferente. En Blitz,
+  puedes tener varias carpetas `pages` que serán fusionadas al compilar.
 
-- La carpeta `app/core/` es el lugar principal para poner tus componentes, hooks, etcétera que son utilizados a lo largo de tu aplicación.
+- La carpeta `app/core/` es el lugar principal para poner tus componentes,
+  hooks, etcétera que son utilizados a lo largo de tu aplicación.
 
-- `db/` es dónde la configuración de tu base de datos se aloja. Si escribes modelos o manejas migraciones, este es el lugar donde ponerlo.
+- `db/` es dónde la configuración de tu base de datos se aloja. Si
+  escribes modelos o manejas migraciones, este es el lugar donde ponerlo.
 
-- En `public/` van todos tus archivos estáticos. Si tienes imágenes, fotos, videos, u otros archivos, van adentro de `public/`.
+- En `public/` van todos tus archivos estáticos. Si tienes imágenes,
+  fotos, videos, u otros archivos, van adentro de `public/`.
 
-- `.babelrc.js`, `.env`, etc. ("dotfiles") son archivos de configuración para varias herramientas utilizadas dentro de la aplicación.
+- `.babelrc.js`, `.env`, etc. ("dotfiles") son archivos de configuración
+  para varias herramientas utilizadas dentro de la aplicación.
 
-- `blitz.config.js` es para personalizar Blitz (avanzado). Tiene el mismo formato que `next.config.js`.
+- `blitz.config.js` es para personalizar Blitz (avanzado). Tiene el mismo
+  formato que `next.config.js`.
 
 - `tsconfig.json` es nuestra configuración recomendada para TypeScript.
 
 ## El servidor de desarrollo {#the-development-server}
 
-Ahora, asegúrate de estás dentro del directorio `my-blitz-app` y corre el siguiente comando:
+Ahora, asegúrate de estás dentro del directorio `my-blitz-app` y corre el
+siguiente comando:
 
 ```sh
 blitz dev
@@ -128,19 +142,27 @@ info  - Using external babel configuration from /my-blitz-app/babel.config.js
 event - compiled successfully
 ```
 
-Eso significa que el servidor de desarrollo está corriendo. Ve a [localhost:3000](http://localhost:3000) en tu navegador. Si ves una página de bienvenida con el logo de Blitz, ¡funcionó!
+Eso significa que el servidor de desarrollo está corriendo. Ve a
+[localhost:3000](http://localhost:3000) en tu navegador. Si ves una página
+de bienvenida con el logo de Blitz, ¡funcionó!
 
 ## Registrarse como un usuario {#sign-up-as-a-user}
 
-Las aplicaciones Blitz son creadas con registros e inicios de sesión ya integrados. Vamos a probarlos. Haz click en **Sign Up**. Pon un email y una contraseña cualquiera y presiona **Create Account**. Luego, serás redirigido de vuelta al inicio, donde verás el `id` y el `role` de tu usuario.
+Las aplicaciones Blitz son creadas con registros e inicios de sesión ya
+integrados. Vamos a probarlos. Haz click en **Sign Up**. Pon un email y
+una contraseña cualquiera y presiona **Create Account**. Luego, serás
+redirigido de vuelta al inicio, donde verás el `id` y el `role` de tu
+usuario.
 
-Si quieres, puedes probar a cerrar la sesión, volver a iniciarla, e incluso hacer click en **Forgot your password?** y ver cómo funciona.
+Si quieres, puedes probar a cerrar la sesión, volver a iniciarla, e
+incluso hacer click en **Forgot your password?** y ver cómo funciona.
 
 ## Escribe tu primera página {#write-your-first-page}
 
 Vamos a crear tu primera página.
 
-Abre el archivo `app/pages/index.tsx` y reemplaza los contenidos del componente `Home` por lo siguiente:
+Abre el archivo `app/pages/index.tsx` y reemplaza los contenidos del
+componente `Home` por lo siguiente:
 
 ```tsx
 //...
@@ -160,17 +182,31 @@ const Home: BlitzPage = () => {
 //...
 ```
 
-Guarda el archivo y verás la página actualizarse en tu navegador. Puedes personalizar esto cuanto quieras. Cuando estés listo, continúa hacia la siguiente sección.
+Guarda el archivo y verás la página actualizarse en tu navegador. Puedes
+personalizar esto cuanto quieras. Cuando estés listo, continúa hacia la
+siguiente sección.
 
 ## Preparación de la Base de Datos {#database-setup}
 
-¡Excelentes noticias, una base de tados SQLite ya ha sido creada para ti! Puedes correr `blitz prisma studio` en la terminal y verás una interfaz web donde podrás ver los datos de tu base de datos.
+¡Excelentes noticias, una base de tados SQLite ya ha sido creada para ti!
+Puedes correr `blitz prisma studio` en la terminal y verás una interfaz
+web donde podrás ver los datos de tu base de datos.
 
-Ten en cuenta que cuando comiences un proyecto real, es posible que necesites una base de datos más escalable, como PostgreSQL, para evitar cambiar de base de datos en la mitad de tu proyecto. Para más información, lee [Sobre las Bases de Datos](database-overview). Por ahora, continuaremos con SQLite.
+Ten en cuenta que cuando comiences un proyecto real, es posible que
+necesites una base de datos más escalable, como PostgreSQL, para evitar
+cambiar de base de datos en la mitad de tu proyecto. Para más información,
+lee [Sobre las Bases de Datos](database-overview). Por ahora,
+continuaremos con SQLite.
 
 ## Código base para nuestros modelos {#scaffolding-code-for-our-models}
 
-Blitz provee un conveniente comando llamado [`generate`](cli-generate) para crear código base para luego escribir nuestras necesidades. Usaremos `generate` para crear dos modelos: `Question` y `Choice`. Una `Question` tiene el texto de la pregunta y una lista de opciones. Una `Choice` tiene el texto de la opción, un contador de votos y una pregunta asociada. Blitz generará un ID, una campo `createdAt` y uno `updatedAt` a cada modelo automáticamente.
+Blitz provee un conveniente comando llamado [`generate`](cli-generate)
+para crear código base para luego escribir nuestras necesidades. Usaremos
+`generate` para crear dos modelos: `Question` y `Choice`. Una `Question`
+tiene el texto de la pregunta y una lista de opciones. Una `Choice` tiene
+el texto de la opción, un contador de votos y una pregunta asociada. Blitz
+generará un ID, una campo `createdAt` y uno `updatedAt` a cada modelo
+automáticamente.
 
 #### Primero, generaremos todo lo relacionado con el modelo `Question`:
 
@@ -178,7 +214,9 @@ Blitz provee un conveniente comando llamado [`generate`](cli-generate) para crea
 blitz generate all question text:string
 ```
 
-Y cuando te lo pregunten, presiona **Enter** para correr `prisma migrate` y actualizar el esquema de tu base de datos. Te preguntará por un nombre para la migración; pon algo como "question creada". 
+Y cuando te lo pregunten, presiona **Enter** para correr `prisma migrate`
+y actualizar el esquema de tu base de datos. Te preguntará por un nombre
+para la migración; pon algo como "question creada".
 
 ```
 CREATE    app/pages/questions/[questionId].tsx
@@ -204,7 +242,6 @@ CREATE    app/questions/mutations/updateQuestion.ts
 ? Run 'prisma migrate dev' to update your database? (Y/n) › true
 ```
 
-
 ```
 Environment variables loaded from .env
 Prisma schema loaded from db/schema.prisma
@@ -222,17 +259,22 @@ migrations/
 Everything is now in sync.
 ```
 
-El comando `generate` con el tipo `all` genera un modelo y sus respectivas consultas (o _queries_), mutaciones y páginas. En la página de [`blitz generate`](./cli-generate) hay una lista de todas las opciones disponibles.
+El comando `generate` con el tipo `all` genera un modelo y sus respectivas
+consultas (o _queries_), mutaciones y páginas. En la página de
+[`blitz generate`](./cli-generate) hay una lista de todas las opciones
+disponibles.
 
 #### Ahora generaremos el modelo `Choice` con sus consultas y mutaciones correspondientes.
 
-Esta vez le pasaremos el tipo `resource`, ya que no necesitamos generar páginas para el modelo `Choice`:
+Esta vez le pasaremos el tipo `resource`, ya que no necesitamos generar
+páginas para el modelo `Choice`:
 
 ```sh
 blitz generate resource choice text votes:int:default=0 belongsTo:question
 ```
 
-Presiona **Enter** cuando te lo pidan para ejecutar la migración. No te olvides de ponerle un nombre.
+Presiona **Enter** cuando te lo pidan para ejecutar la migración. No te
+olvides de ponerle un nombre.
 
 ```
 CREATE    app/choices/queries/getChoice.ts
@@ -258,7 +300,8 @@ CREATE    app/choices/mutations/updateChoice.ts
 
 #### Por último, actualicemos el model `Question` para que esté relacionado a `Choice`.
 
-Abre el archivo `db/schema.prisma` y añade `choices Choice[]` al modelo `Question`.
+Abre el archivo `db/schema.prisma` y añade `choices Choice[]` al modelo
+`Question`.
 
 ```diff
 model Question {
@@ -270,11 +313,16 @@ model Question {
 }
 ```
 
-Y luego, corre `blitz prisma generate` para actualizar el cliente de Prisma con los últimos cambios. Esto no requiere una migración de la base de datos porque ningún campo se ha añadido al model `Question` dentro de la base de datos.
+Y luego, corre `blitz prisma generate` para actualizar el cliente de
+Prisma con los últimos cambios. Esto no requiere una migración de la base
+de datos porque ningún campo se ha añadido al model `Question` dentro de
+la base de datos.
 
 ## Jugando con el cliente de Prisma {#playing-with-the-prisma-database-client}
 
-Entremos a la terminal interactiva de Blitz y veamos qué podemos hacer con Prisma, el cliente por defecto que Blitz nos brinda. Para abrir la terminal, ejecuta este comando:
+Entremos a la terminal interactiva de Blitz y veamos qué podemos hacer con
+Prisma, el cliente por defecto que Blitz nos brinda. Para abrir la
+terminal, ejecuta este comando:
 
 ```sh
 blitz console
@@ -327,15 +375,21 @@ undefined
 
 ## Actualizar el código generado para nuestras necesidades {#update-generated-code-for-our-model-attributes}
 
+<!-- prettier-ignore-start -->
 :::info
 Antes de ejecutar nuestra app de nuevo, necesitamos modificar ciertas partes del código que ha sido generado. Al final, este cambio no serán necesitados, pero por ahora, necesitamos tratar un par de cuestiones pendientes.
 :::
+<!-- prettier-ignore-end -->
 
-El contenido de la página generado no contiene los atributos que definimos. Pronto lo hará, pero mientras tanto, vamos a arreglar las páginas generadas.
+El contenido de la página generado no contiene los atributos que
+definimos. Pronto lo hará, pero mientras tanto, vamos a arreglar las
+páginas generadas.
 
 ### Página de `Question` {#question-pages}
 
-[//]: # "Remove the following section once `generate` uses actual model attributes"
+[//]:
+  #
+  "Remove the following section once `generate` uses actual model attributes"
 
 Ve a `app/pages/questions/index.tsx`. Verás un componente `QuestionsList`:
 
@@ -345,14 +399,14 @@ Ve a `app/pages/questions/index.tsx`. Verás un componente `QuestionsList`:
 export const QuestionsList = () => {
   const router = useRouter()
   const page = Number(router.query.page) || 0
-  const [{ questions, hasMore }] = usePaginatedQuery(getQuestions, {
-    orderBy: { id: "asc" },
+  const [{questions, hasMore}] = usePaginatedQuery(getQuestions, {
+    orderBy: {id: "asc"},
     skip: ITEMS_PER_PAGE * page,
     take: ITEMS_PER_PAGE,
   })
 
-  const goToPreviousPage = () => router.push({ query: { page: page - 1 } })
-  const goToNextPage = () => router.push({ query: { page: page + 1 } })
+  const goToPreviousPage = () => router.push({query: {page: page - 1}})
+  const goToNextPage = () => router.push({query: {page: page + 1}})
 
   return (
     <div>
@@ -377,7 +431,9 @@ export const QuestionsList = () => {
 }
 ```
 
-¡Pero esto no funcionará! Recuerda que el modelo `Question` que creamos no tiene un campo `name`. Para arreglar esto, cambia `question.name` con `question.text`:
+¡Pero esto no funcionará! Recuerda que el modelo `Question` que creamos no
+tiene un campo `name`. Para arreglar esto, cambia `question.name` con
+`question.text`:
 
 ```diff
 // app/pages/questions/index.tsx
@@ -385,14 +441,14 @@ export const QuestionsList = () => {
 export const QuestionsList = () => {
   const router = useRouter()
   const page = Number(router.query.page) || 0
-  const [{ questions, hasMore }] = usePaginatedQuery(getQuestions, {
-    orderBy: { id: "asc" },
+  const [{questions, hasMore}] = usePaginatedQuery(getQuestions, {
+    orderBy: {id: "asc"},
     skip: ITEMS_PER_PAGE * page,
     take: ITEMS_PER_PAGE,
   })
 
-  const goToPreviousPage = () => router.push({ query: { page: page - 1 } })
-  const goToNextPage = () => router.push({ query: { page: page + 1 } })
+  const goToPreviousPage = () => router.push({query: {page: page - 1}})
+  const goToNextPage = () => router.push({query: {page: page + 1}})
 
   return (
     <div>
@@ -418,14 +474,18 @@ export const QuestionsList = () => {
 }
 ```
 
-Ahora, vamos a hacer los mismo con `app/questions/components/QuestionForm.tsx`. En el formulario, reemplaza `LabeledTextField` `name` a `"text"`
+Ahora, vamos a hacer los mismo con
+`app/questions/components/QuestionForm.tsx`. En el formulario, reemplaza
+`LabeledTextField` `name` a `"text"`
 
 ```diff
-export function QuestionForm<S extends z.ZodType<any, any>>(props: FormProps<S>) {
+export function QuestionForm<S extends z.ZodType<any, any>>(
+  props: FormProps<S>,
+) {
   return (
     <Form<S> {...props}>
--      <LabeledTextField name="name" label="Name" placeholder="Name" />
-+      <LabeledTextField name="text" label="Text" placeholder="Text" />
+-     <LabeledTextField name="name" label="Name" placeholder="Name" />
++     <LabeledTextField name="text" label="Text" placeholder="Text" />
     </Form>
   )
 }
@@ -433,16 +493,16 @@ export function QuestionForm<S extends z.ZodType<any, any>>(props: FormProps<S>)
 
 ### Mutación `createQuestion` {#create-question-mutation}
 
-En `app/questions/mutations/createQuestion.ts`, necesitamos actualizar el esquema de Zod `CreateQuestion` para que use `text` en vez de `name`.
+En `app/questions/mutations/createQuestion.ts`, necesitamos actualizar el
+esquema de Zod `CreateQuestion` para que use `text` en vez de `name`.
 
-<!-- prettier-ignore -->
 ```diff
 // app/questions/mutations/createQuestion.ts
 
 const CreateQuestion = z
   .object({
--    name: z.string(),
-+    text: z.string(),
+-   name: z.string(),
++   text: z.string(),
   })
   .nonstrict()
 // ...
@@ -450,9 +510,9 @@ const CreateQuestion = z
 
 ### Mutación `updateQuestion` {#update-question-mutation}
 
-En `app/questions/mutations/updateQuestion.ts`, necesitamos actualizar el esquema de Zod `UpdateQuestion` para que use `text` en vez de `name`.
+En `app/questions/mutations/updateQuestion.ts`, necesitamos actualizar el
+esquema de Zod `UpdateQuestion` para que use `text` en vez de `name`.
 
-<!-- prettier-ignore -->
 ```diff
 // app/questions/mutations/updateQuestion.ts
 
@@ -468,46 +528,59 @@ const UpdateQuestion = z
 
 ### Mutación `deleteQuestion` {#delete-question-mutation}
 
-[//]: # "Remove this section once Prisma supports cascading deletes. Follow prisma issue #2810"
+[//]:
+  #
+  "Remove this section once Prisma supports cascading deletes. Follow prisma issue #2810"
 
-Por el momento, Prisma no soporta soporta la "eliminación en cascada". En el contexto de este tutorial, significa que las `Choice` no se borrar automáticamente al borrar una `Question`. Necesitamos modificar `deleteQuestion` temporalmente para solucionar esto. Abre `app/questions/mutations/deleteQuestions.ts` y añade lo siguiente justo por encima de `db.question.deleteMany()`: 
+Por el momento, Prisma no soporta soporta la "eliminación en cascada". En
+el contexto de este tutorial, significa que las `Choice` no se borrar
+automáticamente al borrar una `Question`. Necesitamos modificar
+`deleteQuestion` temporalmente para solucionar esto. Abre
+`app/questions/mutations/deleteQuestions.ts` y añade lo siguiente justo
+por encima de `db.question.deleteMany()`:
 
 ```ts
-await db.choice.deleteMany({ where: { questionId: id } })
+await db.choice.deleteMany({where: {questionId: id}})
 ```
 
 Debería quedar lo siguiente:
 
-<!-- prettier-ignore -->
 ```diff
 // app/questions/mutations/deleteQuestion.ts
 
 export default resolver.pipe(
   resolver.zod(DeleteQuestion),
   resolver.authorize(),
-  async ({ id }) => {
-+   await db.choice.deleteMany({ where: { questionId: id } })
-    const question = await db.question.deleteMany({ where: { id } })
+  async ({id}) => {
++   await db.choice.deleteMany({where: {questionId: id}})
+    const question = await db.question.deleteMany({where: {id}})
 
     return question
-  }
+  },
 )
 ```
 
-Esta mutación eliminará las opciones asociadas a la pregunta justo antes de borrar la pregunta en cuestión.
+Esta mutación eliminará las opciones asociadas a la pregunta justo antes
+de borrar la pregunta en cuestión.
 
 #### Ahora prueba a crear, actualizar y borrar preguntas
 
-¡Increíble! Ahora corre tu aplicación. Para ejecutarla, corre `blitz dev` en tu terminal y ve a `localhost:3000/questions`. Prueba creando preguntas, editándolas y eliminándolas.
+¡Increíble! Ahora corre tu aplicación. Para ejecutarla, corre `blitz dev`
+en tu terminal y ve a `localhost:3000/questions`. Prueba creando
+preguntas, editándolas y eliminándolas.
 
 ## Agregando opciones al formulario de las preguntas {#adding-choices-to-the-question-form}
 
-¡Lo estás haciendo genial! Lo siguiente que haremos será añadir opciones a el formulario de las preguntas. Abre `app/questions/components/QuestionForm.tsx` en tu editor de texto.
+¡Lo estás haciendo genial! Lo siguiente que haremos será añadir opciones a
+el formulario de las preguntas. Abre
+`app/questions/components/QuestionForm.tsx` en tu editor de texto.
 
 Añade tres componentes `<LabeledTextField>` más como opciones.
 
 ```diff
-export function QuestionForm<S extends z.ZodType<any, any>>(props: FormProps<S>) {
+export function QuestionForm<S extends z.ZodType<any, any>>(
+  props: FormProps<S>,
+) {
   return (
     <Form<S> {...props}>
       <LabeledTextField name="text" label="Text" placeholder="Text" />
@@ -519,13 +592,14 @@ export function QuestionForm<S extends z.ZodType<any, any>>(props: FormProps<S>)
 }
 ```
 
-Ahora abre `app/pages/questions/new.tsx` y pon a `initialValues` este valor:
+Ahora abre `app/pages/questions/new.tsx` y pon a `initialValues` este
+valor:
 
 ```diff
       <QuestionForm
         submitText="Create Question"
--        // initialValues={{ }}
-+        initialValues={{ choices: [] }}
+-       // initialValues={{ }}
++       initialValues={{choices: []}}
         onSubmit={async (values) => {
           try {
             const question = await createQuestionMutation(values)
@@ -540,16 +614,17 @@ Ahora abre `app/pages/questions/new.tsx` y pon a `initialValues` este valor:
       />
 ```
 
-Abre `app/questions/mutations/createQuestion.ts` y actualiza el esquema de Zod para que acepte las opciones en la mutación. Además, necesitamos actualizar la llamada a `db.question.create` para que cree las opciones.
+Abre `app/questions/mutations/createQuestion.ts` y actualiza el esquema de
+Zod para que acepte las opciones en la mutación. Además, necesitamos
+actualizar la llamada a `db.question.create` para que cree las opciones.
 
-<!-- prettier-ignore -->
 ```diff
-//app/questions/mutations/createQuestion.ts
+// app/questions/mutations/createQuestion.ts
 
 const CreateQuestion = z
   .object({
     text: z.string(),
-+   choices: z.array(z.object({ text: z.string() })),
++   choices: z.array(z.object({text: z.string()})),
   })
   .nonstrict()
 
@@ -557,28 +632,33 @@ export default resolver.pipe(
   resolver.zod(CreateQuestion),
   resolver.authorize(),
   async (input) => {
--   const question = await db.question.create({ data: input })
+-   const question = await db.question.create({data: input})
 +   const question = await db.question.create({
-+      data: {
++     data: {
 +       ...input,
-+       choices: { create: input.choices },
++       choices: {create: input.choices},
 +     },
 +   })
 
     return question
-  }
+  },
 )
 ```
 
 #### Pruébalo
 
-Puedes ir a `localhost:3000/question/new` y crear una nueva pregunta con opciones.
+Puedes ir a `localhost:3000/question/new` y crear una nueva pregunta con
+opciones.
 
 ## Listar las opciones {#listing-choices}
 
-Es momento de algo facilito. Vuelve a `localhost:3000/questions` en tu navegador y mira todas las preguntas que has creado. ¿Qué te parece si mostramos las opciones junto a las preguntas? Primero, necesitamos modificar la consulta de las preguntas. En Prisma, necesitas especificarle manualmente que quieres recibir objetos relacionados. Cambia tu `getQuestion.ts` y `getQuestions.ts` para que se vean así:
+Es momento de algo facilito. Vuelve a `localhost:3000/questions` en tu
+navegador y mira todas las preguntas que has creado. ¿Qué te parece si
+mostramos las opciones junto a las preguntas? Primero, necesitamos
+modificar la consulta de las preguntas. En Prisma, necesitas especificarle
+manualmente que quieres recibir objetos relacionados. Cambia tu
+`getQuestion.ts` y `getQuestions.ts` para que se vean así:
 
-<!-- prettier-ignore -->
 ```diff
 // app/questions/queries/getQuestion.ts
 
@@ -590,34 +670,43 @@ const GetQuestion = z.object({
 export default resolver.pipe(
   resolver.zod(GetQuestion),
   resolver.authorize(),
-  async ({ id }) => {
--   const question = await db.question.findFirst({ where: { id } })
-+   const question = await db.question.findFirst({ where: { id }, include: {choices: true} })
+  async ({id}) => {
+-   const question = await db.question.findFirst({where: {id}})
++   const question = await db.question.findFirst({
++     where: {id},
++     include: {choices: true},
++   })
 
     if (!question) throw new NotFoundError()
 
     return question
-  }
+  },
 )
 ```
 
-<!-- prettier-ignore -->
 ```diff
 // app/questions/queries/getQuestions.ts
 
 interface GetQuestionsInput
-  extends Pick<Prisma.QuestionFindManyArgs, "where" | "orderBy" | "skip" | "take"> {}
+  extends Pick<
+    Prisma.QuestionFindManyArgs,
+    "where" | "orderBy" | "skip" | "take"
+  > {}
 
 export default resolver.pipe(
   resolver.authorize(),
-  async ({ where, orderBy, skip = 0, take = 100 }: GetQuestionsInput) => {
-    const { items: questions, hasMore, nextPage, count } = await paginate({
+  async ({where, orderBy, skip = 0, take = 100}: GetQuestionsInput) => {
+    const {items: questions, hasMore, nextPage, count} = await paginate({
       skip,
       take,
-      count: () => db.question.count({ where }),
+      count: () => db.question.count({where}),
       query: (paginateArgs) =>
--       db.question.findMany({ ...paginateArgs, where, orderBy }),
-+       db.question.findMany({ ...paginateArgs, where, orderBy, include: {choices: true} }),
+        db.question.findMany({
+          ...paginateArgs,
+          where,
+          orderBy,
++         include: {choices: true},
+        }),
     })
 
     return {
@@ -626,30 +715,35 @@ export default resolver.pipe(
       hasMore,
       count,
     }
-  }
+  },
 )
 ```
 
-Ahora vuelve a nuestra página principal de preguntas (`app/pages/questions/index.tsx`) con tu editor para listar las opciones de cada pregunta. Añade este código debajo de `Link` en nuestra `QuestionList`:
+Ahora vuelve a nuestra página principal de preguntas
+(`app/pages/questions/index.tsx`) con tu editor para listar las opciones
+de cada pregunta. Añade este código debajo de `Link` en nuestra
+`QuestionList`:
 
 ```diff
 // app/pages/questions/index.tsx
 
 // ...
-    {questions.map((question) => (
-      <li key={question.id}>
-        <Link href={`/questions/${question.id}`}>
-          <a>{question.text}</a>
-        </Link>
-+       <ul>
-+          {question.choices.map((choice) => (
-+            <li key={choice.id}>
-+              {choice.text} - {choice.votes} votes
-+            </li>
-+          ))}
-+       </ul>
-      </li>
-    ))}
+{
+  questions.map((question) => (
+    <li key={question.id}>
+      <Link href={`/questions/${question.id}`}>
+        <a>{question.text}</a>
+      </Link>
++     <ul>
++       {question.choices.map((choice) => (
++         <li key={choice.id}>
++           {choice.text} - {choice.votes} votes
++         </li>
++       ))}
++     </ul>
+    </li>
+  ))
+}
 // ...
 ```
 
@@ -657,11 +751,14 @@ Ahora ve a `/questions` en tu navegador. **¡Magia!**
 
 ## Hagamos un último cambio: ¡dejemos que la gente vote las preguntas! {#let-people-vote-on-questions}
 
-Abre `app/pages/questions/[questionId].tsx` en tu editor. Primero, vamos a mejorar esta página un poquito.
+Abre `app/pages/questions/[questionId].tsx` en tu editor. Primero, vamos a
+mejorar esta página un poquito.
 
-1. Reemplaza `<h1>Question {question.id}</h1>` with `<h1>{question.text}</h1>`.
+1. Reemplaza `<h1>Question {question.id}</h1>` with
+   `<h1>{question.text}</h1>`.
 
-2. Borra el elemento `pre` y copia  la lista de opciones que escribimos anteriormente:
+2. Borra el elemento `pre` y copia la lista de opciones que escribimos
+   anteriormente:
 
 ```tsx
 <ul>
@@ -683,7 +780,8 @@ Si miras tu navegador, tu página debería verse similar a esto:
 
 #### ¡Vamos a añadir votaciones!
 
-Primero, necesitamos abrir `app/choices/mutations/updateChoice.ts`, actualizar el esquema de Zod, y añadir un incrementador a los votos.
+Primero, necesitamos abrir `app/choices/mutations/updateChoice.ts`,
+actualizar el esquema de Zod, y añadir un incrementador a los votos.
 
 ```diff
 const UpdateChoice = z
@@ -696,16 +794,20 @@ const UpdateChoice = z
 export default resolver.pipe(
   resolver.zod(UpdateChoice),
   resolver.authorize(),
-  async ({ id, ...data }) => {
--   const choice = await db.choice.update({ where: { id }, data })
-+   const choice = await db.choice.update({ where: { id }, data: {votes: {increment: 1}} })
+  async ({id, ...data}) => {
+-   const choice = await db.choice.update({where: {id}, data})
++   const choice = await db.choice.update({
++     where: {id},
++     data: {votes: {increment: 1}},
++   })
 
     return choice
-  }
+  },
 )
 ```
 
-De nuevo a `app/pages/questions/[questionId].tsx`. Haz los siguientes cambios:
+De nuevo a `app/pages/questions/[questionId].tsx`. Haz los siguientes
+cambios:
 
 En nuestro `li`, añade un `button` de este modo:
 
@@ -716,7 +818,8 @@ En nuestro `li`, añade un `button` de este modo:
 </li>
 ```
 
-Importa la mutación `updateChoice` que actualizamos y crea una función `handleVote` en nuestra página:
+Importa la mutación `updateChoice` que actualizamos y crea una función
+`handleVote` en nuestra página:
 
 ```diff
 // app/pages/questions/[questionId].tsx
@@ -728,33 +831,37 @@ export const Question = () => {
   const router = useRouter()
   const questionId = useParam("questionId", "number")
   const [deleteQuestionMutation] = useMutation(deleteQuestion)
-  const [question] = useQuery(getQuestion, { id: questionId })
-+  const [updateChoiceMutation] = useMutation(updateChoice)
+  const [question] = useQuery(getQuestion, {id: questionId})
++ const [updateChoiceMutation] = useMutation(updateChoice)
 +
-+  const handleVote = async (id: number) => {
-+    try {
-+      await updateChoiceMutation({ id })
-+      refetch()
-+    } catch (error) {
-+      alert("Error updating choice " + JSON.stringify(error, null, 2))
-+    }
-+  }
++ const handleVote = async (id: number) => {
++   try {
++     await updateChoiceMutation({id})
++     refetch()
++   } catch (error) {
++     alert("Error updating choice " + JSON.stringify(error, null, 2))
++   }
++ }
 
   return (
 ```
 
-Luego necesitamos actualizar la llamada a `useQuery` para que retorne la función `refetch`. Esta nos servirá para actualizar el contador cuando presionemos _Votar_, así que tendremos que llamarla dentro de `handleVote`.
+Luego necesitamos actualizar la llamada a `useQuery` para que retorne la
+función `refetch`. Esta nos servirá para actualizar el contador cuando
+presionemos _Votar_, así que tendremos que llamarla dentro de
+`handleVote`.
 
 ```diff
 // app/pages/questions/[questionId].tsx
 
 //...
--  const [question] = useQuery(getQuestion, { id: questionId })
-+  const [question, {refetch}] = useQuery(getQuestion, { id: questionId })
+- const [question] = useQuery(getQuestion, {id: questionId})
++ const [question, {refetch}] = useQuery(getQuestion, {id: questionId})
 //...
 ```
 
-Finalmente, tenemos que decirle a nuestro `button` que llame a `handleVote`.
+Finalmente, tenemos que decirle a nuestro `button` que llame a
+`handleVote`.
 
 ```tsx
 <button onClick={() => handleVote(choice.id)}>Vote</button>
@@ -767,12 +874,12 @@ export const Question = () => {
   const router = useRouter()
   const questionId = useParam("questionId", "number")
   const [deleteQuestionMutation] = useMutation(deleteQuestion)
-  const [question, { refetch }] = useQuery(getQuestion, { id: questionId })
+  const [question, {refetch}] = useQuery(getQuestion, {id: questionId})
   const [updateChoiceMutation] = useMutation(updateChoice)
 
   const handleVote = async (id: number) => {
     try {
-      await updateChoiceMutation({ id })
+      await updateChoiceMutation({id})
       refetch()
     } catch (error) {
       alert("Error updating choice " + JSON.stringify(error, null, 2))
@@ -804,11 +911,11 @@ export const Question = () => {
           type="button"
           onClick={async () => {
             if (window.confirm("This will be deleted")) {
-              await deleteQuestionMutation({ id: question.id })
+              await deleteQuestionMutation({id: question.id})
               router.push("/questions")
             }
           }}
-          style={{ marginLeft: "0.5rem" }}
+          style={{marginLeft: "0.5rem"}}
         >
           Delete
         </button>
@@ -820,14 +927,16 @@ export const Question = () => {
 
 ## Finalmente, permitamos editar las opciones {#edit-choices-for-question}
 
-Si haces click en el botón **Edit** en una de tus preguntas, verás que se utiliza el mismo formulario que al crear una pregunta. ¡Así que eso ya está hecho! Solo necesitamos modificar nuestra mutación.
+Si haces click en el botón **Edit** en una de tus preguntas, verás que se
+utiliza el mismo formulario que al crear una pregunta. ¡Así que eso ya
+está hecho! Solo necesitamos modificar nuestra mutación.
 
-Abre `app/questions/mutations/updateQuestion.ts` y haz los siguientes cambios:
+Abre `app/questions/mutations/updateQuestion.ts` y haz los siguientes
+cambios:
 
 ```diff
 // app/questions/mutations/updateQuestion.ts
-
-import { resolver } from "blitz"
+import {resolver} from "blitz"
 import db from "db"
 import * as z from "zod"
 
@@ -835,45 +944,58 @@ const UpdateQuestion = z
   .object({
     id: z.number(),
     text: z.string(),
-+   choices: z.array(z.object({ id: z.number().optional(), text: z.string() }).nonstrict()),
++   choices: z.array(
++     z.object({id: z.number().optional(), text: z.string()}).nonstrict(),
++   ),
   })
   .nonstrict()
 
 export default resolver.pipe(
   resolver.zod(UpdateQuestion),
   resolver.authorize(),
-  async ({ id, ...data }) => {
--   const question = await db.question.update({ where: { id }, data })
+  async ({id, ...data}) => {
+-   const question = await db.question.update({where: {id}, data})
 +   const question = await db.question.update({
-+     where: { id },
++     where: {id},
 +     data: {
 +       ...data,
 +       choices: {
 +         upsert: data.choices.map((choice) => ({
 +           // Ponemos `|| 0` debido a un bug de Prisma
-+           where: { id: choice.id || 0 },
-+           create: { text: choice.text },
-+           update: { text: choice.text },
++           where: {id: choice.id || 0},
++           create: {text: choice.text},
++           update: {text: choice.text},
 +         })),
 +       },
 +     },
 +   })
 
     return question
-  }
+  },
 )
 ```
 
-[`upsert`](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#upsert) es una operación especial, equivalente a "si este objeto existe, entonces acutalízalo; de lo contrario, créalo". Es perfecto para nuestro caso porque no le exigimos al usuario crear tres opciones desde un principio. Por ende, si el usuario añane otra opción al editar la pregunta, simplemente se creará.
+[`upsert`](https://www.prisma.io/docs/reference/api-reference/prisma-client-reference#upsert)
+es una operación especial, equivalente a "si este objeto existe, entonces
+acutalízalo; de lo contrario, créalo". Es perfecto para nuestro caso
+porque no le exigimos al usuario crear tres opciones desde un principio.
+Por ende, si el usuario añane otra opción al editar la pregunta,
+simplemente se creará.
 
 ## Conclusión {#conclusion}
 
-🥳 ¡Felicitaciones! Has creado tu primera app con Blitz. Diviértete jugando con ella, o compartíendosela a tus amigos. Ahora que terminaste este tutorial, ¿por qué no intentas mejorar tu app aún más? Puedes probar:
+🥳 ¡Felicitaciones! Has creado tu primera app con Blitz. Diviértete
+jugando con ella, o compartíendosela a tus amigos. Ahora que terminaste
+este tutorial, ¿por qué no intentas mejorar tu app aún más? Puedes probar:
 
-- Añadiendo estilos (Pista, prueba `blitz install tailwind` o `blitz install chakra-ui`)
+- Añadiendo estilos (Pista, prueba `blitz install tailwind` o
+  `blitz install chakra-ui`)
 - Mostrando más estadísticas sobre tus votos
-- Subir tu app a [Render](./deploy-render) o [Vercel](./deploy-vercel) para que el mundo entero pueda utilizarla
+- Subir tu app a [Render](./deploy-render) o [Vercel](./deploy-vercel)
+  para que el mundo entero pueda utilizarla
 
-Si quieres compartir tu proyecto con la comunidad de Blitz, no hay mejor lugar que Discord.
+Si quieres compartir tu proyecto con la comunidad de Blitz, no hay mejor
+lugar que Discord.
 
-Visita [discord.blitzjs.com](https://discord.blitzjs.com). Luego, comparte el link en el canal **#built-with-blitz** para que todos puedan verla!
+Visita [discord.blitzjs.com](https://discord.blitzjs.com). Luego, comparte
+el link en el canal **#built-with-blitz** para que todos puedan verla!
