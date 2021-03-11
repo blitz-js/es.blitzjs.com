@@ -1,10 +1,10 @@
-import { useState, useEffect } from "react"
-import { useTheme } from "next-themes"
-import { BiToggleLeft, BiToggleRight } from "react-icons/bi"
+import {useTheme} from "next-themes"
+import {useEffect, useState} from "react"
+import {BiToggleLeft, BiToggleRight} from "react-icons/bi"
 
-const DarkModeToggle = ({ className }) => {
+const DarkModeToggle = ({className}) => {
   const [mounted, setMounted] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const {theme, setTheme} = useTheme()
 
   // When mounted on client, now we can show the UI
   useEffect(() => setMounted(true), [])
@@ -26,10 +26,10 @@ const DarkModeToggle = ({ className }) => {
         <BiToggleLeft size="2rem" className="inline" />
       )}
       <span className="mx-1">
-        Dark<span className="lg:hidden"> Mode</span>
+        <span className="lg:hidden">Modo </span>Oscuro
       </span>
     </button>
   )
 }
 
-export { DarkModeToggle }
+export {DarkModeToggle}

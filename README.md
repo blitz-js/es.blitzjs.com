@@ -1,5 +1,9 @@
 # Blitzjs.com - Website & Docs
 
+## Traducción
+
+Todo lo necesario está en [la wiki](https://github.com/blitz-js/es.blitzjs.com/wiki).
+
 ### Installation
 
 ```bash

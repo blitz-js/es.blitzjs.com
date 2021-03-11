@@ -1,9 +1,9 @@
 import React from "react"
-import { BsArrowRight } from "react-icons/bs"
+import {BsArrowRight} from "react-icons/bs"
 
 // Video player component we can pass a url to using the react-player library.
 // control prop determinse whether video player controls will be displayed.
-const NewsletterForm = ({ className, hasDarkMode }) => {
+const NewsletterForm = ({className, hasDarkMode}) => {
   return (
     <form
       action="https://design.us4.list-manage.com/subscribe/post?u=aeb422edfecb0e2dcaf70d12d&amp;id=1a028d02ce"
@@ -11,11 +11,11 @@ const NewsletterForm = ({ className, hasDarkMode }) => {
       className={`relative ${className}`}
     >
       <input
-        aria-label="Email Address"
+        aria-label="Dirección de Email"
         name="EMAIL"
         type="email"
         required
-        placeholder="Enter Your Email Address"
+        placeholder="Escribe tu Dirección de Email"
         className={`w-full p-2 text-base placeholder-current bg-transparent border ${
           hasDarkMode ? "border-blue-light dark:border-white" : "border-white"
         } border-opacity-50 rounded-sm font-secondary`}
@@ -27,4 +27,4 @@ const NewsletterForm = ({ className, hasDarkMode }) => {
   )
 }
 
-export { NewsletterForm }
+export {NewsletterForm}

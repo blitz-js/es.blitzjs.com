@@ -1,13 +1,15 @@
-import { CodeWindow } from "../CodeWindow"
-import tokenize from "../../macros/tokenize.macro"
-import { useState } from "react"
-import { useIsDesktop } from "app/hooks/useIsDesktop"
+import {useState} from "react"
+
+import {CodeWindow} from "@/components/CodeWindow"
+import {useIsDesktop} from "@/hooks/useIsDesktop"
+
+import tokenize from "../../macros/tokenize.macro.js"
 
 const pageTokenized = tokenize.jsx(
   `// app/pages/projects/new.tsx
 import { Link, useRouter, useMutation, BlitzPage } from "blitz"
 import Layout from "app/core/layouts/Layout"
-// Notice how we import the server function directly
+// Mira cómo importamos la función del servidor directamente
 import createProject, {CreateProject} from "app/projects/mutations/createProject"
 import { ProjectForm, FORM_ERROR } from "app/projects/components/ProjectForm"
 
@@ -17,14 +19,14 @@ const NewProjectPage: BlitzPage = () => {
 
   return (
     <div>
-      <h1>Create New Project</h1>
+      <h1>Crear Nuevo Proyecto</h1>
 
       <ProjectForm
-        submitText="Create Project"
+        submitText="Crear Proyecto"
         schema={CreateProject}
         onSubmit={async (values) => {
           try {
-            // This is equivalent to calling the server function directly
+            // Esto es equivalente a hacer una petición HTTP
             const project = await createProjectMutation(values)
             router.push("/projects/" + project.id)
           } catch (error) {
@@ -40,7 +42,7 @@ NewProjectPage.authenticate = true
 NewProjectPage.getLayout = (page) => <Layout>{page}</Layout>
 
 export default NewProjectPage`,
-  true
+  true,
 )
 
 const mutationTokenized = tokenize.jsx(
@@ -49,28 +51,28 @@ import { resolver } from "blitz"
 import db from "db"
 import * as z from "zod"
 
-// This provides runtime validation + type safety
+// Esto provee validación en la ejecución + type safety
 export const CreateProject = z
   .object({
     name: z.string(),
   })
 
-// resolver.pipe is a functional pipe
+// resolver.pipe es un pipe funcional
 export default resolver.pipe(
-  // Validate the input data
+  // Valida los datos del input
   resolver.zod(CreateProject),
-  // Ensure user is logged in
+  // Se asegura que el usuario esté logueado
   resolver.authorize(),
-  // Perform business logic
+  // Aplica la business logic
   async (input) => {
     const project = await db.project.create({ data: input })
     return project
   }
 )`,
-  true
+  true,
 )
 
-const HeroCode = ({ className = "" }) => {
+const HeroCode = ({className = ""}) => {
   const isDesktop = useIsDesktop()
   const [tabs, setTabs] = useState([
     {
@@ -93,7 +95,7 @@ const HeroCode = ({ className = "" }) => {
           tabs.map((tab, i) => ({
             ...tab,
             selected: i === tabIndex,
-          }))
+          })),
         )
       }}
     >
@@ -102,4 +104,4 @@ const HeroCode = ({ className = "" }) => {
   )
 }
 
-export { HeroCode }
+export {HeroCode}

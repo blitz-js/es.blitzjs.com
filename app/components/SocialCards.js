@@ -1,6 +1,6 @@
-import Head from "next/head"
+import {Head} from "blitz"
 
-export const SocialCards = ({ imageUrl }) => {
+export const SocialCards = ({imageUrl}) => {
   return (
     <Head>
       <meta key="twitter:image" name="twitter:image" content={"https://blitzjs.com" + imageUrl} />
