@@ -7,28 +7,28 @@ sidebar_label: ¿Por qué Blitz en vez de Next.js?
 
 Next.js es en su mayoría un framework frontend. Está diseñado para construir un frontend que se conecte con alguna otra API. Next.js no está configurado por defecto para construir una verdadera aplicación fullstack.
 
-Blitz añade todas las características perdidas y funcionalidad que convierten a Next en un verdadero framework fullstack. Estas características clave incluyen acceso directo a la base de datos, middleware, y autenticación.
+Blitz añade todas las características faltantes y funcionalidad que convierten a Next en un verdadero framework fullstack. Estas características clave incluyen acceso directo a la base de datos, middleware, y autenticación.
 
 ### 2. Capa de Datos {#2-data-layer}
 
-La nueva capa de datos de Blitz es una tecnología novedosa para eliminar la API mientras el renderizado del lado del cliente es retenido. En una aplicación de Blitz, puedes importar el código de tu servidor directamente en el frontend así no necesitas construir una API y consumir los datos desde el frontend. En tiempo de construcción, Blitz automáticamente inserta una llamada a una API que ejecuta el código del servidor en el servidor.
+La nueva capa de datos de Blitz es una tecnología novedosa para eliminar la API sin perder el renderizado del lado del cliente. En una aplicación de Blitz, puedes importar el código de tu servidor directamente en el frontend así no necesitas construir una API y consumir los datos desde el frontend. En tiempo de construcción, Blitz automáticamente inserta una llamada a una API que ejecuta el código del servidor en el servidor.
 Esencialmente, Blitz abstrae tu API en un paso de compilación. 
 
-Esto representa un cambio de reglas para el desarrollo de aplicaciones en React debido a que elimina una porción entera de la arquitectura tradicional de una aplicación en React. !Esto significa que es mas fácil de aprender, mas rápido de desarrollar, y mas divertido para construir cosas!
+Esto representa un cambio de reglas para el desarrollo de aplicaciones en React debido a que elimina una porción entera de la arquitectura tradicional de una aplicación en React. ¡Esto significa que es más fácil de aprender, más rápido de desarrollar, y más divertido para construir cosas!
 
 Dicho esto, puedes continuar consumiendo datos a tráves de REST o GraphQL como siempre lo has hecho. Blitz no restringe esto de ninguna manera.
 
 ### 3. Autenticación Integrada {#3-built-in-authentication}
 
-Blitz tiene un administrador de sesiones integrado que funciona con cualquier proveedor de identidad, incluyendo correo/contraseña autoalojado y servicios de terceros. La autenticación es algo que es complicado y díficil de implementar correctamente. Teniendolo integrado en Blitz te ahorrará un montón de tiempo y potenciales vulnerabilidades de seguridad. 
+Blitz tiene un administrador de sesiones integrado que funciona con cualquier proveedor de identidad, incluyendo correo/contraseña autoalojado y servicios de terceros. La autenticación es algo que es complicado y díficil de implementar correctamente. Teniéndolo integrado en Blitz te ahorrará un montón de tiempo y potenciales vulnerabilidades de seguridad. 
 
 Construir una asombrosa UX con autenticación en Next.js es díficil y tedioso, pero Blitz te da la mejor DX gratis.
 
 ### 4. Convenciones {#4-conventions}
 
-Next.js no tiene ninguna convención mas allá del enrutamiento basado en el sistema de archivos. Esto deja a cada desarrollador reinventar la rueda en cada proyecto.
+Next.js no tiene ninguna convención mas allá del enrutamiento basado en el sistema de archivos. Esto conlleva que los desarrolladores reinventen la rueda en cada proyecto.
 
-Blitz trae un número de convenciones para cosas como organizar tus archivos y como estructurar tus rutas. Esto significa que no perderás el tiempo tratando de averigurar esto en cada proyecto. Beneficiando bastante a la comunidad también. Los patrones comunes de estructura y arquitectura de proyectos te permiten moverte de una aplicación en Blitz a otra aplicación en Blitz e inmediatamente sentirte como en casa.
+Blitz trae un número de convenciones para cosas como organizar tus archivos y como estructurar tus rutas. Esto significa que no perderás el tiempo tratando de averigurar esto en cada proyecto. Beneficiando bastante a la comunidad también. Los patrones comunes de estructura y arquitectura de proyectos te permiten moverte entre varias aplicaciones en Blitz e inmediatamente sentirte como en casa.
 
 ### 5. Andamiaje de Código {#5-code-scaffolding}
 
@@ -39,13 +39,13 @@ Existen dos maneras de reducir la cantidad de código que tienes que escribir ma
 
 **Generación de código** signifca que una biblioteca genera código por tí. Algunos ejemplos son graphql-code-generator el cual genera código desde las consultas de GraphQL y Hasura el cual genera una API de GraphQL completa desde el esquema de tu base de datos. Usualmente los generadores de código no poseen una manera de personalizar por completo el código generado. Estás a tu propia suerte de lo que la biblioteca soporte. En ocasiones te encontrarás en casos extremos donde los generadores de código no tengan una solución. Y no puedes repararlo por que no eres dueño del código.
 
-**Andamiaje de código** significa que el código inicial es construído directo en el proyecto para tí. A partir de entonces, tienes dominio total sobre todo el código y puede ser personalizado como tanto necesites. Una desventaja del andamiaje de código es que no tienes actualizaciones automaticas como la tendrías usando un generador de código desde una biblioteca de terceros. Pero la gran ventaja es que estás garantizado de nunca estar límitado por las elecciones de diseño de alguién mas las cuales no tendrías manera de cambiar.
+**Andamiaje de código** significa que el código inicial es construído directo en el proyecto para tí. A partir de entonces, tienes dominio total sobre todo el código y puede ser personalizado como tanto necesites. Una desventaja del andamiaje de código es que no tienes actualizaciones automáticas como la tendrías usando un generador de código desde una biblioteca de terceros. Sin embargo, la gran ventaja es que no estás arraigado a las decisiones de diseño de otra persona, las cuales no podrías modificar de ninguna forma.
 
-Blitz es un gran fan del andamiaje de código. Tenemos un montón de comandos [`blitz generate`](./cli-generate) para construir código en tu proyecto. Nuestro andamio de código aún se encuentra en sus primeros dias - por lo que tenemos muchas características poderosas que necesitan ser añadidas, incluyendo la habilidad de añadir tus propias plantillas de andamios personalizados.
+Blitz es un gran fan del andamiaje de código. Tenemos un montón de comandos [`blitz generate`](./cli-generate) para construir código en tu proyecto. Nuestro andamio de código aún se encuentra en sus primeros dias, por lo que tenemos muchas características poderosas que necesitan ser añadidas, incluyendo la habilidad de añadir tus propios andamios.
 
 ### 6. Recetas {#6-recipes}
 
-Las recetas son comandos de una sola línea para scaffolding code en tu proyecto desde una receta en MDX basada en npm o un repositorio de git.
+Las recetas son comandos sencillísimos para instalar funcionalidades en tu proyecto. Estas están basadas en recetas MDX o en repositorios Git.
 
 Ejemplos:
 
@@ -53,13 +53,13 @@ Ejemplos:
 - `blitz install chakra-ui` - un comando para instalar y configurar chakra
 - `blitz install material-ui` - un comando para instalar y configurar material-ui
 
-Las recetas son super poderosas. Pueden cambiar casi todo en tu proyecto, incluyendo la adición de dependencias, modificar código, añadir código, etc. Están escritas a tráves de MDX y pueden componerse como componentes de React.
+Las recetas son súper poderosas. Pueden cambiar casi todo en tu proyecto: pueden añadir dependencias, crear y modificar código, etc. Están escritas a tráves de MDX y pueden componerse como componentes de React.
 
 ### 7. Desarrollo de una nueva Aplicación {#7-new-app-development}
 
 Una aplicación nueva en Next.js es totalmente básica. Cada vez que comienzas un proyecto en Next.js, tienes que gastar horas configurando herramientas esenciales como eslint, prettier, husky git hooks, etc.
 
-Una nueva aplicación en Blitz te ahorra un montón de tiempo !debido a que todo esta pre-configurado para tí! Con seguridad siempre podrás personalizarla después, pero tener un punto de partida completamente funcional es increíble.
+Una nueva aplicación en Blitz te ahorra un montón de tiempo,¡porque todo ya está configurado para tí! Con seguridad siempre podrás personalizarla después, pero tener un punto de partida completamente funcional es increíble.
 
 ### 8. Restricciones relajadas {#8-relaxed-restrictions}
 Next.js requiere que todas tus páginas de React vayan en una sola carpeta llamada `pages/`. Blitz suaviza esta restricción permitiendote tener un número infinito de carpetas `pages/`.
@@ -68,7 +68,7 @@ Para proyectos grandes esto es un beneficio enorme debido a que puedes separar y
 
 Ejemplos:
 
-- `app/pages/` puede contener la página de inicio y paginas como "about"
-- `app/products/pages/` puede contener todas las paginas relacionadas a productos
-- `app/admin/pages/` puede contener todas las paginas relacionadas a la sección de administrador del backend
+- `app/pages/` puede contener la página de inicio y páginas como "about"
+- `app/products/pages/` puede contener todas las páginas relacionadas a productos
+- `app/admin/pages/` puede contener todas las páginas relacionadas a la sección de administrador del backend
 
