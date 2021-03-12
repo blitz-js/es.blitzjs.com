@@ -8,28 +8,28 @@ desventajas de usar Blitz?
 
 ## Dependencia al Framework {#framework-lock-in}
 
-Cada framework tiene cierto nivel de dependencia. Sí tu construyes una
+Cada framework tiene cierto nivel de dependencia. Sí tú construyes una
 aplicación con React, esta es muy dependiente a React.
 
 El nivel de dependencia a Blitz es un nivel mas alto que el de Next.js.
 Una base de código en Blitz no es muy diferente a una en Next.js, pero si
 es lo suficientemente diferente que no sería para nada simple "eyectar" a
-Next.js simple. Por ejemplo, probablemente hayas usado la autenticación de
-Blitz las cual es únicamente de Blitz. Pero sustituyendola por Next Auth
-esta podría ofrecerte una experiencia comparable en Next.js simple.
+Next.js plano. Por ejemplo, probablemente hayas usado la autenticación de
+Blitz, la cual es únicamente de Blitz. Pero sustituyéndola por Next Auth
+esta podría ofrecerte una experiencia comparable en Next.js plano.
 
-La capa de datos _zero-API_ de Blitz es unicamente de Blitz. Así que si es
+La capa de datos _Zero API_ de Blitz es unicamente de Blitz. Así que si es
 cambiada a Next.js, tú mismo tendrás que administrar el código de tu
 propia API (lo cual tienes que realizar al comenzar con Next.js, para que
-no hayas perdido nada). Sin embargo, todas la lógica de las consultas y
+no hayas perdido nada). Sin embargo, toda la lógica de las consultas y
 mutaciones de tu backend pueden ser portadas directamente.
 
 ## Actualizaciones de Next.js {#next-js-upgrades}
 
 Si quieres estar en los últimos lanzamientos de Next.js, tienes que saber
-que Blitz estará ligeramnete detrás pero no mucho. Usualmente actualizamos
-Blitz dentro de una semana o menos después de un nuevo lanzamiento de
-Next.js.
+que Blitz estará ligeramente detrás, pero no mucho. Usualmente
+actualizamos Blitz dentro de una semana o menos después de un nuevo
+lanzamiento de Next.js.
 
 Pero si usas yarn, puedes utilizar el campo `resolutions` ubicado en
 package.json para actualizar Next.js antes que nosotros lo hagamos.
@@ -51,7 +51,7 @@ personas ya estan haciendo esto.
 
 **A la fecha, 17 de Febrero de 2021:**
 
-- Puedes acceder directamente a los _endpoints_ auto generados de la API y
+- Puedes acceder directamente a los _endpoints_ autogenerados de la API y
   puedes usarlos en cualquier aplicación móvil (ya hay personas haciendo
   esto)
 
@@ -89,16 +89,15 @@ Blitz si así lo necesitas.
 
 Pero estamos muy interesados en traer mas arquitecturas backend avanzadas
 a blitz por defecto o a tráves de optar por estas. Tenemos una
-[discusión en curso](https://github.com/blitz-js/blitz/discussions/1841)
-que nos encantaría que participaras si tienes algunas ideas.
+[discusión en curso](https://github.com/blitz-js/blitz/discussions/1841),
+y nos encantaría que participaras si tienes algunas ideas.
 
 ## Un solo hilo cuando no es desplegado en una arquitectura _Serverless_ {#single-threaded-when-not-deployed-serverless}
 
 Esta es una desventaja de Next.js especificamente. Next.js es de un solo
-hilo lo que significa que si estas haciendo precesamiento backend pesado
+hilo, lo que significa que si estas haciendo procesamiento backend pesado
 notarás que todas las peticiones web comenzarán a verse afectadas. La
-solución a esto es desactivando la generación de procesos en segundo plano
-en otros procesos.
+solución a esto es ejecutar ciertas tareas en otros procesos.
 
 Ejecutar múltiples procesos en segundo plano no es súper díficil, pero
-queremos añadir documentación y APIs que hagan esto lo mas simple posible.
+queremos añadir documentación y API que hagan esto lo mas simple posible.
