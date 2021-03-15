@@ -94,8 +94,12 @@ export function Footer({className, hasDarkMode}) {
                 </a>
               </Link>
               <br />
+<<<<<<< HEAD
               Copyright &copy; {new Date().getFullYear()} Brandon Bayer y todos los colaboradores de
               Blitz.js
+=======
+              Copyright &copy; {new Date().getFullYear()} Brandon Bayer and Blitz.js Contributors
+>>>>>>> 428b3a15308151a36de3968009b7d47be0be3325
             </div>
           </div>
         </div>
