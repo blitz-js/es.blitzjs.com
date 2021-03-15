@@ -87,11 +87,7 @@ const Header = ({
       name: "Documentación",
       href: isDesktop ? "/docs/get-started" : "/docs",
     },
-<<<<<<< HEAD
     {name: "Versiones", href: "https://github.com/blitz-js/blitz/releases"},
-=======
-    {name: "Releases", href: "https://github.com/blitz-js/blitz/releases"},
->>>>>>> 428b3a15308151a36de3968009b7d47be0be3325
     {name: "Wiki", href: "https://github.com/blitz-js/blitz/wiki"},
     {name: "Swag", href: "https://store.blitzjs.com"},
   ]

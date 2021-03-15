@@ -298,13 +298,8 @@ const Home = ({randomContributors}) => {
               </h2>
               <div className="w-full">
                 <Scrollbar className="lg:hidden" thumbHeight="4px" thumbColor="white">
-<<<<<<< HEAD
-                  <div className="px-6 architecture-diagram" style={{ paddingBottom: "2px" }}>
-                    <img src="img/architecture.svg" alt="Diagrama de la Arquitectura" />
-=======
                   <div className="px-6 architecture-diagram" style={{paddingBottom: "2px"}}>
-                    <img src="img/architecture.svg" alt="Architecture diagram" />
->>>>>>> 428b3a15308151a36de3968009b7d47be0be3325
+                    <img src="img/architecture.svg" alt="Diagrama de la Arquitectura" />
                   </div>
                 </Scrollbar>
               </div>
