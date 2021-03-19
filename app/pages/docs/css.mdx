@@ -1,16 +1,17 @@
 ---
-title: Built-In CSS Support
-sidebar_label: Built-In CSS Support
+title: Soporte para CSS
+sidebar_label: Soporte para CSS
 ---
 
-Blitz allows you to import CSS files directly into any JavaScript file.
+Blitz te permite import archivos de CSS directamente en cualquier archivo
+de JavaScript.
 
-## Adding a Global Stylesheet {#adding-a-global-stylesheet}
+## Añadir una Hoja de Estilos Global {#adding-a-global-stylesheet}
 
-To add a stylesheet to your application, import the CSS file within
-`app/pages/_app.js`.
+Para añadir una hoja de estilos a tu aplicación, importa el archivo CSS
+dentro de `app/pages/_app.js`.
 
-For example, consider the following stylesheet named `styles.css`:
+Por ejemplo, considera la siguiete hoja de estilos llamada `styles.css`:
 
 ```css
 body {
@@ -22,7 +23,7 @@ body {
 }
 ```
 
-Then, import the `styles.css` file.
+Luego, importa `styles.css`.
 
 ```jsx
 import "../styles.css"
@@ -32,39 +33,40 @@ export default function App({Component, pageProps}) {
 }
 ```
 
-These styles (`styles.css`) will apply to all pages and components in your
-application. Due to the global nature of stylesheets, and to avoid
-conflicts, you may **only import them inside
-[`_app.js`](./app-component)**.
+Estos estilos (`styles.css`) se aplicarán a todas las páginas y
+componentes de tu aplicación. Debido a la naturaleza de las hojas de
+estilos globales, y para evitar conflictos, **solo puedes importarlas
+dentro de [`_app.js`](./app-component)**.
 
-In development, expressing stylesheets this way allows your styles to be
-hot reloaded as you edit them—meaning you can keep application state.
+Cuando estés desarrollando, importar tus estilos de esta manera les
+permiten ser actualizados en tiempo real (_hot reload_) a la par que los
+editas, y además conservas el estado de tu aplicación.
 
-In production, all CSS files will be automatically concatenated into a
-single minified `.css` file.
+Cuando lleves tu aplicación a producción, todos los archivos CSS serán
+concatenados automáticamente en un solo archivo `.css` minificado.
 
-## Adding Component-Level CSS {#adding-component-level-css}
+## Añadir CSS en Componentes {#adding-component-level-css}
 
-Blitz supports [CSS Modules](https://github.com/css-modules/css-modules)
-using the `[name].module.css` file naming convention.
+Blitz soporta [CSS Modules](https://github.com/css-modules/css-modules) (o
+módulos CSS) usando la convención `[nombre].module.css`.
 
-CSS Modules locally scope CSS by automatically creating a unique class
-name. This allows you to use the same CSS class name in different files
-without worrying about collisions.
+Los módulos CSS permiten que tus estilos sean aplicados al componente que
+los importa y a nadie más. Esto te permite usar la misma clase de CSS en
+diferentes archivos sin conflictos.
 
-This behavior makes CSS Modules the ideal way to include component-level
-CSS. CSS Module files **can be imported anywhere in your application**.
+Este comportamiento hace de los módulos CSS la manera ideal de incluir CSS
+en cada componente individualmente. Los módulos CSS **pueden ser
+importados en cualquier archivo de tu aplicación**.
 
-For example, consider a reusable `Button` component in the `components/`
-folder:
+Por ejemplo, este `Button` reusable en la carpeta `components/`:
 
-First, create `app/components/Button.module.css` with the following
-content:
+Primero, crea `app/components/Button.module.css` con el siguiente
+contendio:
 
 ```css
 /*
-You do not need to worry about .error {} colliding with any other `.css` or
-`.module.css` files!
+¡No tienes que precuparte de que .error {} colisione con otro en algún
+`.css` o `.module.css`!
 */
 .error {
   color: white;
@@ -72,18 +74,17 @@ You do not need to worry about .error {} colliding with any other `.css` or
 }
 ```
 
-Then, create `app/components/Button.js`, importing and using the above CSS
-file:
+Luego, crea `app/components/Button.ts`, importando el archivo de CSS:
 
-```jsx
+```tsx
 import styles from "./Button.module.css"
 
 export function Button() {
   return (
     <button
       type="button"
-      // Note how the "error" class is accessed as a property on the imported
-      // `styles` object.
+      // Fíjate como la clase "error" es accedida como una propiedad
+      // del objeto `styles`, que ha sido importado más arriba.
       className={styles.error}
     >
       Destroy
@@ -92,37 +93,37 @@ export function Button() {
 }
 ```
 
-CSS Modules are an _optional feature_ and are **only enabled for files
-with the `.module.css` extension**. Regular `<link>` stylesheets and
-global CSS files are still supported.
+Los módulos CSS son una _funcionalidad opcional_ y **solo funciona con
+archivos `.module.css`**. Las hojas de estilos importadas con `<link>` y
+el CSS global siguen funcionando normalmente.
 
-In production, all CSS Module files will be automatically concatenated
-into **many minified and code-split** `.css` files. These `.css` files
-represent hot execution paths in your application, ensuring the minimal
-amount of CSS is loaded for your application to paint.
+En producción, todos los archivos `.module.css` son concatenados
+automáticamente en **muchos archivos minificados** `.css`. Estos archivos
+se correlacionan con los componentes más utilizados, asegurando que el
+navegador pida la cantidad mínima de CSS.
 
-## Sass Support {#sass-support}
+## Soporte para Sass {#sass-support}
 
-Blitz allows you to import Sass using both the `.scss` and `.sass`
-extensions. You can use component-level Sass via CSS Modules and the
-`.module.scss` or `.module.sass` extension.
+Blitz te permite imporar Sass, ya sea en el formato `.scss` o `.sass`. Los
+módulos CSS también funcionan con Sass, utilizando las extensiones
+`.module.scss` y `.module.sass`.
 
-Before you can use Blitz' built-in Sass support, be sure to install
+Antes de que uses el soporte de Blitz para Sass, debes instalar
 [`sass`](https://github.com/sass/sass):
 
 ```bash
 npm install sass
 ```
 
-Sass support has the same benefits and restrictions as the built-in CSS
-support detailed above.
+El soporte de Sass tiene los mismos beneficios y restricciones que el
+soporte para CSS detallado anteriormente.
 
-### Customizing Sass Options {#customizing-sass-options}
+### Personalizando las Opciones de Sass {#customizing-sass-options}
 
-If you want to configure the Sass compiler you can do so by using
-`sassOptions` in `blitz.config.js`.
+Si quieres configurar el compilador de Sass, puedes hacerlo mediante
+`sassOptions` dentro de `blitz.config.js`.
 
-For example to add `includePaths`:
+Por ejemplo, para añadir `includePaths`:
 
 ```js
 const path = require("path")
@@ -134,16 +135,16 @@ module.exports = {
 }
 ```
 
-## Less and Stylus Support {#less-and-stylus-support}
+## Soporte para Less y para Stylus {#less-and-stylus-support}
 
-To support importing `.less` or `.styl` files you can use the following
-plugins:
+Para poder imporar archivos `.less` o `.styl`, puedes utilizar los
+siguientes paquetes:
 
 - [@vercel/next-less](https://github.com/vercel/next-plugins/tree/master/packages/next-less)
 - [@vercel/next-stylus](https://github.com/vercel/next-plugins/tree/master/packages/next-stylus)
 
-If using the less plugin, don't forget to add a dependency on less as
-well, otherwise you'll see an error like:
+Si usas quiere soporte para Less, no te olvides de añadir `less` como
+dependencia, de lo contrario te saldrá un error como este:
 
 ```bash
 Error: Cannot find module 'less'
