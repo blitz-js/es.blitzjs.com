@@ -168,13 +168,13 @@ export function ContentsLayout({children, meta, tableOfContents: toc}) {
           <div className={clsx("lg:hidden", {"mt-5 mb-12": toc.length, "h-px mt-8": !toc.length})}>
             {!!toc.length && (
               <>
-                <h3 className="dark:text-dark-mode-text mb-2 text-sm">Topics</h3>
+                <h3 className="dark:text-dark-mode-text mb-2 text-sm">Secciones</h3>
                 <Select
                   value={topic}
                   className="topic-select"
                   classNamePrefix="topic-select"
                   options={toc.map((option) => ({value: option.slug, label: option.title}))}
-                  placeholder="Jump to a Topic"
+                  placeholder="Salta a una Sección"
                   onChange={(e) => {
                     if (e && e.value) {
                       const hash = e.value
