@@ -1,42 +1,46 @@
 ---
-title: Image Component and Image Optimization
-sidebar_label: Image Optimization
+title: El Componente Image y Optimización de Imágenes
+sidebar_label: Optimización de Imágenes
 ---
 
-Blitz has a built-in Image Component and Automatic Image Optimization.
+Blitz viene con un componente `Image` y optimización automática de
+imágenes.
 
-The Blitz Image Component, `Image`, is an extension of the HTML `<img>`
-element, evolved for the modern web.
+El componente `Image` es una extensión del componente `<img>` (de HTML
+plano) pensado para la web moderna.
 
-The Automatic Image Optimization allows for resizing, optimizing, and
-serving images in modern formats like
+La optimización automática de imágnes te permite redimensionar, comprimir,
+y servir imágenes en formatos modernos como
 [WebP](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types)
-when the browser supports it. This avoids shipping large images to devices
-with a smaller viewport. It also allows Blitz to automatically adopt
-future image formats and serve them to browsers that support those
-formats.
+solo si el navegador lo soporta. Esto evita enviar imágenes gigantes a
+dispositivos pequeños. Esto también le permite a Blitz adoptar formatos
+futuros automáticamente y servirlos a aquellos navegadores que lo
+soporten.
 
-Automatic Image Optimization works with any image source. Even if the
-image is hosted by an external data source, like a CMS, it can still be
-optimized.
+La optimización automática de imágnes aplica a cualquier fuente: no
+importa si la imagen está en la carpeta de tu proyecto o viene de una
+fuente externa (como un CMS), esta puede ser optimizada.
 
-Instead of optimizing images at build time, Blitz optimizes images
-on-demand, as users request them. Unlike static site generators and
-static-only solutions, your build times aren't increased, whether shipping
-10 images or 10 million images.
+En vez de optimizar las imágenes en el momento de compilación, Blitz
+optimiza las imágenes _a la carta_ y cuando los usuarios las necesiten. A
+diferencia de los generadores de sitios estáticos y de las soluciones
+meramente estáticas, tus tiempos de compilación son lo mismos si tienes 10
+imágenes o si tienes 1,000,000 de imágenes.
 
-Images are lazy loaded by default. That means your page speed isn't
-penalized for images outside the viewport. Images load as they are
-scrolled into viewport.
+Las imágenes son
+[_lazy loaded_](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading)
+por defecto. Esto significa que la velocidad de carga de tu página no es
+penalizada por imágenes que no se vean al inicio. Las imágenes se cargarán
+cuando el usuario baje hasta verlas.
 
-Images are always rendered in such a way as to avoid
-[Cumulative Layout Shift](https://web.dev/cls/), a
-[Core Web Vital](https://web.dev/vitals/) that Google is going to
-[use in search ranking](https://webmasters.googleblog.com/2020/05/evaluating-page-experience.html).
+Las imágenes siempre se renderizan de tal forma que se evita el
+[_Cumulative Layout Shift_](https://web.dev/cls/), un
+[_Core Web Vital_](https://web.dev/vitals/) que Google
+[usará en su _search ranking_](https://webmasters.googleblog.com/2020/05/evaluating-page-experience.html).
 
-## Image Component {#image-component}
+## El Componente `Image` {#image-component}
 
-To add an image to your application, import the `Image` component:
+Para añadir una imagen a tu aplicación, importa el componente `Image`:
 
 ```jsx
 import {Image} from "blitz"
@@ -44,14 +48,14 @@ import {Image} from "blitz"
 function Home() {
   return (
     <>
-      <h1>My Homepage</h1>
+      <h1>Inicio</h1>
       <Image
-        src="/me.png"
-        alt="Picture of the author"
+        src="/yo.png"
+        alt="Foto del autor"
         width={500}
         height={500}
       />
-      <p>Welcome to my homepage!</p>
+      <p>¡Bienvenidos a mi página!</p>
     </>
   )
 }
@@ -59,18 +63,18 @@ function Home() {
 export default Home
 ```
 
-## Configuration {#configuration}
+## Configuración {#configuration}
 
-In addition to using properties available to the `Image` component, you
-can optionally configure Image Optimization for more advanced use cases
-via `blitz.config.js`.
+Además de las propiedades disponibles para el componente `Image`, puedes
+configurar la optimización de imágenes para casos más avanzados desde
+`blitz.config.js`.
 
-### Domains {#domains}
+### Dominios {#domains}
 
-To enable Image Optimization for images hosted on an external website, use
-an absolute url for the Image `src` and specify which `domains` are
-allowed to be optimized. This is needed to ensure that external urls can't
-be abused.
+Para habilitar la optimización de imágenes alojadas en un sitio externo,
+usa una URL absoluta en el campo `src` del componente `Image` y especifica
+qué `domains` deberán ser optimizados. Esto es necesario para evitar el
+abuso de URL externas.
 
 ```js
 module.exports = {
@@ -80,12 +84,11 @@ module.exports = {
 }
 ```
 
-### Loader {#loader}
+### Cargadores u Optimizadores {#loader}
 
-If you want to use a cloud provider to optimize images instead of using
-the Blitz' built-in Image Optimization, you can configure the loader and
-path prefix. This allows you to use relative urls for the Image `src` and
-automatically generate the correct absolute url for your provider.
+Si quieres que un _cloud provider_ optimice las imágenes en vez de
+utilizar el por defecto de Blitz, puedes configurar qué proveedor y qué
+prefijo utilizar. El prefijo te permite usar URL relativas en el `src`.
 
 ```js
 module.exports = {
@@ -96,54 +99,57 @@ module.exports = {
 }
 ```
 
-The following Image Optimization cloud providers are supported:
+Los siguientes _cloud providers_ son soportados:
 
-- [Vercel](https://vercel.com): Works automatically when you deploy on
-  Vercel, no configuration necessary.
-  [Learn more](https://vercel.com/docs/next.js/image-optimization)
+- [Vercel](https://vercel.com): Funciona automáticamente sin configuración
+  extra.
+  [Más información](https://vercel.com/docs/next.js/image-optimization)
 - [Imgix](https://www.imgix.com): `loader: 'imgix'`
 - [Cloudinary](https://cloudinary.com): `loader: 'cloudinary'`
 - [Akamai](https://www.akamai.com): `loader: 'akamai'`
-- Default: Works automatically with `blitz dev`, or a custom server
+- Por defecto: Funciona automáticamente cuando ejecutas `blitz dev`, o
+  utilizas un servidor personalizado
 
-## Caching {#caching}
+## Cacheo {#caching}
 
-The following describes the caching algorithm for the default
-[loader](#loader). For all other loaders, please refer to your cloud
-provider's documentation.
+A continuación se describe el algorítmo de cacheo para el
+[optimizador por defecto](#loader). Para el resto de optimizadores, lee la
+documentación de tu _cloud provider_.
 
-Images are optimized dynamically upon request and stored in the
-`<distDir>/cache/images` directory. The optimized image file will be
-served for subsequent requests until the expiration is reached. When a
-request is made that matches a cached but expired file, the cached file is
-deleted before generating a new optimized image and caching the new file.
+Las imágenes son optimizadas dinámicamente en el momento que se solicitan
+y se guardan en la carpeta `<distDir>/cache/images`. La imagen optimizada
+será servida a las siguientes peticiones hasta que esta expire. Cuando se
+pida una imagen cuyo caché haya expirado, este caché será borrado y luego
+se generará de nuevo la imagen.
 
-The expiration (or rather Max Age) is defined by the upstream server's
-`Cache-Control` header.
+La expiración ("edad máxima" o "_Max-Age_") es definida por el encabezado
+`Cache-Control` del servidor de origen.
 
-If `s-maxage` is found in `Cache-Control`, it is used. If no `s-maxage` is
-found, then `max-age` is used. If no `max-age` is found, then 60 seconds
-is used.
+Si `s-maxage` es encontrado en `Cache-Control`, este será utilizado. De lo
+contrario, se utilizará `max-age`. Si ninguno de los dos está definido,
+expirará en 60 segundos.
 
-You can configure [`deviceSizes`](#device-sizes) and
-[`imageSizes`](#device-sizes) to reduce the total number of possible
-generated images.
+Puedes configurar [`deviceSizes`](#device-sizes) e
+[`imageSizes`](#image-sizes) para reducir la cantidad de imágenes
+generadas posibles.
 
-## Advanced {#advanced}
+## Avanzado {#advanced}
 
-The following configuration is for advanced use cases and is usually not
-necessary. If you choose to configure the properties below, you will
-override any changes to the Blitz defaults in future updates.
+La siguiente configuración es para casos complejos y normalmente no es
+necesaria. Si eliges configurar las propiedades descritas a continuación,
+anularás cualquier cambio de las opciones por defecto de Blitz en futuras
+actualizaciones.
 
-### Device Sizes {#device-sizes}
+### Tamaños de los Dispositivos {#device-sizes}
 
-In some cases, where you know the expected device widths from the users of
-your website, you can specify a list of device width breakpoints using the
-`deviceSizes` property. These widths are used when the `Image` component
-uses `layout="responsive"` or `layout="fill"` so that the correct image is
-served for the device visiting your website.
+En algunos casos, cuando sabes el ancho de los disposivos de los usuarios
+que navegan tu sitio, puedes especificar una lista de _breakpoints_ usando
+la propiedad `deviceSizes`. Estos anchos son utilizados cuando el
+componente `Image` usa `layout="responsive"` o `layout="fill"` para que la
+imagen correcta sea entregada al dispositivo visitando tu sitio.
 
-If no configuration is provided, the default below is used.
+Si ninguna configuración es definida, se utilizarán los siguientes
+valores:
 
 ```js
 module.exports = {
@@ -153,15 +159,16 @@ module.exports = {
 }
 ```
 
-### Image Sizes {#image-sizes}
+### Tamaños de las Imágenes {#image-sizes}
 
-You can specify a list of image widths using the `imageSizes` property.
-These widths should be different (usually smaller) than the widths defined
-in `deviceSizes` because the arrays will be concatenated. These widths are
-used when the `Image` component uses `layout="fixed"` or
-`layout="intrinsic"`.
+Puedes especificar una lista de anchos de imágenes utilizando la propiedad
+`imageSizes`. Estos anchos suelen ser diferentes (normalmente más
+pequeños) que los anchos definidos en `deviceSizes`, ya que estos _arrays_
+serán concatenados. Estos anchos son usados cuando el componente `Image`
+usa `layout="fixed"` o `layout="intrinsic"`.
 
-If no configuration is provided, the default below is used.
+Si ninguna configuración es definida, se utilizarán los siguientes
+valores:
 
 ```js
 module.exports = {
@@ -171,18 +178,19 @@ module.exports = {
 }
 ```
 
-## Image API {#image-api}
+## `Image` API {#image-api}
 
-Image Optimization can be enabled via the `Image` component.
+La optimización de imágenes puede ser habilitada a través del componente
+`Image`.
 
-### Usage {#usage}
+### Uso {#usage}
 
-For an example, consider a project with the following files:
+Por ejemplo, considera un proyecto con los siguientes archivos.
 
 - `pages/index.js`
-- `public/me.png`
+- `public/yo.png`
 
-We can serve an optimized image like so:
+Podemos servir una imagen optimizada de este modo:
 
 ```jsx
 import {Image} from "blitz"
@@ -190,14 +198,14 @@ import {Image} from "blitz"
 function Home() {
   return (
     <>
-      <h1>My Homepage</h1>
+      <h1>Inicio</h1>
       <Image
-        src="/me.png"
-        alt="Picture of the author"
+        src="/yo.png"
+        alt="Foto del autor"
         width={500}
         height={500}
       />
-      <p>Welcome to my homepage!</p>
+      <p>¡Bienvenidos a mi página!</p>
     </>
   )
 }
@@ -205,69 +213,74 @@ function Home() {
 export default Home
 ```
 
-### Required Props {#required-props}
+### Propiedades Necesarias {#required-props}
 
-The `Image` component requires the following properties.
+El componente `Image` necesita las siguientes propiedades.
 
 #### src
 
-The path or URL to the source image. This is required.
+La dirección o URL de la imagen. Esta propiedad no es opcional.
 
-When using an external URL, you must add it to [domains](#domains) in
+Cuando se use una URL externa, debes añadirla a [`domains`](#domains) en
 `blitz.config.js`.
 
 #### width
 
-The width of the image, in pixels. Must be an integer without a unit.
+El ancho de la imagen en píxeles. Debe ser un entero sin unidad.
 
-Required unless [layout="fill"`](#layout).
+Necesario a no ser que `layout="fill"`.
 
 #### height
 
-The height of the image, in pixels. Must be an integer without a unit.
+La altura de la imagen en píxeles. Debe ser un entero sin unidad.
 
-Required unless [layout="fill"`](#layout).
+Necesario a no ser que `layout="fill"`.
 
-### Optional Props {#optional-props}
+### Propiedades Opcionales {#optional-props}
 
-The `<Image />` component optionally accepts the following properties.
+El componente `<Image />` acepta, pero no necesita, las siguientes
+propiedades.
 
 #### layout
 
-The layout behavior of the image as the viewport changes size. Defaults to
-`intrinsic`.
+El disposición (o _layout_) de la imagen cuando el ventana (o _viewport_)
+cambia de tamaño. Su valor por defecto es `intrinsic`.
 
-When `fixed`, the image dimensions will not change as the viewport changes
-(no responsiveness) similar to the native `img` element.
+Cuando es `fixed`, las dimensiones de la imagen no cambian aunque el
+tamaño de la ventana varíe (no es _responsive_). Esto es similar al
+elemento nativo `img`.
 
-When `intrinsic`, the image will scale the dimensions down for smaller
-viewports but maintain the original dimensions for larger viewports.
+Cuando es `intrinsic`, la imagen adaptará sus dimensiones en los tamaños
+más pequeños pero mantendrá su dimensiones originales en los tamaños más
+grandes.
 
-When `responsive`, the image will scale the dimensions down for smaller
-viewports and scale up for larger viewports.
+Cuando es `responsive`, la imagen adaptará sus dimensiones en los tamaños
+más pequeños y en los más grandes.
 
-When `fill`, the image will stretch both width and height to the
-dimensions of the parent element, usually paired with
+Cuando es `fill`, la imagen se estirará en ambos ejes hasta tener las
+mismas dimensiones que su elemento contenedor; usualmente se utiliza junto
+a
 [object-fit](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
 
-Try it out:
+Pruébalo:
 
-- [Demo the `fixed` layout](https://image-component.nextjs.gallery/layout-fixed)
-- [Demo the `intrinsic` layout](https://image-component.nextjs.gallery/layout-intrinsic)
-- [Demo the `responsive` layout](https://image-component.nextjs.gallery/layout-responsive)
-- [Demo the `fill` layout](https://image-component.nextjs.gallery/layout-fill)
-- [Demo background image](https://image-component.nextjs.gallery/background)
+- [Demo de `fixed`](https://image-component.nextjs.gallery/layout-fixed)
+- [Demo de `intrinsic`](https://image-component.nextjs.gallery/layout-intrinsic)
+- [Demo de `responsive`](https://image-component.nextjs.gallery/layout-responsive)
+- [Demo de `fill`](https://image-component.nextjs.gallery/layout-fill)
+- [Demo de una imagen fondo](https://image-component.nextjs.gallery/background)
 
 ### loader {#loader-1}
 
-A custom function used to resolve URLs. Defaults to
-[`images` object in `blitz.config.js`](/docs/basic-features/image-optimization.md#loader).
+Una función utilizada para resolver la URL. Por defecto utiliza el objeto
+[`images` en `blitz.config.js`](#loader).
 
-`loader` is a function returning a string, given the following parameters:
+`loader` es una función que devuleve una URL en base a los siguientes
+parámetros:
 
-- [`src`](#src)
-- [`width`](#width)
-- [`quality`](#quality)
+- `src`
+- `width`
+- `quality`
 
 ```js
 import {Image} from "blitz"
@@ -291,70 +304,76 @@ const MyImage = (props) => {
 
 #### sizes
 
-A string mapping media queries to device sizes. Defaults to `100vw`.
+Un _string_ que relaciona _media queries_ con tamaños de dispositivos. Por
+defecto es `100vw`.
 
-We recommend setting `sizes` when `layout="responsive"` and your image
-will not be the same width as the viewport.
+Recomendamos configurar `sizes` cuando `layout="responsive"` y tu imagen
+no será del mismo ancho que la ventana.
 
-[Learn more](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-sizes).
+[Más información](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-sizes).
 
 #### quality
 
-The quality of the optimized image, an integer between 1 and 100 where 100
-is the best quality. Defaults to 75.
+La calidad de la imagen optimizada, un entero entre 1 y 100, donde 100 es
+la mejor calidad. Por defecto, 75.
 
 #### priority
 
-When true, the image will be considered high priority and
-[preload](https://web.dev/preload-responsive-images/).
+Cuando es `true`, la imagen será considerada de alta prioridad y se la
+[precargará](https://web.dev/preload-responsive-images/).
 
-Should only be used when the image is visible above the fold. Defaults to
-false.
+Solo debería usarse cuando la imagen es de las primeras en ser vistas. Por
+defecto es `false`.
 
-### Advanced Props {#advanced-props}
+### Propiedades Avanzadas {#advanced-props}
 
-In some cases, you may need more advanced usage. The `Image` component
-optionally accepts the following advanced properties.
+En algunos casos, puedes llegar a necesitar un uso más avanzado. El
+componente `Image` acepta las siguientes propiedades.
 
 #### objectFit
 
-The image fit when using `layout="fill"`.
+Cómo debe redimensionarse una imagen cuando `layout="fill"`.
 
-[Learn more](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit)
+[Mas información](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
 
 #### objectPosition
 
-The image position when using `layout="fill"`.
+Cómo debe posicionarse una imagen cuando `layout="fill"`.
 
-[Learn more](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position)
+[Mas información](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position).
 
 #### loading
 
-> **Attention**: This property is only meant for advanced usage. Switching
-> an image to load with `eager` will normally **hurt performance**.
->
-> We recommend using the [`priority`](#priority) property instead, which
-> properly loads the image eagerly for nearly all use cases.
+<!-- prettier-ignore-start -->
+:::caution
+La siguiente propiedad está pensada para usos avanzados. Hacer que una
+imagen carge con `eager` normalmente **perjudica el rendimiento**.
 
-The loading behavior of the image. Defaults to `lazy`.
+Recomendamos utilizar la propiedad `priority` en su lugar, la cual carga
+la imagen _eagerly_ en casi todos los casos.
+:::
+<!-- prettier-ignore-end -->
 
-When `lazy`, defer loading the image until it reaches a calculated
-distance from the viewport.
+El comportamiento de carga de la imagen. Por defecto, `lazy`.
 
-When `eager`, load the image immediately.
+Cuando es `lazy`, la imagen cargará cuando el usuario se acerque a la
+misma haciendo _scroll_.
 
-[Learn more](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-loading)
+Cuando es `eager`, cargará la imagen inmediatamente.
+
+[Más información](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-loading).
 
 #### unoptimized
 
-When true, the source image will be served as-is instead of changing
-quality, size, or format. Defaults to false.
+Cuando es `true`, la imagen original será servida como vino al mundo en
+vez de alterar su calidad, dimensiones y/o formato. Por defecto es
+`false`.
 
-### Other Props {#other-props}
+### Otras Propiedades {#other-props}
 
-Other properties on the `Image` component will be passed to the underlying
-`img` element with the exception of the following:
+El resto de propiedades del componente `Image` serán pasadas al componente
+`img` excepto las siguientes:
 
-- `style`. Use `className` instead.
-- `srcSet`. Use [Device Sizes](#device-sizes) instead.
-- `decoding`. It is always `"async"`.
+- `style`. Usa `className` en su lugar.
+- `srcSet`. Usa [`deviceSizes`](#device-sizes) en su lugar.
+- `decoding`. Siempre es `"async"`.
