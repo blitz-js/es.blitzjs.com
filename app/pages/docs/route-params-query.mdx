@@ -108,22 +108,5 @@ import {useRouterQuery} from "blitz"
 
 const query = useRouterQuery()
 
-// query = {sort: "asc", limit: 10}
-```
-
-Unlike `useParams`, this hook will parse all values to their respective
-types. For example:
-
-```ts
-// ?sort=asc&limit=10
-query = {sort: "asc", limit: 10}
-
-// ?yea=true&nay=false
-query = {yea: true, nay: false}
-
-// ?include=clients&include=products
-query = {include: ["clients", "products"]}
-
-// ?all-types=str&all-types=1.2&all-types=false
-query = {"all-types": ["str", 1.2, false]}
+// query = {sort: "asc", limit: "10"}
 ```
