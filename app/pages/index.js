@@ -69,7 +69,7 @@ const Home = ({randomContributors}) => {
                       variant="outline"
                       className="w-1/3 lg:w-auto rounded-r-xl"
                     >
-                      Github
+                      GitHub
                     </ButtonLink>
                   </div>
                 </div>
@@ -453,11 +453,9 @@ const getStaticProps = async () => {
   }
 }
 
-Home.layoutProps = {
-  meta: {
-    title: "Blitz.js - El Framework FullStack de React",
-    description: `Blitz es un framework fullstack de React hiperproductivo construido sobre Next.js y cuenta con la capa de datos "Zero-API".`,
-  },
+Home.meta = {
+  title: "Blitz.js - El Framework FullStack de React",
+  description: `Blitz es un framework fullstack de React hiperproductivo construido sobre Next.js y cuenta con la capa de datos "Zero-API".`,
 }
 
 export default Home
