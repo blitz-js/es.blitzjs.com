@@ -1,89 +1,103 @@
 ---
-title: Tradeoffs
-sidebar_label: Tradeoffs
+title: Desventajas
+sidebar_label: Desventajas
 ---
 
-As you know, everything has tradeoffs. So what are the tradeoffs of Blitz?
+Como ya sabrás, todo tiene sus desventajas. ¿Así que cuáles son las
+desventajas de usar Blitz?
 
-## Framework Lock-in {#framework-lock-in}
+## Dependencia al Framework {#framework-lock-in}
 
-Every framework has a certain level of lock-in. If you build your app with
-React, it's very locked into React.
+Cada framework tiene cierto nivel de dependencia. Sí tú construyes una
+aplicación con React, esta es muy dependiente a React.
 
-Blitz's level of lock-in is one level higher than Next.js. A Blitz
-codebase is not a _lot_ different than a Next.js codebase. But it is
-enough different that it wouldn't be super simple to "eject" to plain
-Next.js. For example, you'll probably use the Blitz authentication which
-is unique to Blitz. But switching to Next Auth would give you a comparable
-experience with Next.js.
+El nivel de dependencia a Blitz es un nivel mas alto que el de Next.js.
+Una base de código en Blitz no es muy diferente a una en Next.js, pero si
+es lo suficientemente diferente que no sería para nada simple "eyectar" a
+Next.js plano. Por ejemplo, probablemente hayas usado la autenticación de
+Blitz, la cual es únicamente de Blitz. Pero sustituyéndola por Next Auth
+esta podría ofrecerte una experiencia comparable en Next.js plano.
 
-The Blitz zero-API data layer is unique to Blitz. So if switching to
-Next.js, you'd have to manage your own API code (which you would have to
-do if you started with Next.js, so you haven't lost anything). However,
-all your backend query and mutation logic can be directly ported.
+La capa de datos _Zero API_ de Blitz es unicamente de Blitz. Así que si es
+cambiada a Next.js, tú mismo tendrás que administrar el código de tu
+propia API (lo cual tienes que realizar al comenzar con Next.js, para que
+no hayas perdido nada). Sin embargo, toda la lógica de las consultas y
+mutaciones de tu backend pueden ser portadas directamente.
 
-## Next.js Upgrades {#next-js-upgrades}
+## Actualizaciones de Next.js {#next-js-upgrades}
 
-If you want to be on the bleeding edge of Next.js releases, know that
-Blitz will be slightly behind but not far. Usually we update Blitz within
-a week or less of a new Next.js release.
+Si quieres estar al día con las últimas versiones Next.js, tienes que
+saber que Blitz estará ligeramente detrás, pero no mucho. Usualmente
+actualizamos Blitz dentro de una semana o menos después de un nuevo
+lanzamiento de Next.js.
 
-But if you use yarn, you can use the `resolutions` field in package.json
-to upgrade next.js before we do.
+Pero si usas yarn, puedes utilizar el campo `resolutions` ubicado en
+package.json para actualizar Next.js antes que nosotros lo hagamos.
 
-## Multi-Client API {#multi-client-api}
+## API Multi Cliente {#multi-client-api}
 
-Some folks say, "you'll eventually need GraphQL so you should start with
-it". While we believe most apps won't grow large enough to warrant
-GraphQL, the question of an API for multiple clients is an excellent
-point.
+Algunos dirán, "Eventualmente vas a necesitar GraphQL así que deberías
+comenzar por ahí". Mientras creemos que la mayoría de las aplicaciones no
+crecerán lo suficientemente grandes para garantizar el uso de GraphQL,la
+existencia de una API para varios clientes es un punto excelente.
 
-We fully acknowledge that many web apps will need a mobile app sooner or
-later. And we want to make this integration as simple as possible!
+Sabemos completamente que algunas aplicaciones web tarde o temprano
+necesitarán una aplicación móvil. ¡Y queremos hacer de esta integración lo
+mas simple posible!
 
-That said, you can add a GraphQL server to your Blitz app for other
-clients. This can be an excellent choice and some folks are doing this.
+Dicho eso, puedes añadir un servidor de Graphql a tu aplicación en Blitz
+para otros clientes. Esta puede ser una opción excelente y algunas
+personas ya estan haciendo esto.
 
-**Currently, as of Feb 17, 2021:**
+**A la fecha, 17 de Febrero de 2021:**
 
-- You can directly access the auto-generated API endpoints and you can use
-  them in any mobile app (we currently have a few people doing this)
-- You can see all generated endpoints in your app using
-  [`blitz routes`](./cli-routes) command
-- You can see the RPC specification for the endpoints here:
-  [RPC Specification](./rpc-specification)
+- Puedes acceder directamente a los _endpoints_ autogenerados de la API y
+  puedes usarlos en cualquier aplicación móvil (ya hay personas haciendo
+  esto)
 
-**What we plan to do going forward:**
+- Puedes ver todos los _endpoints_ generados en tu aplicación usando el
+  comando [`blitz routes`](./cli-routes)
 
-1. First step, add docs and tools for making it easier to manually use the
-   generated API endpoints. See
-   https://github.com/blitz-js/blitz/discussions/1907 and
+- Puedes ver la especificación RPC para los _endpoints_ aquí:
+  [Especificación RPC](./rpc-specification)
+
+**Que planeamos hacer en el futuro:**
+
+1. Primer paso, añadir documentación y herramientas para hacer más fácil
+   la generación manual de API _endpoints_. Ver
+   https://github.com/blitz-js/blitz/discussions/1907 y
    https://github.com/blitz-js/blitz/issues/745
-2. Next, add ability to generate a JS/TS client library as a nice way to
-   use the generated endpoints from an app
-3. Next, add some sort of first-class react-native support where you can
-   import blitz queries/mutations directly into your react-native code and
-   have it magically work exactly like it does today with your web app.
-   After the 1.0 release, this will be Brandon's main focus for the year.
 
-## Advanced Backend Architecture {#advanced-backend-architecture}
+2. Siguiente, añadir la habilidad de generar un biblioteca cliente de
+   JS/TS como una buena manera de usar los _endpoints_ generados desde una
+   aplicación
 
-Currently Blitz is fairly minimal on backend architecture, especially
-compared so something like Nest.js or AdonisJs. However, that doesn't mean
-you can't use those patterns in Blitz, it means you have to set it up
-yourself. In fact you can use Nest.js in your Blitz app if you need.
+3. Siguiente, añadir algún soporte de primera clase para react-native
+   donde puedas importar _queries/mutations_ de blitz directamente en tu
+   código de react-native y tenerlo magicamente funcionando exactamente
+   como lo hace tu aplicación web. Después del lanzamiento de la versión
+   1.0, este será el enfoque principal de Brandon para lo que resta del
+   año.
 
-But we are very interested in bringing more advanced backend architectures
-to Blitz by default or via simple opt-in. We have an
-[ongoing discussion](https://github.com/blitz-js/blitz/discussions/1841)
-that we'd love you to chime in on if you have ideas.
+## Arquitectura Backend Avanzada {#advanced-backend-architecture}
 
-## Single Threaded When Not Deployed Serverless {#single-threaded-when-not-deployed-serverless}
+Actualmente Blitz es mínimo en su arquitectura backend, especialmente
+comparado con Nest.js o Adonis.js. De igual manera, eso no significa que
+no puedan usar esos patrones en Blitz, mas bien significa que tienes que
+configurarlos tú mismo. De hecho puedes usar Nest.js en tu aplicación de
+Blitz si así lo necesitas.
 
-This is a tradeoff of Next.js specifically. Next.js is single threaded
-which means if you are doing heavy backend processing you may notice that
-all web requests begin to suffer. The solution to this is spawning
-background processing off into other processes.
+Pero estamos muy interesados en traer mas arquitecturas backend avanzadas
+a blitz por defecto o a tráves de optar por estas. Tenemos una
+[discusión en curso](https://github.com/blitz-js/blitz/discussions/1841),
+y nos encantaría que participaras si tienes algunas ideas.
 
-Running multiple background processes isn't super difficult, but we want
-to add docs and APIs that make this as simple as possible.
+## Un solo hilo cuando no es desplegado en una arquitectura _Serverless_ {#single-threaded-when-not-deployed-serverless}
+
+Esta es una desventaja de Next.js especificamente. Next.js es de un solo
+hilo, lo que significa que si estas haciendo procesamiento backend pesado
+notarás que todas las peticiones web comenzarán a verse afectadas. La
+solución a esto es ejecutar ciertas tareas en otros procesos.
+
+Ejecutar múltiples procesos en segundo plano no es súper díficil, pero
+queremos añadir documentación y API que hagan esto lo mas simple posible.
