@@ -3,8 +3,8 @@ title: Soporte para CSS
 sidebar_label: Soporte para CSS
 ---
 
-Blitz te permite import archivos de CSS directamente en cualquier archivo
-de JavaScript.
+Blitz te permite importar archivos de CSS directamente en cualquier
+archivo de JavaScript.
 
 ## Añadir una Hoja de Estilos Global {#adding-a-global-stylesheet}
 
@@ -23,7 +23,7 @@ body {
 }
 ```
 
-Luego, importa `styles.css`.
+Luego, importa el archivo `styles.css`.
 
 ```jsx
 import "../styles.css"
@@ -61,11 +61,11 @@ importados en cualquier archivo de tu aplicación**.
 Por ejemplo, este `Button` reusable en la carpeta `components/`:
 
 Primero, crea `app/components/Button.module.css` con el siguiente
-contendio:
+contenido:
 
 ```css
 /*
-¡No tienes que precuparte de que .error {} colisione con otro en algún
+¡No tienes que preocuparte de que .error {} colisione con otro en algún
 `.css` o `.module.css`!
 */
 .error {
@@ -83,7 +83,7 @@ export function Button() {
   return (
     <button
       type="button"
-      // Fíjate como la clase "error" es accedida como una propiedad
+      // Fíjate cómo se accede a la clase "error" como una propiedad
       // del objeto `styles`, que ha sido importado más arriba.
       className={styles.error}
     >
@@ -104,8 +104,8 @@ navegador pida la cantidad mínima de CSS.
 
 ## Soporte para Sass {#sass-support}
 
-Blitz te permite imporar Sass, ya sea en el formato `.scss` o `.sass`. Los
-módulos CSS también funcionan con Sass, utilizando las extensiones
+Blitz te permite importar Sass, ya sea en el formato `.scss` o `.sass`.
+Los módulos CSS también funcionan con Sass, utilizando las extensiones
 `.module.scss` y `.module.sass`.
 
 Antes de que uses el soporte de Blitz para Sass, debes instalar
@@ -137,31 +137,31 @@ module.exports = {
 
 ## Soporte para Less y para Stylus {#less-and-stylus-support}
 
-Para poder imporar archivos `.less` o `.styl`, puedes utilizar los
+Para poder importar archivos `.less` o `.styl`, puedes utilizar los
 siguientes paquetes:
 
 - [@vercel/next-less](https://github.com/vercel/next-plugins/tree/master/packages/next-less)
 - [@vercel/next-stylus](https://github.com/vercel/next-plugins/tree/master/packages/next-stylus)
 
-Si usas quiere soporte para Less, no te olvides de añadir `less` como
-dependencia, de lo contrario te saldrá un error como este:
+Si usas el plugin de Less, no olvides añadir `less` como una dependencia,
+de lo contrario te saldrá un error como este:
 
 ```bash
 Error: Cannot find module 'less'
 ```
 
-## TypeScript Support for CSS Modules {#typescript-support}
+## Soporte de TypeScript para los módulos CSS {#typescript-support}
 
-If you are using TypeScript and want typechecking and autocompletition for
-CSS Modules, you can install `typescript-plugin-css-modules`:
+Si estás usando TypeScript y quieres _typechecking_ y autocompletado para
+los módulos CSS, puedes instalar `typescript-plugin-css-modules`:
 
 ```bash
 yarn add -D typescript-plugin-css-modules
-# or
+# o
 npm install -D typescript-plugin-css-modules
 ```
 
-And add it to your `tsconfig.json`:
+Y añadirlo a tu `tsconfig.json`:
 
 ```diff
 {
@@ -171,5 +171,5 @@ And add it to your `tsconfig.json`:
 }
 ```
 
-If you are having troubles using this plugin, check
-[their documentation](https://github.com/mrmckeb/typescript-plugin-css-modules).
+Si tienes problemas con este plugin, échale un vistazo a
+[su documentación](https://github.com/mrmckeb/typescript-plugin-css-modules).
