@@ -129,8 +129,29 @@ separar y organizar tus páginas de la manera que prefieras.
 
 Ejemplos:
 
+<<<<<<< HEAD
 - `app/pages/` puede contener la página de inicio y páginas como "about"
 - `app/products/pages/` puede contener todas las páginas relacionadas a
   productos
 - `app/admin/pages/` puede contener todas las páginas relacionadas a la
   sección de administrador del backend
+=======
+- `app/pages/` could contain the homepage and pages like "about"
+- `app/products/pages/` could contain all the pages related to products
+- `app/admin/pages/` could contain all pages related to the backend admin
+  section
+
+### 9. Route Manifest {#9-relaxed-restrictions}
+
+Next.js requires you to manually type out page locations. Blitz comes with
+a [Route Manifest](./route-manifest), so you can do:
+
+```ts
+<Link href={Routes.ProductsPage({ productId: 123 })} />
+// instead of
+<Link href={`/products/${123}`} />
+```
+
+This improves expressiveness and simplifies moving pages to other
+location.
+>>>>>>> 82436ec0678e19c73c9c61ff701e0569a9fe4a67

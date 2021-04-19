@@ -7,11 +7,11 @@ import tokenize from "../../macros/tokenize.macro.js"
 
 const pageTokenized = tokenize.jsx(
   `// app/pages/projects/new.tsx
-import { Link, useRouter, useMutation, BlitzPage } from "blitz"
+import { Link, Routes, useRouter, useMutation, BlitzPage } from "blitz"
 import Layout from "app/core/layouts/Layout"
 // Mira cómo importamos la función del servidor directamente
 import createProject, {CreateProject} from "app/projects/mutations/createProject"
-import { ProjectForm, FORM_ERROR } from "app/projects/components/ProjectForm"
+import { ProjectForm } from "app/projects/components/ProjectForm"
 
 const NewProjectPage: BlitzPage = () => {
   const router = useRouter()
@@ -25,6 +25,7 @@ const NewProjectPage: BlitzPage = () => {
         submitText="Crear Proyecto"
         schema={CreateProject}
         onSubmit={async (values) => {
+<<<<<<< HEAD
           try {
             // Esto es equivalente a hacer una petición HTTP
             const project = await createProjectMutation(values)
@@ -32,6 +33,12 @@ const NewProjectPage: BlitzPage = () => {
           } catch (error) {
             return { [FORM_ERROR]: error.toString() }
           }
+=======
+          // This is equivalent to calling the server function directly
+          const project = await createProjectMutation(values)
+          // Notice the 'Routes' object Blitz provides for routing
+          router.push(Routes.ProjectsPage({projectId: project.id}}))
+>>>>>>> 82436ec0678e19c73c9c61ff701e0569a9fe4a67
         }}
       />
     </div>
