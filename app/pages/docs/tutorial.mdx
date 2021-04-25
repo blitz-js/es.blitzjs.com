@@ -273,10 +273,12 @@ páginas para el modelo `Choice`:
 ```sh
 blitz generate resource choice text votes:int:default=0 belongsTo:question
 ```
-If you get an error run `blitz prisma format`
 
-Presiona **Enter** cuando te lo pidan para ejecutar la migración. No te
-olvides de ponerle un nombre.
+Si obtienes un error, ejecuta `blitz prisma format`.
+
+Fíjate que esta no requiere una migración de la base de datos, porque aún
+no hemos añadido el campo `Choice` al modelo `Question`. Por ende,
+elegiremos `false` cuando nos pregunte por hacer una migración.
 
 ```
 CREATE    app/choices/queries/getChoice.ts
@@ -297,7 +299,7 @@ CREATE    app/choices/mutations/updateChoice.ts
 >   questionId Int
 > }
 
-? Run 'prisma migrate dev' to update your database? (Y/n) › true
+? Run 'prisma migrate dev' to update your database? (Y/n) › false
 ```
 
 #### Por último, actualicemos el model `Question` para que esté relacionado a `Choice`.
@@ -315,10 +317,31 @@ model Question {
 }
 ```
 
-Y luego, ejecuta `blitz prisma generate` para actualizar el cliente de
-Prisma con los últimos cambios. Esto no requiere una migración de la base
-de datos porque ningún campo se ha añadido al model `Question` dentro de
-la base de datos.
+Ahora podemos ejecutar la migración para actualizar nuestra base de datos:
+
+```sh
+blitz prisma migrate dev
+```
+
+Y nuevamente, elige un nombre para la migración, como _"add choice"_:
+
+```
+Environment variables loaded from .env
+Prisma schema loaded from db/schema.prisma
+Datasource "db": SQLite database "db.sqlite" at "file:./db.sqlite"
+
+✔ Name of migration … add choice
+The following migration(s) have been created and applied from new schema changes:
+
+migrations/
+  └─ 20210412175528_add_choice/
+    └─ migration.sql
+
+Your database is now in sync with your schema.
+```
+
+Ahora, nuestra base de datos está lista y el cliente de Prisma ha sido
+generado. ¡Sigamos y juguemos con Prisma!
 
 ## Jugando con el cliente de Prisma {#playing-with-the-prisma-database-client}
 
@@ -404,14 +427,22 @@ Ve a `app/pages/questions/index.tsx`. Verás un componente `QuestionsList`:
 export const QuestionsList = () => {
   const router = useRouter()
   const page = Number(router.query.page) || 0
-  const [{questions, hasMore}] = usePaginatedQuery(getQuestions, {
-    orderBy: {id: "asc"},
-    skip: ITEMS_PER_PAGE * page,
-    take: ITEMS_PER_PAGE,
-  })
+  const [{questions, hasMore}, {isPreviousData}] = usePaginatedQuery(
+    getQuestions,
+    {
+      orderBy: {id: "asc"},
+      skip: ITEMS_PER_PAGE * page,
+      take: ITEMS_PER_PAGE,
+    },
+  )
 
   const goToPreviousPage = () => router.push({query: {page: page - 1}})
-  const goToNextPage = () => router.push({query: {page: page + 1}})
+
+  const goToNextPage = () => {
+    if (!isPreviousData && hasMore) {
+      router.push({query: {page: page + 1}})
+    }
+  }
 
   return (
     <div>
@@ -428,7 +459,10 @@ export const QuestionsList = () => {
       <button disabled={page === 0} onClick={goToPreviousPage}>
         Previous
       </button>
-      <button disabled={!hasMore} onClick={goToNextPage}>
+      <button
+        disabled={isPreviousData || !hasMore}
+        onClick={goToNextPage}
+      >
         Next
       </button>
     </div>
@@ -446,14 +480,21 @@ tiene un campo `name`. Para arreglar esto, cambia `question.name` con
 export const QuestionsList = () => {
   const router = useRouter()
   const page = Number(router.query.page) || 0
-  const [{questions, hasMore}] = usePaginatedQuery(getQuestions, {
-    orderBy: {id: "asc"},
-    skip: ITEMS_PER_PAGE * page,
-    take: ITEMS_PER_PAGE,
-  })
+  const [{questions, hasMore}, {isPreviousData}] = usePaginatedQuery(
+    getQuestions, {
+      orderBy: {id: "asc"},
+      skip: ITEMS_PER_PAGE * page,
+      take: ITEMS_PER_PAGE,
+    },
+  )
 
   const goToPreviousPage = () => router.push({query: {page: page - 1}})
-  const goToNextPage = () => router.push({query: {page: page + 1}})
+
+  const goToNextPage = () => {
+    if (!isPreviousData && hasMore) {
+      router.push({query: {page: page + 1}})
+    }
+  }
 
   return (
     <div>
@@ -471,7 +512,7 @@ export const QuestionsList = () => {
       <button disabled={page === 0} onClick={goToPreviousPage}>
         Previous
       </button>
-      <button disabled={!hasMore} onClick={goToNextPage}>
+      <button disabled={isPreviousData || !hasMore} onClick={goToNextPage}>
         Next
       </button>
     </div>

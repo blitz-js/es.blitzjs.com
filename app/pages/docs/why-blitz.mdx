@@ -134,3 +134,17 @@ Ejemplos:
   productos
 - `app/admin/pages/` puede contener todas las páginas relacionadas a la
   sección de administrador del backend
+
+### 9. Manifiesto de Rutas {#9-relaxed-restrictions}
+
+Next.js necesita que escribas la URL de cada página a mano. Blitz viene
+con un [Manifiesto de Rutas](./route-manifest) para que hagas:
+
+```ts
+<Link href={Routes.ProductsPage({ productId: 123 })} />
+// en vez de
+<Link href={`/products/${123}`} />
+```
+
+Esto mejora la lectura de tu código y simplica mover las páginas de una
+carpeta a otra.
