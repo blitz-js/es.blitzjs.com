@@ -1016,6 +1016,9 @@ export default resolver.pipe(
 +         })),
 +       },
 +     },
++     include: {
++       choices: true,
++     },
 +   })
 
     return question
@@ -1029,6 +1032,12 @@ acutalízalo; de lo contrario, créalo". Es perfecto para nuestro caso
 porque no le exigimos al usuario crear tres opciones desde un principio.
 Por ende, si el usuario añane otra opción al editar la pregunta,
 simplemente se creará.
+
+## Limpieza {#cleanup}
+
+Para que `yarn tsc` o `git push` funcionen correctamente, necesitarás
+borrar el archivo `app/choices/mutations/createChoice.ts` (inutilizado) o
+actualizar el esquema CreateChoice para incluir los campos requeridos.
 
 ## Conclusión {#conclusion}
 
