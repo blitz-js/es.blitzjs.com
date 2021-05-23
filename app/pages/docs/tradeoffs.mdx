@@ -67,23 +67,20 @@ personas ya estan haciendo esto.
    la generación manual de API _endpoints_. Ver
    https://github.com/blitz-js/blitz/discussions/1907 y
    https://github.com/blitz-js/blitz/issues/745
-
-2. Siguiente, añadir la habilidad de generar un biblioteca cliente de
-   JS/TS como una buena manera de usar los _endpoints_ generados desde una
-   aplicación
-
-3. Siguiente, añadir algún soporte de primera clase para react-native
-   donde puedas importar _queries/mutations_ de blitz directamente en tu
-   código de react-native y tenerlo magicamente funcionando exactamente
-   como lo hace tu aplicación web. Después del lanzamiento de la versión
-   1.0, este será el enfoque principal de Brandon para lo que resta del
-   año.
+2. Luego, añadir la habilidad de generar una librería para el cliente en
+   JS/TS como una manera de usar los _endpoints_ generados desde una
+   aplicación.
+3. Luego, añadir algún soporte de primera clase para React Native donde
+   puedas importar _queries/mutations_ de blitz directamente en tu código
+   de React Native y tenerlo magicamente funcionando, exactamente como lo
+   hace tu aplicación web. Después del lanzamiento de la versión 1.0, este
+   será el enfoque principal de Brandon para lo que resta del año.
 
 ## Arquitectura Backend Avanzada {#advanced-backend-architecture}
 
 Actualmente Blitz es mínimo en su arquitectura backend, especialmente
-comparado con Nest.js o Adonis.js. De igual manera, eso no significa que
-no puedan usar esos patrones en Blitz, mas bien significa que tienes que
+comparado con Nest.js o AdonisJs. De igual manera, eso no significa que no
+puedan usar esos patrones en Blitz, mas bien significa que tienes que
 configurarlos tú mismo. De hecho puedes usar Nest.js en tu aplicación de
 Blitz si así lo necesitas.
 
@@ -94,7 +91,7 @@ y nos encantaría que participaras si tienes algunas ideas.
 
 ## Un solo hilo cuando no es desplegado en una arquitectura _Serverless_ {#single-threaded-when-not-deployed-serverless}
 
-Esta es una desventaja de Next.js especificamente. Next.js es de un solo
+Esta es una desventaja de Next.js específicamente. Next.js es de un solo
 hilo, lo que significa que si estas haciendo procesamiento backend pesado
 notarás que todas las peticiones web comenzarán a verse afectadas. La
 solución a esto es ejecutar ciertas tareas en otros procesos.
