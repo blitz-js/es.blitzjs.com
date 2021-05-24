@@ -26,7 +26,27 @@ El prop del `Componente` es la `page` activa, por lo que cada vez que navegues
 entre rutas, `Componente` cambiará a la nueva `page`. Por lo tanto, cualquiera de las
 props que envíes a `Component` serán recibidas por `page`.
 
+<<<<<<< HEAD
 `pageProps` es un objeto con los props iniciales que fueron precargados para
 tu página mediante uno de nuestros métodos de obtención de datos como
 [`getStaticProps`](./get-static-props) o
 [`getServerSideProps`](./get-server-side-props)
+=======
+`pageProps` is an object with the initial props that were preloaded for
+your page by one of our data fetching methods like
+[`getStaticProps`](./get-static-props) or
+[`getServerSideProps`](./get-server-side-props), otherwise it's an empty
+object.
+
+### Caveats {#caveats}
+
+- Adding a custom `getInitialProps` in your `App` will disable
+  [Automatic Static Optimization](./pages#automatic-static-optimization)
+  in pages without [Static Generation](./get-static-props).
+- When you add `getInitialProps` in your custom app, you must
+  `import App from "blitz"`, call `App.getInitialProps(appContext)` inside
+  `getInitialProps` and merge the returned object into the return value.
+- `App` currently does not support page data fetching methods like
+  [`getStaticProps`](./get-static-props) or
+  [`getServerSideProps`](./get-server-side-props).
+>>>>>>> 9fe39d8ebeff642759bb10ad1b0cd2f1114ec7aa
