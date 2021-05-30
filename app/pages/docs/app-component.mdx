@@ -3,7 +3,8 @@ title: Componente <App>
 sidebar_label: <App>
 ---
 
-Blitz utiliza el componente `App` en `app/pages/_app.ts` para inicializar las páginas. 
+Blitz utiliza el componente `App` en `app/pages/_app.ts` para inicializar
+las páginas.
 
 Puedes modificarlo para hacer cosas increíbles como:
 
@@ -22,11 +23,26 @@ export default function App({ Component, pageProps }) {
 }
 ```
 
-El prop del `Componente` es la `page` activa, por lo que cada vez que navegues
-entre rutas, `Componente` cambiará a la nueva `page`. Por lo tanto, cualquiera de las
-props que envíes a `Component` serán recibidas por `page`.
+El prop del `Componente` es la `page` activa, por lo que cada vez que
+navegues entre rutas, `Componente` cambiará a la nueva `page`. Por lo
+tanto, cualquiera de las props que envíes a `Component` serán recibidas
+por `page`.
 
-`pageProps` es un objeto con los props iniciales que fueron precargados para
-tu página mediante uno de nuestros métodos de obtención de datos como
+`pageProps` es un objeto con los props iniciales que fueron precargados
+para tu página mediante uno de nuestros métodos de obtención de datos como
 [`getStaticProps`](./get-static-props) o
-[`getServerSideProps`](./get-server-side-props)
+[`getServerSideProps`](./get-server-side-props). De lo contrario, es un
+objeto vació.
+
+### Advertencias {#caveats}
+
+- Añadir un `getInitialProps` personalizado en tu `App` deshabilitará la
+  [Optimización Estática Automática](./pages#automatic-static-optimization)
+  en las páginas sin [Generación Estática](./get-static-props).
+- Cuando añadas `getInitialProps` en tu aplicación, debes
+  `import App from "blitz"`, llamar `App.getInitialProps(appContext)`
+  dentro de `getInitialProps` y fusionar el objeto devuelto con el valor
+  de retorno.
+- Por el momento, `App` no soporta métodos como
+  [`getStaticProps`](./get-static-props) o
+  [`getServerSideProps`](./get-server-side-props).
