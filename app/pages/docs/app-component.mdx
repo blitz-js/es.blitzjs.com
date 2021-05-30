@@ -3,7 +3,8 @@ title: Componente <App>
 sidebar_label: <App>
 ---
 
-Blitz utiliza el componente `App` en `app/pages/_app.ts` para inicializar las páginas. 
+Blitz utiliza el componente `App` en `app/pages/_app.ts` para inicializar
+las páginas.
 
 Puedes modificarlo para hacer cosas increíbles como:
 
@@ -22,31 +23,26 @@ export default function App({ Component, pageProps }) {
 }
 ```
 
-El prop del `Componente` es la `page` activa, por lo que cada vez que navegues
-entre rutas, `Componente` cambiará a la nueva `page`. Por lo tanto, cualquiera de las
-props que envíes a `Component` serán recibidas por `page`.
+El prop del `Componente` es la `page` activa, por lo que cada vez que
+navegues entre rutas, `Componente` cambiará a la nueva `page`. Por lo
+tanto, cualquiera de las props que envíes a `Component` serán recibidas
+por `page`.
 
-<<<<<<< HEAD
-`pageProps` es un objeto con los props iniciales que fueron precargados para
-tu página mediante uno de nuestros métodos de obtención de datos como
+`pageProps` es un objeto con los props iniciales que fueron precargados
+para tu página mediante uno de nuestros métodos de obtención de datos como
 [`getStaticProps`](./get-static-props) o
-[`getServerSideProps`](./get-server-side-props)
-=======
-`pageProps` is an object with the initial props that were preloaded for
-your page by one of our data fetching methods like
-[`getStaticProps`](./get-static-props) or
-[`getServerSideProps`](./get-server-side-props), otherwise it's an empty
-object.
+[`getServerSideProps`](./get-server-side-props). De lo contrario, es un
+objeto vació.
 
-### Caveats {#caveats}
+### Advertencias {#caveats}
 
-- Adding a custom `getInitialProps` in your `App` will disable
-  [Automatic Static Optimization](./pages#automatic-static-optimization)
-  in pages without [Static Generation](./get-static-props).
-- When you add `getInitialProps` in your custom app, you must
-  `import App from "blitz"`, call `App.getInitialProps(appContext)` inside
-  `getInitialProps` and merge the returned object into the return value.
-- `App` currently does not support page data fetching methods like
-  [`getStaticProps`](./get-static-props) or
+- Añadir un `getInitialProps` personalizado en tu `App` deshabilitará la
+  [Optimización Estática Automática](./pages#automatic-static-optimization)
+  en las páginas sin [Generación Estática](./get-static-props).
+- Cuando añadas `getInitialProps` en tu aplicación, debes
+  `import App from "blitz"`, llamar `App.getInitialProps(appContext)`
+  dentro de `getInitialProps` y fusionar el objeto devuelto con el valor
+  de retorno.
+- Por el momento, `App` no soporta métodos como
+  [`getStaticProps`](./get-static-props) o
   [`getServerSideProps`](./get-server-side-props).
->>>>>>> 9fe39d8ebeff642759bb10ad1b0cd2f1114ec7aa
