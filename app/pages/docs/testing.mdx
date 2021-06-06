@@ -3,15 +3,18 @@ title: Testing
 sidebar_label: Testing
 ---
 
-La dependencia `blitz` también instala y configura automáticamente `jest`,`@testing-library/react`, `@testing-library/react-hooks`, y
+La dependencia `blitz` también instala y configura automáticamente
+`jest`,`@testing-library/react`, `@testing-library/react-hooks`, y
 `@testing-libary/jest-dom` por ti.
 
 ## Jest {#jest}
 
-[Jest](https://jestjs.io/) es un marco de pruebas encantador y sencillo
-de usar. Para realizar las pruebas en tu aplicación, tendrás que ejecutar `jest` o `jest --watch` desde el terminal.
+[Jest](https://jestjs.io/) es un marco de pruebas encantador y sencillo de
+usar. Para realizar las pruebas en tu aplicación, tendrás que ejecutar
+`jest` o `jest --watch` desde el terminal.
 
-Para hacer un nuevo test, crea un archivo llamado `algo.test.ts` (o `.js`,`.tsx`, etc). 
+Para hacer un nuevo test, crea un archivo llamado `algo.test.ts` (o
+`.js`,`.tsx`, etc).
 
 Aquí un ejemplo:
 
@@ -29,11 +32,12 @@ it("hace algo", () => {
 
 ### Configuración de Jest {#jest-config}
 
-Blitz proporciona un preajuste de Jest que configura muchas cosas complejas para ti, incluyendo el soporte de Typescript.
+Blitz proporciona un preajuste de Jest que configura muchas cosas
+complejas para ti, incluyendo el soporte de Typescript.
 
 Si necesitas
-[personalizar la configuración de jest](https://jestjs.io/docs/en/configuration), puedes
-puede hacerlo en `jest.config.js`.
+[personalizar la configuración de jest](https://jestjs.io/docs/en/configuration),
+puedes puede hacerlo en `jest.config.js`.
 
 ```ts
 // jest.config.js
@@ -44,26 +48,25 @@ module.exports = {
 
 ### Entornos cliente vs servidor {#client-vs-server-environments}
 
-Los siguientes archivos de prueba se ejecutarán en el entorno del servidor Jest:
+Los siguientes archivos de prueba se ejecutarán en el entorno del servidor
+Jest:
 
-- Archivos `*.test.*` dentro de una carpeta `api`, `queries` o `mutations`.
+- Archivos `*.test.*` dentro de una carpeta `api`, `queries` o
+  `mutations`.
 - Archivos `*.server.test.*`.
 
-Todos los demás archivos se ejecutarán en el entorno del cliente Jest (con jsdom).
+Todos los demás archivos se ejecutarán en el entorno del cliente Jest (con
+jsdom).
 
 ## @testing-library {#testing-library}
 
-<<<<<<< HEAD
 [@testing-library](https://testing-library.com/docs/) es una familia de
-paquetes que te ayuda a probar los componentes de la interfaz de usuario de una manera más centrada en el usuario. Es una mejor
-alternativa a Enzyme, si lo has usado en el pasado.
-=======
-[@testing-library](https://testing-library.com/docs/) is a family of
-packages that help you test UI components in a user-centric way. It's a better
-alternative to Enzyme, if you've used that in the past.
->>>>>>> e8ff6aa7d9a569e566130424327ddff861f3e2c2
+paquetes que te ayuda a probar los componentes de la interfaz de usuario
+de una manera más centrada en el usuario. Es una mejor alternativa a
+Enzyme, si lo has usado en el pasado.
 
-Los siguientes paquetes están instalados para ti. Consulta su documentación según sea necesario.
+Los siguientes paquetes están instalados para ti. Consulta su
+documentación según sea necesario.
 
 - [@testing-library/dom](https://testing-library.com/docs/dom-testing-library/intro)
 - [@testing-library/jest-dom](https://testing-library.com/docs/ecosystem-jest-dom)
