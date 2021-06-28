@@ -56,7 +56,11 @@ const LanguagesPage = ({languages}) => {
           ))}
         </div>
         <div className="font-secondary text-base text-gray-600 dark:text-gray-300">
+<<<<<<< HEAD
           ¿No ves tu idioma?{" "}
+=======
+          Don&apos;t see your language?{" "}
+>>>>>>> ff854e245743eb09067aa71206019988d0ea80bb
           <a
             href="https://github.com/blitz-js/blitzjs.com-translation#starting-a-new-translation"
             target="_blank"
