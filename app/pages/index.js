@@ -54,15 +54,10 @@ const Home = ({randomContributors}) => {
                     El Framework FullStack de React
                   </h2>
                   <p className="text-lg xl:text-xl xl:font-medium text-off-white lg:text-transparent lg:bg-clip-text lg:bg-gradient-to-r lg:from-blue-gradient-white lg:to-blue-gradient-light-blue xl:w-4/5">
-<<<<<<< HEAD
                     Blitz es un framework todo en uno y listo para su uso, que está inspirado en
                     Ruby on Rails, construido sobre Next.js y que cuenta con las características de
-                    la capa de datos "Zero-API" que elimina la necesidad de usar REST/GraphQL.
-=======
-                    Blitz is a batteries-included framework that&apos;s inspired by Ruby on Rails,
-                    is built on Next.js, and features a &quot;Zero-API&quot; data layer abstraction
-                    that eliminates the need for REST/GraphQL.
->>>>>>> e253810f520fa45e20e9d60f7969765554a93c12
+                    la capa de datos &ldquo;Zero-API&rdquo; que elimina la necesidad de usar
+                    REST/GraphQL.
                   </p>
                   <div className="flex space-x-4">
                     <ButtonLink className="w-2/3 lg:w-auto rounded-tl-xl" href="/docs/get-started">
@@ -175,13 +170,8 @@ const Home = ({randomContributors}) => {
                         totalmente libre de hacerlo.
                       </p>
                       <p>
-<<<<<<< HEAD
                         Y casi todo se puede hacer con un plugin. Por ejemplo, no exigimos qué
                         estilos o bibliotecas de formularios utilizar.
-=======
-                        And nearly everything is pluggable. For example, we don&apos;t mandate which
-                        styling or form libraries you use.
->>>>>>> e253810f520fa45e20e9d60f7969765554a93c12
                       </p>
                     </Feature>
                     <Feature title="Convención sobre configuración">
@@ -204,13 +194,8 @@ const Home = ({randomContributors}) => {
                     </Feature>
                     <Feature title="Estabilidad">
                       <p>
-<<<<<<< HEAD
                         Una vez que alcancemos la versión 1.0, cambiaremos a un ciclo de lanzamiento
                         estable y predecible con múltiples canales como stable, LTS y beta.
-=======
-                        Once we reach version 1.0, we&apos;ll switch to a stable, predictable
-                        release cycle with multiple channels like stable, LTS, and beta.
->>>>>>> e253810f520fa45e20e9d60f7969765554a93c12
                       </p>
                       <p>Nos estamos inspirando mucho en Ember en este aspecto.</p>
                     </Feature>
@@ -305,11 +290,7 @@ const Home = ({randomContributors}) => {
                       juntos.
                     </p>
                     <p className="lg:bg-gradient-to-r lg:from-blue-gradient-white lg:to-blue-gradient-light-blue lg:bg-clip-text">
-<<<<<<< HEAD
                       ¡Te invitamos a ayudar a que Blitz sea el mejor framework que hemos tenido!
-=======
-                      We invite you to help make Blitz the best framework we&apos;ve ever had!
->>>>>>> e253810f520fa45e20e9d60f7969765554a93c12
                     </p>
                   </div>
                   <Link href="/docs/contributing" passHref>
@@ -359,7 +340,7 @@ const Home = ({randomContributors}) => {
                 <FeatureIconTitle icon="fileCode" title="Recetas">
                   Un comando para instalar el código y/o paquetes de tu aplicación blitz. Ejemplos:
                   `blitz install tailwind` o `blitz install chakra-ui`. Cualquiera puede crear una
-                  "receta".
+                  &ldquo;receta&rdquo;.
                 </FeatureIconTitle>
                 <FeatureIconTitle icon="plugin" title="Arquitectura Backend">
                   Blitz está configurado para tareas que requieren un uso intensivo del servidor,
