@@ -61,9 +61,17 @@ export function Footer({className, hasDarkMode}) {
                     Twitter
                   </a>
                 </Link>
+                <Link href="/showcase">
+                  <a>Showcase</a>
+                </Link>
               </LinkList>
 
               <LinkList title="Otros">
+                <Link href="https://flightcontrol.dev">
+                  <a target="_blank" rel="noopener noreferrer">
+                    Flightcontrol Cloud
+                  </a>
+                </Link>
                 <Link href="https://github.com/blitz-js/blitz">
                   <a target="_blank" rel="noopener noreferrer">
                     GitHub

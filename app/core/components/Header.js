@@ -80,17 +80,28 @@ const Header = ({
     onNavToggle(newValue)
   }
 
-  const bannerMsg =
-    "¡Blitz está en Beta! 🎉 Se espera que la versión 1.0 salga entre Julio y Septiembre"
+  const bannerMsg = (
+    <div>
+      🚀
+      <a href="https://flightcontrol.dev" rel="noreferrer" target="_blank" className="underline">
+        Presentamos Flightcontrol
+      </a>{" "}
+      - Despliegue Optimizado para Blitz.js y Next.js Fullstack 🚀
+    </div>
+  )
 
   const menuLinks = [
     {
       name: "Documentación",
       href: isDesktop ? "/docs/get-started" : "/docs",
     },
+    {
+      name: "Showcase",
+      href: "/showcase",
+    },
     {name: "Versiones", href: "https://github.com/blitz-js/blitz/releases"},
-    {name: "Wiki", href: "https://github.com/blitz-js/blitz/wiki"},
     {name: "Swag", href: "https://store.blitzjs.com"},
+    {name: "Flightcontrol Cloud", href: "https://flightcontrol.dev"},
   ]
 
   return (
@@ -131,7 +142,7 @@ const Header = ({
               rel="noopener noreferrer"
               href="https://github.com/sponsors/blitz-js"
             >
-              <FaHeart className="inline mr-1 align-text-top" /> Donar/Patrocinar
+              <FaHeart className="inline mr-1 align-text-top" /> Patrocinar
               <FiArrowUpRight size="0.70rem" className="opacity-50 absolute top-2 right-0" />
             </NavLink>
           </div>
