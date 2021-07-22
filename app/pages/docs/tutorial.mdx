@@ -456,13 +456,13 @@ export const QuestionsList = () => {
       </ul>
 
       <button disabled={page === 0} onClick={goToPreviousPage}>
-        Previous
+        Anterior
       </button>
       <button
         disabled={isPreviousData || !hasMore}
         onClick={goToNextPage}
       >
-        Next
+        Siguiente
       </button>
     </div>
   )
@@ -509,10 +509,10 @@ export const QuestionsList = () => {
       </ul>
 
       <button disabled={page === 0} onClick={goToPreviousPage}>
-        Previous
+        Anterior
       </button>
       <button disabled={isPreviousData || !hasMore} onClick={goToNextPage}>
-        Next
+        Siguiente
       </button>
     </div>
   )
@@ -530,7 +530,7 @@ export function QuestionForm<S extends z.ZodType<any, any>>(
   return (
     <Form<S> {...props}>
 -     <LabeledTextField name="name" label="Name" placeholder="Name" />
-+     <LabeledTextField name="text" label="Text" placeholder="Text" />
++     <LabeledTextField name="text" label="Texto" placeholder="Texto" />
     </Form>
   )
 }
@@ -629,10 +629,10 @@ export function QuestionForm<S extends z.ZodType<any, any>>(
 ) {
   return (
     <Form<S> {...props}>
-      <LabeledTextField name="text" label="Text" placeholder="Text" />
-+     <LabeledTextField name="choices.0.text" label="Choice 1" />
-+     <LabeledTextField name="choices.1.text" label="Choice 2" />
-+     <LabeledTextField name="choices.2.text" label="Choice 3" />
+      <LabeledTextField name="text" label="Texto" placeholder="Texto" />
++     <LabeledTextField name="choices.0.text" label="Opción 1" />
++     <LabeledTextField name="choices.1.text" label="Opción 2" />
++     <LabeledTextField name="choices.2.text" label="Opción 3" />
     </Form>
   )
 }
@@ -783,7 +783,7 @@ de cada pregunta. Añade este código debajo de `Link` en nuestra
 +     <ul>
 +       {question.choices.map((choice) => (
 +         <li key={choice.id}>
-+           {choice.text} - {choice.votes} votes
++           {choice.text} - {choice.votes} votos
 +         </li>
 +       ))}
 +     </ul>
@@ -810,7 +810,7 @@ mejorar esta página un poquito.
 <ul>
   {question.choices.map((choice) => (
     <li key={choice.id}>
-      {choice.text} - {choice.votes} votes
+      {choice.text} - {choice.votes} votos
     </li>
   ))}
 </ul>
@@ -859,7 +859,7 @@ En nuestro `li`, añade un `button` de este modo:
 
 ```tsx
 <li key={choice.id}>
-  {choice.text} - {choice.votes} votes
+  {choice.text} - {choice.votes} votos
   <button>Vote</button>
 </li>
 ```
@@ -885,7 +885,9 @@ export const Question = () => {
 +     await updateChoiceMutation({id})
 +     refetch()
 +   } catch (error) {
-+     alert("Error updating choice " + JSON.stringify(error, null, 2))
++     alert(
++       "Error actualizando la opción " + JSON.stringify(error, null, 2)
++     )
 +   }
 + }
 
@@ -937,7 +939,7 @@ export const Question = () => {
   return (
     <>
       <Head>
-        <title>Question {question.id}</title>
+        <title>Pregunta {question.id}</title>
       </Head>
 
       <div>
@@ -945,14 +947,14 @@ export const Question = () => {
         <ul>
           {question.choices.map((choice) => (
             <li key={choice.id}>
-              {choice.text} - {choice.votes} votes
-              <button onClick={() => handleVote(choice.id)}>Vote</button>
+              {choice.text} - {choice.votes} votos
+              <button onClick={() => handleVote(choice.id)}>Votar</button>
             </li>
           ))}
         </ul>
 
         <Link href={`/questions/${question.id}/edit`}>
-          <a>Edit</a>
+          <a>Editar</a>
         </Link>
 
         <button
@@ -965,7 +967,7 @@ export const Question = () => {
           }}
           style={{ marginLeft: "0.5rem" }}
         >
-          Delete
+          Eliminar
         </button>
       </div>
     </>

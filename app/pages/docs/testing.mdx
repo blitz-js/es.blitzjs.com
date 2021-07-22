@@ -73,31 +73,32 @@ documentación según sea necesario.
 - [@testing-library/react](https://testing-library.com/docs/react-testing-library/intro)
 - [@testing-library/react-hooks](https://react-hooks-testing-library.com/)
 
-## Testing Utilities {#testing-utilities}
+## Utilidades de testeo {#testing-utilities}
 
-Blitz provides some basic testing utilities in the generated
-`test/utils.tsx` file. These are intended for use with Jest and React
-Testing Library to allow advanced configuration for your testing
-environment. Customizing this file can be useful for testing things like
-global providers as well as certain parts of your app which Blitz handles
-internally such as routing and data querying.
+Blitz provee algunas utilidades básicas dentro del archivo
+`test/utils.tsx`. Estas están pensadas para ser usadas con Jest y React
+Testing Library y permitir configuraciones avanzadas para tu entorno de
+pruebas. Modificar este archivo puede resultar útil para probar partes
+específicas de tu aplicación, como proveedores globales, rutas y
+peticiones de datos.
 
 ### `BlitzProvider` {#blitz-provider}
 
-This component works as the global provider for data queries and mutations
-in your tests. Internally, it wraps the `QueryClient` component from
-`react-query` and adds some additional configuration options.
+Este componente actúa como el proveedor global de las peticiones y
+mutaciones en tus pruebas. Internamente, envuelve al componente
+`QueryClient` de `react-query` y le añade configuración opcional.
 
-`BlitzProvider` accepts the following props:
+`BlitzProvider` acepta las siguentes propiedades:
 
-- `client` - The global query client used by React Query. By default the
-  `queryClient` exported from `blitz` is used unless you override it.
+- `client` - El cliente global de peticiones utilizado por React Query.
+  Por defecto es el `queryClient` exportado desde `blitz`.
 
-- `contextSharing` - Controls whether or not the provider context can be
-  shared across multiple applications. This can be useful when working in
-  certain environments such as micro-frontends. Defaults to `false`.
+- `contextSharing` - Controla si el proveedor de contexto puede (o no) ser
+  compartido a través de múltiples apliaciones. Esto puede ser útil cuando
+  se trabaja in ciertos entornos, como microfrontends. Por defecto es
+  `false`.
 
-- `dehydratedState` - The server state passed along to the application
-  containing the results of server-side queries. Useful for testing
-  queries that need to be
-  [prerendered in markup and hydrated on the client](https://react-query.tanstack.com/guides/ssr#using-hydration).
+- `dehydratedState` - El estado del servidor transmitido hacia la
+  aplicación que contiene los resultados de las peticiones hechas desde el
+  servidor. Útil para probar petiociones que necesitan ser
+  [prerenderizadas y luego hidratadas en el cliente](https://react-query.tanstack.com/guides/ssr#using-hydration).
