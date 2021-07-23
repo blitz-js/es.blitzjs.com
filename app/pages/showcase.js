@@ -34,9 +34,9 @@ const ShowcasePage = () => {
       ></div>
       <main className="mx-auto max-w-7xl px-6 py-24 xl:py-36 text-black dark:text-dark-mode-text space-y-16 lg:space-y-20">
         <div className="space-y-6">
-          <h1 className="font-primary text-3xl lg:text4xl xl:text-5xl font-semibold">Showcase</h1>
+          <h1 className="font-primary text-3xl lg:text4xl xl:text-5xl font-semibold">Muestrario</h1>
           <p className="font-secondary text-lg text-gray-600 dark:text-gray-300">
-            Here are some beautiful websites built with Blitz.js
+            Aquí hay algunos sitios hermosos hechos con Blitz.js
           </p>
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
@@ -45,14 +45,14 @@ const ShowcasePage = () => {
           })}
         </div>
         <div className="font-secondary text-base text-gray-600 dark:text-gray-300">
-          Want to submit your website?{" "}
+          ¿Quieres agregar tu sitio?{" "}
           <a
             href="https://github.com/blitz-js/blitzjs.com/edit/main/app/core/utils/showcaseList.js"
             target="_blank"
             rel="noreferrer"
             className="text-purple-light dark:text-purple-extralight font-medium dark:font-bold no-underline dark:underline hover:underline"
           >
-            Here&apos;s a way to do that
+            Haz clic aquí
           </a>
         </div>
       </main>
@@ -61,8 +61,8 @@ const ShowcasePage = () => {
   )
 }
 ShowcasePage.meta = {
-  title: "Showcase - Blitz.js",
-  description: `Blitz is a hyper-productive fullstack React framework that's built on Next.js and features a "Zero-API" data layer.`,
+  title: "Muestrario - Blitz.js",
+  description: `Blitz es un framework fullstack de React hiperproductivo construido sobre Next.js y cuenta con la capa de datos "Zero-API".`,
 }
 
 export default ShowcasePage
