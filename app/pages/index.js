@@ -56,7 +56,8 @@ const Home = ({randomContributors}) => {
                   <p className="text-lg xl:text-xl xl:font-medium text-off-white lg:text-transparent lg:bg-clip-text lg:bg-gradient-to-r lg:from-blue-gradient-white lg:to-blue-gradient-light-blue xl:w-4/5">
                     Blitz es un framework todo en uno y listo para su uso, que está inspirado en
                     Ruby on Rails, construido sobre Next.js y que cuenta con las características de
-                    la capa de datos "Zero-API" que elimina la necesidad de usar REST/GraphQL.
+                    la capa de datos &ldquo;Zero-API&rdquo; que elimina la necesidad de usar
+                    REST/GraphQL.
                   </p>
                   <div className="flex space-x-4">
                     <ButtonLink className="w-2/3 lg:w-auto rounded-tl-xl" href="/docs/get-started">
@@ -215,7 +216,12 @@ const Home = ({randomContributors}) => {
                   href="https://codesandbox.io/s/flamboyant-meninsky-j63yq?file=/app/projects/mutations/createProject.ts"
                   className="h-sandbox xl:h-xl-sandbox block relative"
                 >
-                  <Image src="/img/sandbox-pic.png" layout="fill" className="object-cover" />
+                  <Image
+                    src="/img/sandbox-pic.png"
+                    layout="fill"
+                    className="object-cover"
+                    alt="Codesandbox placeholder"
+                  />
                   <div className="absolute inset-0 bg-gray-800 opacity-0 hover:opacity-70 flex items-center justify-center text-white text-6xl font-bold">
                     Click to Open in New Tab
                   </div>
@@ -236,7 +242,10 @@ const Home = ({randomContributors}) => {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      <img
+                      <Image
+                        layout="intrinsic"
+                        width="100%"
+                        height="100%"
                         src={contributor.avatar_url}
                         alt={contributor.name}
                         title={contributor.name}
@@ -331,7 +340,7 @@ const Home = ({randomContributors}) => {
                 <FeatureIconTitle icon="fileCode" title="Recetas">
                   Un comando para instalar el código y/o paquetes de tu aplicación blitz. Ejemplos:
                   `blitz install tailwind` o `blitz install chakra-ui`. Cualquiera puede crear una
-                  "receta".
+                  &ldquo;receta&rdquo;.
                 </FeatureIconTitle>
                 <FeatureIconTitle icon="plugin" title="Arquitectura Backend">
                   Blitz está configurado para tareas que requieren un uso intensivo del servidor,

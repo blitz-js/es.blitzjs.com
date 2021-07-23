@@ -1,6 +1,6 @@
 ---
-title: El Componente Image y Optimización de Imágenes
-sidebar_label: Optimización de Imágenes
+title: El Componente <Image> y Optimización de Imágenes
+sidebar_label: <Image>
 ---
 
 Blitz viene con un componente `Image` y optimización automática de
@@ -43,25 +43,58 @@ Las imágenes siempre se renderizan de tal forma que se evita el
 Para añadir una imagen a tu aplicación, importa el componente `Image`:
 
 ```jsx
-import {Image} from "blitz"
+import { Image } from "blitz"
+import profilePic from "../public/me.png"
 
 function Home() {
   return (
     <>
-      <h1>Inicio</h1>
-      <Image
-        src="/yo.png"
-        alt="Foto del autor"
-        width={500}
-        height={500}
-      />
-      <p>¡Bienvenidos a mi página!</p>
+      <h1>Mi Página Web</h1>
+      <Image src={profilePic} alt="Foto del autir" />
+      <p>¡Bienvenid@s a mi página web!</p>
     </>
   )
 }
 
 export default Home
 ```
+
+## Importar imágenes {#imports}
+
+Puedes importar imágenes que vivan dentro de tu proyecto utilizando
+`import`. (Nota: `require` no está soportado—solo `import`.)
+
+Al hacer `import` directamente, `width`, `height` y `blurDataURL` serán
+proporcionados automáticamente al componente `<Image />`. El texto
+alternativo aún debe ser provisto por separado.
+
+```js
+import { Image } from "blitz"
+import profilePic from "../public/yo.png"
+
+function Home() {
+  return (
+    <>
+      <h1>Inicio</h1>
+      <Image
+        src={profilePic}
+        alt="Foto del autor"
+        // width={500} proporcionado automáticamente
+        // height={500} proporcionado automáticamente
+        // blurDataURL="data:..." proporcionado automáticamente
+        //
+        // Opcionalmente permite añadir una versión difuminada de
+        // la imagen mientras esta carga
+        // placeholder="blur"
+      />
+      <p>¡Bienvenidos a mi página!</p>
+    </>
+  )
+}
+```
+
+Para imágenes remotas o dinámicas, necesitarás proporcionar `width`,
+`height`, y `blurDataURL` manualmente.
 
 ## Configuración {#configuration}
 
@@ -178,6 +211,25 @@ module.exports = {
 }
 ```
 
+### Desactivar las importaciones estáticas {#disable-static-imports}
+
+El comportamiento por defecto te permite importar archivos estáticos como
+`import icon from './icon.png` y pasárselos a la propiedad `src`.
+
+En algunos casos, tal vez desees desactivar esta función para evitar
+conflictos con otros plugins.
+
+Puedes desactivar las importaciones de imágenes estáticas con la siguiente
+configuración:
+
+```js
+module.exports = {
+  images: {
+    disableStaticImages: true,
+  },
+}
+```
+
 ## `Image` API {#image-api}
 
 La optimización de imágenes puede ser habilitada a través del componente
@@ -193,7 +245,7 @@ Por ejemplo, considera un proyecto con los siguientes archivos.
 Podemos servir una imagen optimizada de este modo:
 
 ```jsx
-import {Image} from "blitz"
+import { Image } from "blitz"
 
 function Home() {
   return (
@@ -205,7 +257,7 @@ function Home() {
         width={500}
         height={500}
       />
-      <p>¡Bienvenidos a mi página!</p>
+      <p>¡Bienvenid@s a mi página!</p>
     </>
   )
 }
@@ -219,7 +271,11 @@ El componente `Image` necesita las siguientes propiedades.
 
 #### src
 
-La dirección o URL de la imagen. Esta propiedad no es opcional.
+Obligatorio y debe ser uno de los siguientes:
+
+1. Una imagen importada estáticamente, como en los ejemplos de más arriba.
+2. Una ruta como texto. Esta puede ser una URL externa o un ruta interna
+   dependiendo del [cargador](#loader).
 
 Cuando se use una URL externa, debes añadirla a [`domains`](#domains) en
 `blitz.config.js`.
@@ -228,13 +284,15 @@ Cuando se use una URL externa, debes añadirla a [`domains`](#domains) en
 
 El ancho de la imagen en píxeles. Debe ser un entero sin unidad.
 
-Necesario a no ser que `layout="fill"`.
+Obligatorio,excepto para imágenes importadas estáticamente o cuando
+[`layout="fill"`](#layout).
 
 #### height
 
 La altura de la imagen en píxeles. Debe ser un entero sin unidad.
 
-Necesario a no ser que `layout="fill"`.
+Obligatorio,excepto para imágenes importadas estáticamente o cuando
+[`layout="fill"`](#layout).
 
 ### Propiedades Opcionales {#optional-props}
 
@@ -283,9 +341,9 @@ parámetros:
 - `quality`
 
 ```js
-import {Image} from "blitz"
+import { Image } from "blitz"
 
-const myLoader = ({src, width, quality}) => {
+const myLoader = ({ src, width, quality }) => {
   return `https://example.com/${src}?w=${width}&q=${quality || 75}`
 }
 
@@ -293,8 +351,8 @@ const MyImage = (props) => {
   return (
     <Image
       loader={myLoader}
-      src="/me.png"
-      alt="Picture of the author"
+      src="yo.png"
+      alt="Foto del autor"
       width={500}
       height={500}
     />
@@ -325,6 +383,29 @@ Cuando es `true`, la imagen será considerada de alta prioridad y se la
 Solo debería usarse cuando la imagen es de las primeras en ser vistas. Por
 defecto es `false`.
 
+#### placeholder
+
+Un _placeholder_ para mostrar mientras la imagen se carga. Los valores
+posibles son `blur` y `empty`. Por defecto es `empty`.
+
+Cuando es `blur`, la propiedad [`blurDataURL`](#blurdataurl) será
+utilizada como un _placeholder_. Si la imagen en cuestión fue importada
+estáticamente y esta es un JPG, PNG o WebP, entonces tendrá el valor
+`blurDataURL` cargado automáticamente.
+
+Para imágenes dinámicas, debes proporcionar la propiedad
+[`blurDataURL`](#blurdataurl) manualmente. Soluciones como
+[Plaiceholder](https://github.com/joe-bell/plaiceholder) pueden ayudar con
+la generación en `base64`.
+
+Cuando es `empty`, no habrá ningún _placeholder_ mientra la imagen carga,
+solo espacio vacío.
+
+Pruébalo:
+
+- [Demo del _placeholder_ `blur`](https://image-component.nextjs.gallery/placeholder)
+- [Demo de un efecto reluciente en `blurDataURL`](https://image-component.nextjs.gallery/shimmer)
+
 ### Propiedades Avanzadas {#advanced-props}
 
 En algunos casos, puedes llegar a necesitar un uso más avanzado. El
@@ -344,15 +425,15 @@ Cómo debe posicionarse una imagen cuando `layout="fill"`.
 
 #### loading
 
-<!-- prettier-ignore-start -->
-:::caution
+<Card type="caution">
+
 La siguiente propiedad está pensada para usos avanzados. Hacer que una
 imagen carge con `eager` normalmente **perjudica el rendimiento**.
 
 Recomendamos utilizar la propiedad `priority` en su lugar, la cual carga
 la imagen _eagerly_ en casi todos los casos.
-:::
-<!-- prettier-ignore-end -->
+
+</Card>
 
 El comportamiento de carga de la imagen. Por defecto, `lazy`.
 
@@ -362,6 +443,27 @@ misma haciendo _scroll_.
 Cuando es `eager`, cargará la imagen inmediatamente.
 
 [Más información](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/img#attr-loading).
+
+#### blurDataURL
+
+Una
+[URL de datos](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs)
+utilizada como un _placeholder_ antes de que la imagen carge
+satisfactoriamente. Solo funciona cuando
+[`placeholder="blur"`](#placeholder).
+
+Debe ser una imagen codificada en base64. Será ampliada y difuminada, por
+lo que se recomienda utilizar una imagen muy pequeña (10px o menos).
+Incluir imágenes más grandes podría dañar el rendimiento de tu aplicación.
+
+Pruébalo:
+
+- [Demo de la propiedad `blurDataURL` por defecto](https://image-component.nextjs.gallery/placeholder)
+- [Demo de un efecto reluciente en `blurDataURL`](https://image-component.nextjs.gallery/shimmer)
+
+Además, puedes
+[generar un URL de datos que sea un color sólido](https://png-pixel.com)
+que corresponda a la imagen.
 
 #### unoptimized
 

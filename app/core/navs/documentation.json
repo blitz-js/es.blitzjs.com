@@ -1,15 +1,23 @@
 [
   {
     "title": {
-      "title": "Introduction",
+      "title": "Introducción",
       "iconPath": "/img/introduction.svg",
       "iconDarkPath": "/img/introduction-white.svg"
     },
-    "pages": ["get-started", "tutorial", "what-is-nextjs", "why-blitz", "tradeoffs", "stickers"]
+    "pages": [
+      "get-started",
+      "tutorial",
+      "learning-path",
+      "what-is-nextjs",
+      "why-blitz",
+      "tradeoffs",
+      "stickers"
+    ]
   },
   {
     "title": {
-      "title": "Community",
+      "title": "Comunidad",
       "iconPath": "/img/people-purple.svg",
       "iconDarkPath": "/img/people-white.svg"
     },
@@ -25,30 +33,33 @@
   },
   {
     "title": {
-      "title": "Basics",
+      "title": "Esenciales",
       "iconPath": "/img/basics.svg",
       "iconDarkPath": "/img/basics-white.svg"
     },
     "pages": [
       "file-structure",
       "app-component",
+      "image-component",
+      "script-component",
       "css",
-      "image-optimization",
+      "font-optimization",
       "static-files",
       "environment-variables",
       "error-handling",
-      "testing"
+      "error-boundary",
+      "testing",
+      "utilities"
     ]
   },
   {
     "title": {
-      "title": "Pages",
+      "title": "Páginas",
       "iconPath": "/img/pages.svg",
       "iconDarkPath": "/img/pages-white.svg"
     },
     "pages": [
       "pages",
-      "redirects",
       "error-pages",
       "head-component",
       "document-component",
@@ -62,7 +73,7 @@
   },
   {
     "title": {
-      "title": "Routing",
+      "title": "Rutas",
       "iconPath": "/img/routing.svg",
       "iconDarkPath": "/img/routing-white.svg"
     },
@@ -73,13 +84,17 @@
       "link",
       "route-params-query",
       "router",
+      "redirects",
+      "rewrites",
+      "headers",
       "api-routes",
-      "shallow-routing"
+      "shallow-routing",
+      "route-manifest"
     ]
   },
   {
     "title": {
-      "title": "Auth",
+      "title": "Autenticación",
       "iconPath": "/img/shield-purple.svg",
       "iconDarkPath": "/img/shield-white.svg"
     },
@@ -94,7 +109,7 @@
   },
   {
     "title": {
-      "title": "Database",
+      "title": "Base de Datos",
       "iconPath": "/img/database.svg",
       "iconDarkPath": "/img/database-white.svg"
     },
@@ -102,7 +117,7 @@
   },
   {
     "title": {
-      "title": "Queries & Mutations",
+      "title": "Peticiones y Mutaciones",
       "iconPath": "/img/queries.svg",
       "iconDarkPath": "/img/queries-white.svg"
     },
@@ -121,23 +136,29 @@
   },
   {
     "title": {
-      "title": "Backend Architecture",
+      "title": "Arquitectura Backend",
       "iconPath": "/img/mutations.svg",
       "iconDarkPath": "/img/mutations-white.svg"
     },
-    "pages": ["background-processing-with-quirrel", "middleware", "custom-server"]
+    "pages": [
+      "multitenancy",
+      "background-processing-with-quirrel",
+      "middleware",
+      "custom-server",
+      "security-headers"
+    ]
   },
   {
     "title": {
-      "title": "Deploying to Production",
+      "title": "Deploy a Producción",
       "iconPath": "/img/deploying-to-production.svg",
       "iconDarkPath": "/img/deploying-to-production-white.svg"
     },
-    "pages": ["deploy-render", "deploy-heroku", "deploy-vercel"]
+    "pages": ["deploy-render", "deploy-heroku", "deploy-vercel", "deploy-railway"]
   },
   {
     "title": {
-      "title": "Recipes",
+      "title": "Recetas",
       "iconPath": "/img/recipe-purple.svg",
       "iconDarkPath": "/img/recipe-white.svg"
     },
@@ -145,7 +166,7 @@
   },
   {
     "title": {
-      "title": "Configuration",
+      "title": "Configuración",
       "iconPath": "/img/config-purple.svg",
       "iconDarkPath": "/img/config-white.svg"
     },
@@ -153,6 +174,9 @@
       "blitz-config",
       "webpack-config",
       "postcss-config",
+      "eslint-config",
+      "husky-config",
+      "prettier-config",
       "rpc-specification",
       "measuring-performance"
     ]
@@ -173,6 +197,7 @@
       "cli-db",
       "cli-prisma",
       "cli-generate",
+      "cli-codegen",
       "cli-console",
       "cli-install",
       "cli-autocomplete",
@@ -181,7 +206,7 @@
   },
   {
     "title": {
-      "title": "Templates",
+      "title": "Plantillas",
       "iconPath": "/img/template-purple.svg",
       "iconDarkPath": "/img/template-white.svg"
     },
