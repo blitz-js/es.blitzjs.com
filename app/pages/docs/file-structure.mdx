@@ -1,15 +1,15 @@
 ---
 id: file-structure
-title: File Structure
-sidebar_label: File Structure
+title: Estructura de los archivos
+sidebar_label: Estructura de los archivos
 ---
 
-#### Guiding Principles
+#### Principios
 
-1. Files that change together should live together.
-2. Minimal requirements, maximum flexibility
+1. Los archivos que cambian juntos deben vivir juntos.
+2. Requisitos mínimos, máxima flexibilidad.
 
-#### Example file structure
+#### Ejemplo de la estructura de archivos
 
 ```
 ├── app/
@@ -90,66 +90,70 @@ sidebar_label: File Structure
 
 #### `app`
 
-Contains all your core application code.
+Contiene todo el código propio de tu aplicación.
 
-- The file structure nested inside `app/` can be anything you want, but we
-  recommend the following:
-  - First layer folders to be a "domain context", like `core/`,
-    `projects/`, `users/`, `billing/`, etc.
-  - All other folders like `components/` and `hooks/` go inside one of the
-    above domain context folders
-- Special Folder Names
-  - Can exist at any level of the hierarchy inside `app`.
-  - `pages/` expose a React component at a URL. Follows the same semantics
-    as the Next.js `pages/` folder.
-  - `api/` expose a Node.js request handler at URL. Same semantics as
-    Next.js `pages/api/` folder.
-  - `queries/` and `mutations/` are for your Blitz queries and mutations.
-    Each query and mutation is exposed at a URL corresponding to its file
-    path.
+- La estructura dentro de `app/` puede ser la que quieras, pero
+  recomendamos lo siguiente:
+  - Las carpetas dentro de `app/` deben representar grandes porciones o
+    dominios de tu aplicación, como `core/`, `users/`, `billing/`, etc.
+  - Directorios como `components/` o `hooks/` deben ir dentro de las
+    carpetas anteriormente nombradas.
+- Carpetas especiales
+  - Pueden existir a cualquier nivel de la jerarquía de `app/`.
+  - `pages/` expone un componente de React como una URL. Sigue las mismas
+    reglas que la carpeta `pages/` de Next.js.
+  - `api/` expone una función de Node.js como una URL encargada de
+    resolver una petición. Sigue las mismas reglas que la carpeta
+    `pages/api/` de Next.js.
+  - `queries/` y `mutations/` son para tus peticiones y mutaciones
+    respectivamente. Cada una es expuesta a una URL correspondiente a su
+    dirección desde `app/`.
 
 #### `db`
 
-Contains database configuration, schema, and migration files.
-`db/index.js` exports your initialized database client so you can use it
-anywhere in your app.
+Contiene la configuración de la base de datos, el esquema y archivos de
+migraciones. `db/index.js` exporta el cliente de tu base de datos
+inicializado para que lo puedas usar donde quieras en tu aplicación.
 
 #### `integrations`
 
-Contains third-party integration code. Ex: `auth0.js`, `twilio.js`, etc.
-These files are a good place to instantiate a client with shared
-configuration.
+Contiene código de terceros que se integran con tu aplicación, como
+`auth0.js` o `twilio.js`. Este es un buen lugar para crear clientes con
+configuración compartida.
 
 #### `pages`
 
-The top level `pages` folder and all nested `pages` folders inside `app`
-are merged together at build time. The build will fail if the same route
-is defined in two places.
+La carpeta `pages` y todas las carpetas `pages` dentro de `app` se
+fusionan al compilar la aplicación. La compilación fallará si una ruta es
+definida múltiples veces.
 
-- This top level pages folder is optional.
-- Has the same semantics as the Next.js `pages` folder. All files in here
-  are mapped to the url corresponding to their file paths.
-- While you can place any route files here, we recommend placing route
-  files inside `app`. But if you want, you can instead place all your
-  route files in this top level folders instead of being spread out in
-  various folders inside `app`
+- La carpeta `pages` que no está dentro de `app` no es obligatoria.
+- Funciona igual que la carpeta `pages` de Next.js. A cada archivo se le
+  asigna una URL correspondiente con su ruta.
+- Aunque sea totalmente válido usar esta carpeta, recomendamos ubicar tus
+  rutas dentro de la carpeta `app`.
 
 #### `api`
 
-Same as Next.js `pages/api` folder, but not nested inside pages.
+Funciona igual que la carpeta `pages/api/` de Next.js, pero no tiene que
+estar dentro de `pages`.
 
-And like the `pages` folder, the top level `api` folder and all nested
-`api` folders inside `app` are merged together at build time.
+Y al igual que `pages`, `api` y todas las carpetas `api` dentro de `app`
+se fusionan en el momento de compilación.
 
 #### `public`
 
-All files in here are served statically from your app's root URL
+Todos los archivos que se encuentren aquí serán servidos estáticamente
+deste la URL base de tu aplicación.
 
 #### `blitz.config.js`
 
-A configuration file with the same format as `next.config.js`
+Un archivo de configuración con el mismo formato que `next.config.js`.
 
-### Other Notes {#other-notes}
+### Otras notas {#other-notes}
 
-- All top level folders are automatically aliased. So for example you can
-  import from `app/projects/queries/getProject` from anywhere in our app.
+- Todas las carpetas inmediatamente dentro del directorio de tu aplicación
+  (`app/`, `db/`, `public/`, etc.) pueden ser importadas absolutamente
+  desde cualquier lugar de tu aplicación. En vez de importar
+  `../../../../../projects/queries/getProject`, puedes hacer
+  `app/projects/queries/getProject`.
