@@ -32,8 +32,9 @@ aplicación.
     redireccionamiento automáticamente por ti.
   - Ejemplo: `throw new RedirectError('/login')`
 
-Para usar, importa desde `blitz` y usa como cualquier Error de JavaScript. Si
-eres una persona curiosa, puedes [ver el código fuente de estos](https://github.com/blitz-js/blitz/blob/canary/packages/core/src/errors.ts).
+Para usarlos, impórtalos desde `blitz` y úsalos como cualquier Error de
+JavaScript. Si eres una persona curiosa, puedes
+[ver el código fuente de estos](https://github.com/blitz-js/blitz/blob/canary/packages/core/src/errors.ts).
 
 ```ts
 import { AuthenticationError } from "blitz"
@@ -42,7 +43,7 @@ try {
   throw new AuthenticationError()
 } catch (error) {
   if (error.name === "AuthenticationError") {
-    // Manejar el error adecuadamente, por ejemplo mostrar una pantalla de login
+    // Maneja el error adecuadamente. Por ejemplo, muestra una pantalla de login
     console.log(error.statusCode)
     console.log(error.message)
   }
@@ -104,15 +105,15 @@ function RootErrorFallback({ error, resetErrorBoundary }) {
 }
 ```
 
-Esto significa que todos los errores seran capturados al menos al nivel raíz.
+Esto significa que todos los errores serán capturados al menos al nivel raíz.
 Sin embargo, también puedes agregar un `<ErrorBoundary>` en cualquer lugar de tu
 aplicación y manejar los errores de una manera más localizada. Para hacer esto,
-declara un `useQueryErrorResetBoundary` separado en tu componente y pasalo junto
+declara un `useQueryErrorResetBoundary` separado en tu componente y pásalo junto
 al _ErrorBoundary_ local. Si un error es capturado por un `<ErrorBoundary>` en
 algún lugar dentro del árbol de tu aplicación, no llegará al _ErrorBoundary_ en
 la raíz, a menos que se lanze nuevamente.
 
-### Manejando Errores del Servidor en el Cliente {#handling-server-errors-on-the-client}
+### Manejo de Errores del Servidor en el Cliente {#handling-server-errors-on-the-client}
 
 Una característica increíble de Bliz es que puede lanzar cualquier error
 desde una mutación o consulta de Blitz y luego usar un _ErrorBoundary_ en el
