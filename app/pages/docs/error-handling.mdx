@@ -5,7 +5,7 @@ sidebar_label: Manejo de Errores
 
 ## Errores Incorporados {#built-in-errors}
 
-Blitz viene con un número de errores útiles que puedes usar a lo largo de tu
+Blitz viene con una cantidad de errores útiles que puedes usar en toda tu
 aplicación.
 
 - `AuthenticationError`
@@ -55,7 +55,7 @@ aplicación, sea en el servidor o en el cliente.
 
 ## Capturando y Manejando Errores en el Cliente {#catching-and-handling-errors-on-the-client}
 
-Manejas los errores en el cliente usando [`<ErrorBoundary>`](./error-boundary).
+Para manejar los errores en el cliente, usas un [`<ErrorBoundary>`](./error-boundary).
 
 Por defecto, las nuevas aplicaciones de Blitz incluyen un `<ErrorBoundary>` de
 mayor nivel y un `FallbackComponent` en `app/pages/_app.tsx`.
@@ -111,7 +111,7 @@ aplicación y manejar los errores de una manera más localizada. Para hacer esto
 declara un `useQueryErrorResetBoundary` separado en tu componente y pásalo junto
 al _ErrorBoundary_ local. Si un error es capturado por un `<ErrorBoundary>` en
 algún lugar dentro del árbol de tu aplicación, no llegará al _ErrorBoundary_ en
-la raíz, a menos que se lanze nuevamente.
+la raíz, a menos que lo lances nuevamente.
 
 ### Manejo de Errores del Servidor en el Cliente {#handling-server-errors-on-the-client}
 
@@ -127,11 +127,11 @@ un `<LoginForm>` si `error.name === 'AuthenticationError'`.
 ### Errores Personalizados {#custom-errors}
 
 Para errores adicionales a los que Blitz provee, se recomienda crear clases de
-Errores personalizadas. Entonces puedes agegar propiedades de datos
-personalizadas que te ayuden a manejar el error.
+Errores personalizadas. Así puedes agegar propiedades de datos personalizadas
+que te ayuden a manejar el error.
 
-Aquí hay un ejemplo de un error personalizado. Es una clase de JavaScript,
-entonces puedes ser tan creativo o creativa como quieras.
+Mira el siguiente ejemplo de un error personalizado. Es una clase de JavaScript,
+entonces puedes usar tu creatividad tanto como quieras.
 
 ```ts
 import SuperJson from "superjson"
@@ -156,9 +156,9 @@ cualquier propiedad de error especial que quieras que sea serializada. Por
 defecto, las popiedades de los errores personalizados son omitidas por
 razones de seguridad.
 
-Luego en el cliente, puedes usar un `FallbackComponent` como arriba, o puedes
-manejar el error en el manejador de envío de tu formulario de la siguiente
-manera.
+Luego en el cliente, puedes usar un `FallbackComponent` como se ve arriba, o
+puedes manejar el error en el manejador de envío de tu formulario del siguiente
+modo.
 ```tsx
 <Form
   onSubmit={async (values) => {
