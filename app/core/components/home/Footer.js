@@ -62,7 +62,7 @@ export function Footer({className, hasDarkMode}) {
                   </a>
                 </Link>
                 <Link href="/showcase">
-                  <a>Showcase</a>
+                  <a>Exhibición</a>
                 </Link>
               </LinkList>
 
