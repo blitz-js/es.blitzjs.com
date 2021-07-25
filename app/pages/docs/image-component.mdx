@@ -7,7 +7,7 @@ Blitz viene con un componente `Image` y optimización automática de
 imágenes.
 
 El componente `Image` es una extensión del componente `<img>` (de HTML
-plano) pensado para la web moderna.
+pensado para la web moderna.
 
 La optimización automática de imágnes te permite redimensionar, comprimir,
 y servir imágenes en formatos modernos como
@@ -25,20 +25,20 @@ En vez de optimizar las imágenes en el momento de compilación, Blitz
 optimiza las imágenes _a la carta_ y cuando los usuarios las necesiten. A
 diferencia de los generadores de sitios estáticos y de las soluciones
 meramente estáticas, tus tiempos de compilación son lo mismos si tienes 10
-imágenes o si tienes 1,000,000 de imágenes.
+o 1,000,000 de imágenes.
 
 Las imágenes son
 [_lazy loaded_](https://developer.mozilla.org/en-US/docs/Web/Performance/Lazy_loading)
 por defecto. Esto significa que la velocidad de carga de tu página no es
-penalizada por imágenes que no se vean al inicio. Las imágenes se cargarán
-cuando el usuario baje hasta verlas.
+penalizada por imágenes que están fuera de ventana. Las imágenes se
+cargarán cuando aparezcan en la pantalla.
 
 Las imágenes siempre se renderizan de tal forma que se evita el
 [_Cumulative Layout Shift_](https://web.dev/cls/), un
 [_Core Web Vital_](https://web.dev/vitals/) que Google
 [usará en su _search ranking_](https://webmasters.googleblog.com/2020/05/evaluating-page-experience.html).
 
-## El Componente `Image` {#image-component}
+## El componente `Image` {#image-component}
 
 Para añadir una imagen a tu aplicación, importa el componente `Image`:
 
@@ -50,7 +50,7 @@ function Home() {
   return (
     <>
       <h1>Mi Página Web</h1>
-      <Image src={profilePic} alt="Foto del autir" />
+      <Image src={profilePic} alt="Foto del autor" />
       <p>¡Bienvenid@s a mi página web!</p>
     </>
   )
@@ -62,10 +62,10 @@ export default Home
 ## Importar imágenes {#imports}
 
 Puedes importar imágenes que vivan dentro de tu proyecto utilizando
-`import`. (Nota: `require` no está soportado—solo `import`.)
+`import`. (Nota: `require` no está soportado.)
 
 Al hacer `import` directamente, `width`, `height` y `blurDataURL` serán
-proporcionados automáticamente al componente `<Image />`. El texto
+proporcionados automáticamente al componente `<Image>`. El texto
 alternativo aún debe ser provisto por separado.
 
 ```js
@@ -83,11 +83,11 @@ function Home() {
         // height={500} proporcionado automáticamente
         // blurDataURL="data:..." proporcionado automáticamente
         //
-        // Opcionalmente permite añadir una versión difuminada de
-        // la imagen mientras esta carga
+        // Permite añadir una versión difuminada de la imagen
+        // mientras esta carga (opcional)
         // placeholder="blur"
       />
-      <p>¡Bienvenidos a mi página!</p>
+      <p>¡Bienvenid@s a mi página web!</p>
     </>
   )
 }
@@ -117,11 +117,11 @@ module.exports = {
 }
 ```
 
-### Cargadores u Optimizadores {#loader}
+### Cargadores u optimizadores {#loader}
 
 Si quieres que un _cloud provider_ optimice las imágenes en vez de
-utilizar el por defecto de Blitz, puedes configurar qué proveedor y qué
-prefijo utilizar. El prefijo te permite usar URL relativas en el `src`.
+utilizar el optimizador de Blitz, puedes configurar qué proveedor y qué
+prefijo utilizar. El prefijo te permite usar URL relativas en `src`.
 
 ```js
 module.exports = {
@@ -145,15 +145,15 @@ Los siguientes _cloud providers_ son soportados:
 
 ## Cacheo {#caching}
 
-A continuación se describe el algorítmo de cacheo para el
+A continuación se describe el algoritmo de cacheo para el
 [optimizador por defecto](#loader). Para el resto de optimizadores, lee la
 documentación de tu _cloud provider_.
 
 Las imágenes son optimizadas dinámicamente en el momento que se solicitan
 y se guardan en la carpeta `<distDir>/cache/images`. La imagen optimizada
 será servida a las siguientes peticiones hasta que esta expire. Cuando se
-pida una imagen cuyo caché haya expirado, este caché será borrado y luego
-se generará de nuevo la imagen.
+pida una imagen cuyo caché haya expirado, este caché será borrado y se
+generará la imagen nuevamente.
 
 La expiración ("edad máxima" o "_Max-Age_") es definida por el encabezado
 `Cache-Control` del servidor de origen.
@@ -173,13 +173,14 @@ necesaria. Si eliges configurar las propiedades descritas a continuación,
 anularás cualquier cambio de las opciones por defecto de Blitz en futuras
 actualizaciones.
 
-### Tamaños de los Dispositivos {#device-sizes}
+### Tamaños de los dispositivos {#device-sizes}
 
 En algunos casos, cuando sabes el ancho de los disposivos de los usuarios
-que navegan tu sitio, puedes especificar una lista de _breakpoints_ usando
-la propiedad `deviceSizes`. Estos anchos son utilizados cuando el
-componente `Image` usa `layout="responsive"` o `layout="fill"` para que la
-imagen correcta sea entregada al dispositivo visitando tu sitio.
+que navegan tu sitio, puedes especificar una lista de puntos de cortes (o
+_breakpoints_) usando la propiedad `deviceSizes`. Estos anchos son
+utilizados cuando el componente `Image` usa `layout="responsive"` o
+`layout="fill"` para que la imagen correcta sea entregada al dispositivo
+visitando tu sitio.
 
 Si ninguna configuración es definida, se utilizarán los siguientes
 valores:
@@ -192,7 +193,7 @@ module.exports = {
 }
 ```
 
-### Tamaños de las Imágenes {#image-sizes}
+### Tamaños de las imágenes {#image-sizes}
 
 Puedes especificar una lista de anchos de imágenes utilizando la propiedad
 `imageSizes`. Estos anchos suelen ser diferentes (normalmente más
@@ -217,7 +218,7 @@ El comportamiento por defecto te permite importar archivos estáticos como
 `import icon from './icon.png` y pasárselos a la propiedad `src`.
 
 En algunos casos, tal vez desees desactivar esta función para evitar
-conflictos con otros plugins.
+conflictos con otros paquetes o _plugins_ que tengas instalados.
 
 Puedes desactivar las importaciones de imágenes estáticas con la siguiente
 configuración:
@@ -242,7 +243,7 @@ Por ejemplo, considera un proyecto con los siguientes archivos.
 - `pages/index.js`
 - `public/yo.png`
 
-Podemos servir una imagen optimizada de este modo:
+PoDemostracións servir una imagen optimizada de este modo:
 
 ```jsx
 import { Image } from "blitz"
@@ -257,7 +258,7 @@ function Home() {
         width={500}
         height={500}
       />
-      <p>¡Bienvenid@s a mi página!</p>
+      <p>¡Bienvenid@s a mi página web!</p>
     </>
   )
 }
@@ -265,7 +266,7 @@ function Home() {
 export default Home
 ```
 
-### Propiedades Necesarias {#required-props}
+### Propiedades obligatorias {#required-props}
 
 El componente `Image` necesita las siguientes propiedades.
 
@@ -284,29 +285,29 @@ Cuando se use una URL externa, debes añadirla a [`domains`](#domains) en
 
 El ancho de la imagen en píxeles. Debe ser un entero sin unidad.
 
-Obligatorio,excepto para imágenes importadas estáticamente o cuando
+Obligatorio, excepto para imágenes importadas estáticamente o cuando
 [`layout="fill"`](#layout).
 
 #### height
 
 La altura de la imagen en píxeles. Debe ser un entero sin unidad.
 
-Obligatorio,excepto para imágenes importadas estáticamente o cuando
+Obligatorio, excepto para imágenes importadas estáticamente o cuando
 [`layout="fill"`](#layout).
 
-### Propiedades Opcionales {#optional-props}
+### Propiedades opcionales {#optional-props}
 
 El componente `<Image />` acepta, pero no necesita, las siguientes
 propiedades.
 
 #### layout
 
-El disposición (o _layout_) de la imagen cuando el ventana (o _viewport_)
+El disposición (o _layout_) de la imagen cuando la ventana (o _viewport_)
 cambia de tamaño. Su valor por defecto es `intrinsic`.
 
 Cuando es `fixed`, las dimensiones de la imagen no cambian aunque el
-tamaño de la ventana varíe (no es _responsive_). Esto es similar al
-elemento nativo `img`.
+tamaño de la ventana varíe (no es _responsive_), similar a como funciona
+el elemento `img`.
 
 Cuando es `intrinsic`, la imagen adaptará sus dimensiones en los tamaños
 más pequeños pero mantendrá su dimensiones originales en los tamaños más
@@ -322,11 +323,11 @@ a
 
 Pruébalo:
 
-- [Demo de `fixed`](https://image-component.nextjs.gallery/layout-fixed)
-- [Demo de `intrinsic`](https://image-component.nextjs.gallery/layout-intrinsic)
-- [Demo de `responsive`](https://image-component.nextjs.gallery/layout-responsive)
-- [Demo de `fill`](https://image-component.nextjs.gallery/layout-fill)
-- [Demo de una imagen fondo](https://image-component.nextjs.gallery/background)
+- [Demostración de `fixed`](https://image-component.nextjs.gallery/layout-fixed)
+- [Demostración de `intrinsic`](https://image-component.nextjs.gallery/layout-intrinsic)
+- [Demostración de `responsive`](https://image-component.nextjs.gallery/layout-responsive)
+- [Demostración de `fill`](https://image-component.nextjs.gallery/layout-fill)
+- [Demostración de una imagen fondo](https://image-component.nextjs.gallery/background)
 
 ### loader {#loader-1}
 
@@ -373,7 +374,7 @@ no será del mismo ancho que la ventana.
 #### quality
 
 La calidad de la imagen optimizada, un entero entre 1 y 100, donde 100 es
-la mejor calidad. Por defecto, 75.
+la mejor calidad. Por defecto es 75.
 
 #### priority
 
@@ -385,12 +386,13 @@ defecto es `false`.
 
 #### placeholder
 
-Un _placeholder_ para mostrar mientras la imagen se carga. Los valores
-posibles son `blur` y `empty`. Por defecto es `empty`.
+Qué mostrar mientras la imagen se carga. Los valores posibles son `blur` y
+`empty`. Por defecto es `empty`.
 
-Cuando es `blur`, la propiedad [`blurDataURL`](#blurdataurl) será
-utilizada como un _placeholder_. Si la imagen en cuestión fue importada
-estáticamente y esta es un JPG, PNG o WebP, entonces tendrá el valor
+Cuando es `blur`, se mostrará una versión difuminada de la imagen hasta
+que esta carge. Esta versión difuminada es dada por la propiedad
+[`blurDataURL`](#blurdataurl). Si la imagen en cuestión fue importada
+estáticamente y es de tipo JPG, PNG o WebP, entonces tendrá el valor
 `blurDataURL` cargado automáticamente.
 
 Para imágenes dinámicas, debes proporcionar la propiedad
@@ -398,15 +400,15 @@ Para imágenes dinámicas, debes proporcionar la propiedad
 [Plaiceholder](https://github.com/joe-bell/plaiceholder) pueden ayudar con
 la generación en `base64`.
 
-Cuando es `empty`, no habrá ningún _placeholder_ mientra la imagen carga,
-solo espacio vacío.
+Cuando es `empty`, se mostrará un espacio vacío con las dimensiones de la
+imagen mientra esta carga.
 
 Pruébalo:
 
-- [Demo del _placeholder_ `blur`](https://image-component.nextjs.gallery/placeholder)
-- [Demo de un efecto reluciente en `blurDataURL`](https://image-component.nextjs.gallery/shimmer)
+- [Demostración de `blur`](https://image-component.nextjs.gallery/placeholder)
+- [Demostración de un efecto reluciente en `blurDataURL`](https://image-component.nextjs.gallery/shimmer)
 
-### Propiedades Avanzadas {#advanced-props}
+### Propiedades avanzadas {#advanced-props}
 
 En algunos casos, puedes llegar a necesitar un uso más avanzado. El
 componente `Image` acepta las siguientes propiedades.
@@ -415,13 +417,13 @@ componente `Image` acepta las siguientes propiedades.
 
 Cómo debe redimensionarse una imagen cuando `layout="fill"`.
 
-[Mas información](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
+[Más información](https://developer.mozilla.org/en-US/docs/Web/CSS/object-fit).
 
 #### objectPosition
 
 Cómo debe posicionarse una imagen cuando `layout="fill"`.
 
-[Mas información](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position).
+[Más información](https://developer.mozilla.org/en-US/docs/Web/CSS/object-position).
 
 #### loading
 
@@ -435,7 +437,7 @@ la imagen _eagerly_ en casi todos los casos.
 
 </Card>
 
-El comportamiento de carga de la imagen. Por defecto, `lazy`.
+El comportamiento de carga de la imagen. Por defecto es `lazy`.
 
 Cuando es `lazy`, la imagen cargará cuando el usuario se acerque a la
 misma haciendo _scroll_.
@@ -458,20 +460,20 @@ Incluir imágenes más grandes podría dañar el rendimiento de tu aplicación.
 
 Pruébalo:
 
-- [Demo de la propiedad `blurDataURL` por defecto](https://image-component.nextjs.gallery/placeholder)
-- [Demo de un efecto reluciente en `blurDataURL`](https://image-component.nextjs.gallery/shimmer)
+- [Demostración de la propiedad `blurDataURL` por defecto](https://image-component.nextjs.gallery/placeholder)
+- [Demostración de un efecto reluciente en `blurDataURL`](https://image-component.nextjs.gallery/shimmer)
 
-Además, puedes
+También puedes
 [generar un URL de datos que sea un color sólido](https://png-pixel.com)
 que corresponda a la imagen.
 
 #### unoptimized
 
-Cuando es `true`, la imagen original será servida como vino al mundo en
-vez de alterar su calidad, dimensiones y/o formato. Por defecto es
-`false`.
+Cuando es `true`, la imagen original será servida tal cual como vino al
+mundo en vez de alterar su calidad, dimensiones y/o formato. Por defecto
+es `false`.
 
-### Otras Propiedades {#other-props}
+### Otras propiedades {#other-props}
 
 El resto de propiedades del componente `Image` serán pasadas al componente
 `img` excepto las siguientes:
