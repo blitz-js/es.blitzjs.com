@@ -5,8 +5,7 @@ sidebar_label: Manejo de Errores
 
 ## Errores Incorporados {#built-in-errors}
 
-Blitz viene con una cantidad de errores útiles que puedes usar en toda tu
-aplicación.
+Blitz viene con errores útiles que puedes usar en toda tu aplicación.
 
 - `AuthenticationError`
   - `name`: "AuthenticationError"
@@ -55,7 +54,7 @@ aplicación, sea en el servidor o en el cliente.
 
 ## Capturando y Manejando Errores en el Cliente {#catching-and-handling-errors-on-the-client}
 
-Para manejar los errores en el cliente, usas un [`<ErrorBoundary>`](./error-boundary).
+Puedes manejar los errores en el cliente usando un [`<ErrorBoundary>`](./error-boundary).
 
 Por defecto, las nuevas aplicaciones de Blitz incluyen un `<ErrorBoundary>` de
 mayor nivel y un `FallbackComponent` en `app/pages/_app.tsx`.
@@ -126,8 +125,8 @@ un `<LoginForm>` si `error.name === 'AuthenticationError'`.
 
 ### Errores Personalizados {#custom-errors}
 
-Para errores adicionales a los que Blitz provee, se recomienda crear clases de
-Errores personalizadas. Así puedes agegar propiedades de datos personalizadas
+Para usar errores adicionales a los que Blitz provee, se recomienda crear clases
+de Errores personalizadas. Así puedes agegar propiedades de datos personalizadas
 que te ayuden a manejar el error.
 
 Mira el siguiente ejemplo de un error personalizado. Es una clase de JavaScript,
