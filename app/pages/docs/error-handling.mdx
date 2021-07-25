@@ -1,40 +1,39 @@
 ---
-title: Error Handing
-sidebar_label: Error Handling
+title: Manejo de Errores
+sidebar_label: Manejo de Errores
 ---
 
-## Built-In Errors {#built-in-errors}
+## Errores Incorporados {#built-in-errors}
 
-Blitz comes with a number of useful errors you can use throughout your
-application.
+Blitz viene con un número de errores útiles que puedes usar a lo largo de tu
+aplicación.
 
 - `AuthenticationError`
   - `name`: "AuthenticationError"
   - `statusCode`: 401
-  - Default `message`: "You must be logged in to access this"
+  - Valor predeterminado de `message`: "You must be logged in to access this"
 - `CSRFTokenMismatchError`
   - `name`: "CSRFTokenMismatchError"
   - `statusCode`: 401
-  - Default `message`: "You must be logged in to access this"
+  - Valor predeterminado de `message`: "You must be logged in to access this"
 - `AuthorizationError`
   - `name`: "AuthorizationError"
   - `statusCode`: 403
-  - Default `message`: "You are not authorized to access this"
+  - Valor predeterminado de `message`: "You are not authorized to access this"
 - `NotFoundError`
   - `name`: "NotFoundError"
   - `statusCode`: 404
-  - Default `message`: "This could not be found"
+  - Valor predeterminado de `message`: "This could not be found"
 - `RedirectError`
   - `name`: "RedirectError"
-  - You can throw this error from a render function if you want to
-    redirect the user while also preventing the user from seeing on the
-    current render path. Our `ErrorBoundary` component will automatically
-    handle this redirect for you.
-  - Example: `throw new RedirectError('/login')`
+  - Puedes lanzar este error desde una función de renderizado si quieres
+    redirigir al usuario, evitando a la vez que el usuario vea la ruta de
+    renderizado actual. Nuestro componente `ErrorBoundary` maneja este
+    redireccionamiento automáticamente por ti.
+  - Ejemplo: `throw new RedirectError('/login')`
 
-To use, import from `blitz` and use like any JavaScript Error. If you're
-curious, you can
-[see the source code for these](https://github.com/blitz-js/blitz/blob/canary/packages/core/src/errors.ts).
+Para usar, importa desde `blitz` y usa como cualquier Error de JavaScript. Si
+eres una persona curiosa, puedes [ver el código fuente de estos](https://github.com/blitz-js/blitz/blob/canary/packages/core/src/errors.ts).
 
 ```ts
 import { AuthenticationError } from "blitz"
@@ -43,25 +42,24 @@ try {
   throw new AuthenticationError()
 } catch (error) {
   if (error.name === "AuthenticationError") {
-    // Handle this error appropriately, like show a login screen
+    // Manejar el error adecuadamente, por ejemplo mostrar una pantalla de login
     console.log(error.statusCode)
     console.log(error.message)
   }
 }
 ```
 
-You can throw these or any other errors from anywhere in your app, whether
-on the server or on the client.
+Puedes lanzar estos o cualquier otro error desde cualquier lugar de tu
+aplicación, sea en el servidor o en el cliente.
 
-## Catching and Handling Errors on the Client {#catching-and-handling-errors-on-the-client}
+## Capturando y Manejando Errores en el Cliente {#catching-and-handling-errors-on-the-client}
 
-You handle errors on the client by using
-[`<ErrorBoundary>`](./error-boundary).
+Manejas los errores en el cliente usando [`<ErrorBoundary>`](./error-boundary).
 
-By default, new Blitz applications include a top-level `ErrorBoundary` and
-`FallbackComponent` in `app/pages/_app.tsx`.
+Por defecto, las nuevas aplicaciones de Blitz incluyen un `<ErrorBoundary>` de
+mayor nivel y un `FallbackComponent` en `app/pages/_app.tsx`.
 
-It looks something like this:
+Es algo como esto:
 
 ```tsx
 // app/pages/_app.tsx
@@ -74,8 +72,8 @@ import {
 import LoginForm from "app/auth/components/LoginForm"
 
 export default function App({ Component, pageProps }: AppProps) {
-  // This ensures the Blitz useQuery hooks will automatically refetch
-  // data any time you reset the error boundary
+  // Esto asegura que el hook useQuery de Blitz automáticamente vuelve a
+  // pedir los datos en cualquier ocación que resetees el ErrorBoundary.
   const { reset } = useQueryErrorResetBoundary()
 
   return (
@@ -106,33 +104,33 @@ function RootErrorFallback({ error, resetErrorBoundary }) {
 }
 ```
 
-That means all errors will at least be caught at the root level. However,
-you can also add `<ErrorBoundary>` anywhere else in your app for more
-localized error handling. To do this, declare a separate
-`useQueryErrorResetBoundary` in your component and pass it along to the
-local ErrorBoundary. If an error is caught by an `<ErrorBoundary>`
-somewhere down inside your app tree, then it will not reach the root
-ErrorBoundary unless you re-throw it.
+Esto significa que todos los errores seran capturados al menos al nivel raíz.
+Sin embargo, también puedes agregar un `<ErrorBoundary>` en cualquer lugar de tu
+aplicación y manejar los errores de una manera más localizada. Para hacer esto,
+declara un `useQueryErrorResetBoundary` separado en tu componente y pasalo junto
+al _ErrorBoundary_ local. Si un error es capturado por un `<ErrorBoundary>` en
+algún lugar dentro del árbol de tu aplicación, no llegará al _ErrorBoundary_ en
+la raíz, a menos que se lanze nuevamente.
 
-### Handling Server Errors on the Client {#handling-server-errors-on-the-client}
+### Manejando Errores del Servidor en el Cliente {#handling-server-errors-on-the-client}
 
-A really awesome feature of Blitz is that you can throw any error from a
-Blitz query or mutation and then use an ErrorBoundary on the frontend to
-catch and handle it.
+Una característica increíble de Bliz es que puede lanzar cualquier error
+desde una mutación o consulta de Blitz y luego usar un _ErrorBoundary_ en el
+_frontend_ para caprutarlo y manejarlo.
 
-For example, with the above `_app.tsx`, you can throw
-`AuthenticationError` inside a Blitz query and then a login screen will
-automatically show in the client because that root ErrorBoundary is
-rendering `<LoginForm>` if `error.name === 'AuthenticationError'`.
+Por ejemplo, con el `_app.tsx` de arriba, puedes lanzar un `AuthenticationError`
+dentro de la consulta de Blitz y luego una pantalla de _login_ se mostrará
+automáticamente en el cliente porque el _ErrorBoundary_ raíz está renderizando
+un `<LoginForm>` si `error.name === 'AuthenticationError'`.
 
-### Custom Errors {#custom-errors}
+### Errores Personalizados {#custom-errors}
 
-For errors other than what Blitz provides, it's recommended to create
-custom Error classes. You can then add custom data attributes that help
-you handle the error.
+Para errores adicionales a los que Blitz provee, se recomienda crear clases de
+Errores personalizadas. Entonces puedes agegar propiedades de datos
+personalizadas que te ayuden a manejar el error.
 
-Here's an example of how to create a custom error. It's a JavaScript
-class, so you can be as creative as you want.
+Aquí hay un ejemplo de un error personalizado. Es una clase de JavaScript,
+entonces puedes ser tan creativo o creativa como quieras.
 
 ```ts
 import SuperJson from "superjson"
@@ -144,21 +142,22 @@ export class UsernameTakenError extends Error {
     this.suggestedUserName = suggestedUserName
   }
 }
-// Register with SuperJson serializer so it's reconstructed on the client
+// Registrar con el serializador SuperJson para que se reconstruya en el cliente
 SuperJson.registerClass(UsernameTakenError)
 SuperJson.allowErrorProps("suggestedUserName")
 
 throw new UsernameTakenError({ suggestedUserName: "second_best" })
 ```
 
-Note that you **must register it with SuperJson** as shown above in order
-for `instanceof` to work on the client. And you must also tell SuperJson
-about any special error propertries you want to be serialized. By default
-custom error properties are omitted for security concerns.
+Nota que **debes registrarlo con SuperJson** como se muestra arriba para que
+`instanceof` funcione en el cliente. Y debes decirle a SuperJson acerca de
+cualquier propiedad de error especial que quieras que sea serializada. Por
+defecto, las popiedades de los errores personalizados son son omitidas por
+razones de seguridad.
 
-Then on the client, you can use a `FallbackComponent` like above, or you
-can handle the error in your form submit handler like this.
-
+Luego en el cliente, puedes usar un `FallbackComponent` como arriba, o puedes
+manejar el error en el manejador de envío de tu formulario de la siguiente
+manera.
 ```tsx
 <Form
   onSubmit={async (values) => {
@@ -173,7 +172,7 @@ can handle the error in your form submit handler like this.
 />
 ```
 
-## Error Pages {#error-pages}
+## Páginas de Error {#error-pages}
 
-See the [Error Pages documentation](./error-pages) to learn about custom
-error pages and error fallback components.
+Mira la [documentación de Paginas de Error](./error-pages) para aprender más
+sobre páginas de error personalizadas y componentes _fallback_ de error.
