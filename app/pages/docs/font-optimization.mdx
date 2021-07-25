@@ -3,8 +3,8 @@ title: Optimización de fuentes
 sidebar_label: Optimización de fuentes
 ---
 
-Por defecto, Blitz.js pone todo el CSS relacionado con las fuentes en una
-sola línea automáticamente al compilar, eliminando así una petición extra
+Por defecto, Blitz.js automáticamente pone todo el CSS relacionado con las
+fuentes en una sola línea al compilar, eliminando así una petición extra
 para pedir las declaraciones. Esto resulta en mejoras al
 [_First Contentful Paint_ (FCP)](https://web.dev/fcp/) y
 [_Largest Contentful Paint_ (LCP)](https://vercel.com/blog/core-web-vitals#largest-contentful-paint).
@@ -20,7 +20,7 @@ Por ejemplo:
 
 // Después
 <style data-href="https://fonts.googleapis.com/css2?family=Inter">
-  @font-face {font-family: "Inter";font-style: normal; ...
+  @font-face{font-family:'Inter';font-style:normal...
 </style>
 ```
 
