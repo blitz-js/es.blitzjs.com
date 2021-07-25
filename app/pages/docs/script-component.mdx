@@ -39,7 +39,7 @@ Blitz.js optimizará el script:
 Anteriormente, necesitabas definir las etiquetas `script` dentro del
 componente `Head` de tu página Blitz.js.
 
-```js
+```jsx
 // Antes
 
 // pages/index.js
@@ -64,7 +64,7 @@ Con `<Script>`, ya no necesitas envolverlos en `<Head>`. Asimismo,
 `<Script>` tiene funcionalidad en el lado del cliente para asegurar el
 orden de carga. Por ejemplo:
 
-```js
+```jsx
 // Ahora
 
 // pages/index.js
@@ -83,7 +83,7 @@ function Home() {
 
 ### Carga de polyfills {#loading-polyfills}
 
-```js
+```jsx
 import { Script } from "blitz"
 ;<Script
   src="https://polyfill.io/v3/polyfill.min.js?features=IntersectionObserverEntry%2CIntersectionObserver"
@@ -93,7 +93,7 @@ import { Script } from "blitz"
 
 ### Lazy-loading {#lazy-loading}
 
-```js
+```jsx
 import { Script } from "blitz"
 ;<Script
   src="https://connect.facebook.net/en_US/sdk.js"
@@ -103,7 +103,7 @@ import { Script } from "blitz"
 
 ### Ejecución de código luego de cargar (`onLoad`) {#after-load}
 
-```js
+```jsx
 import { Script } from "blitz"
 ;<Script
   id="stripe-js"
@@ -116,7 +116,7 @@ import { Script } from "blitz"
 
 ### Scripts de una sola línea {#inline}
 
-```js
+```jsx
 import {Script} from 'blitz'
 
 <Script strategy="lazyOnload">
@@ -134,7 +134,7 @@ import {Script} from 'blitz'
 
 ### Pasar atributos al script {#forwarding-attributes}
 
-```js
+```jsx
 import { Script } from "blitz"
 ;<Script
   src="https://www.google-analytics.com/analytics.js"
