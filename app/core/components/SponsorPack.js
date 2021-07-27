@@ -12,8 +12,7 @@ const sponsors = [
   },
   {
     name: "GraphCMS",
-    href:
-      "https://graphcms.com/?utm_source=BlitzJS&utm_medium=sponsorship&utm_campaign=BlitzJS_Sponsorship_2021",
+    href: "https://graphcms.com/?utm_source=BlitzJS&utm_medium=sponsorship&utm_campaign=BlitzJS_Sponsorship_2021",
     imageUrl: "https://raw.githubusercontent.com/blitz-js/blitz/canary/assets/graphcms.png",
     tier: 2,
     cost: 500,
