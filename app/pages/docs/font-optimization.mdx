@@ -1,33 +1,33 @@
 ---
-title: Font Optimization
-sidebar_label: Font Optimization
+title: Optimización de fuentes
+sidebar_label: Optimización de fuentes
 ---
 
-By default, Blitz.js will automatically inline font CSS at build time,
-eliminating an extra round trip to fetch font declarations. This results
-in improvements to [First Contentful Paint (FCP)](https://web.dev/fcp/)
-and
-[Largest Contentful Paint (LCP)](https://vercel.com/blog/core-web-vitals#largest-contentful-paint).
+Por defecto, Blitz.js automáticamente pone todo el CSS relacionado con las
+fuentes en una sola línea al compilar, eliminando así una petición extra
+para pedir las declaraciones. Esto resulta en mejoras al
+[_First Contentful Paint_ (FCP)](https://web.dev/fcp/) y
+[_Largest Contentful Paint_ (LCP)](https://vercel.com/blog/core-web-vitals#largest-contentful-paint).
 
-For example:
+Por ejemplo:
 
 ```jsx
-// Before
+// Antes
 <link
   href="https://fonts.googleapis.com/css2?family=Inter"
   rel="stylesheet"
 />
 
-// After
+// Después
 <style data-href="https://fonts.googleapis.com/css2?family=Inter">
   @font-face{font-family:'Inter';font-style:normal...
 </style>
 ```
 
-## Usage {#usage}
+## Uso {#usage}
 
-To add a web font to your Blitz.js application, use `<Head>`. You can add
-a font to a specific page like this:
+Para añadir una fuente a tu aplicación Blitz.js, usa `<Head>`. Puedes
+añadir una fuente a una página en específico de este modo:
 
 ```jsx
 // pages/index.js
@@ -43,14 +43,14 @@ export default function IndexPage() {
           rel="stylesheet"
         />
       </Head>
-      <p>Hello world!</p>
+      <p>¡Hola mundo!</p>
     </div>
   )
 }
 ```
 
-or to your entire application with a
-[Custom `Document`](./document-component).
+o puedes añadir una fuente a toda tu aplicación con un
+[`Document`](./document-component) modificado.
 
 ```jsx
 // pages/_document.js
@@ -79,14 +79,16 @@ class MyDocument extends Document {
 export default MyDocument
 ```
 
-Automatic Webfont Optimization currently supports Google Fonts and Typekit
-with support for other font providers coming soon. We're also planning to
-add control
-over [loading strategies](https://github.com/vercel/next.js/issues/21555) and `font-display` values.
+La optimización automática de fuentes solo soporta Google Fonts y Typekit
+por el momento; pronto soportará más proveedores. Además, estamos
+planeando añadir control sobre las
+[estrategias de carga](https://github.com/vercel/next.js/issues/21555) y
+los valores de `font-display`.
 
-## Disabling Optimization {#disabling-optimization}
+## Desactivar la optimización {#disabling-optimization}
 
-If you do not want Blitz.js to optimize your fonts, you can opt-out.
+Si no quieres que Blitz.js optimice tus fuentes, puedes desactivar la
+optimización:
 
 ```js
 // blitz.config.js
