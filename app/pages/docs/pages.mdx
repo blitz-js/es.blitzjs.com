@@ -5,18 +5,18 @@ sidebar_label: Páginas
 
 En Blitz, una **página** es un
 [Componente de React](https://es.reactjs.org/docs/components-and-props.html)
-exportado desde un archivo `.js`, `.jsx`, `.ts`, or `.tsx` en un directorio
-`pages`. Cada página está asociada con una ruta de acuerdo a la ruta del
+exportado desde un archivo `.js`, `.jsx`, `.ts`, o `.tsx` en un directorio
+`pages`. Cada página está asociada a una ruta de acuerdo a la ruta del
 archivo.
 
-Todas las siguientes son páginas válidas:
+Las siguientes son páginas válidas:
 
 - `app/pages/about.tsx`
 - `app/projects/pages/projects/index.tsx`
 - `app/tasks/pages/projects/[projectId]/tasks/[taskId].tsx`
 
-**Ejemplo**: Si creas una página `app/pages/about.js` que exporta un componente
-de React, como a continuación, será accesible a través de la ruta `/about`.
+**Ejemplo**: Si creas una página `app/pages/about.js`, que exporta un componente
+de React, como se muestra, será accesible a través de la ruta `/about`.
 
 ```jsx
 function About() {
@@ -37,16 +37,17 @@ archivo `app/pages/posts/[id].js`, será accesible a través de las rutas
 
 ### Optimización Estática Automática {#automatic-static-optimization}
 
-Por defecto, Blitz pre-renderiza el HTML estático para cada página a menos que
-explícitamente optes por el renderizado en el lado del servidor.
+Por defecto, Blitz pre-renderiza el HTML estático para cada página, a menos que
+optes explícitamente por el renderizado en el lado del servidor.
 
-Para páginas con datos dinámicos, el estado de carga _fallback_ de la página
-será renderizado a menos que realices un [_prefetch_](./query-usage#prefetching)
+Para páginas con datos dinámicos, el estado de carga de _fallback_ de la página
+será renderizado, a menos que realices un [_prefetch_](./query-usage#prefetching)
 de los datos para popular el caché.
 
 En algunos casos, la optimización estática puede causar una experiencia de
-usuario(UX) indeseada, donde el primer renderizado muestra una cosa, pero el segundo
-renderizado muestra otra. Esto sucede por ejemplo cuando usas `useSession()`.
+usuario(UX) indeseada, donde el primer renderizado muestra una cosa, pero el
+segundo renderizado muestra otra. Esto sucede por ejemplo cuando usas
+`useSession()`.
 
 A continuación vamos a introducir algunas maneras de mejorar el modo en que
 Blitz pre-renderiza tus páginas estáticas.
@@ -54,9 +55,9 @@ Blitz pre-renderiza tus páginas estáticas.
 ### UX del Primer Renderizado {#first-render-ux}
 
 Con el fin de proveer una mejor experiencia de usuario(UX), Blitz
-automáticamente intenta de pre-renderizar el HTML de tus páginas, pero si tu
+automáticamente intenta pre-renderizar el HTML de tus páginas, pero si tu
 página contiene datos dinámicos pedidos con _hooks_ [useQuery](./use-query),
-Blitz hara un _fallback_ al estado de carga de la página y no notarás muchos de
+Blitz hará un _fallback_ al estado de carga de la página y no notarás muchos de
 los beneficios del pre-renderizado automático, porque la aplicación requerirá
 hacer otra solicitud inmediatamente para pedir los datos que necesita para
 satisfacier la consulta.
@@ -129,9 +130,10 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 ```
 
 De este modo, la versión pre-renderizada de tu página HTML no tendrá que hacer
-un pedido apenas cargue para pedir los datos y se evita cualquier parpadeo en la
-pantalla. Esto es muy útil para la optimización de motores de búsqueda y los
-_previews_ de enlaces que utilizan las Redes Sociales como Facebook y Twitter.
+un pedido apenas cargue para solicitar los datos y se evita cualquier parpadeo
+en la pantalla. Esto es muy útil para la optimización de motores de búsqueda y
+los _previews_ de enlaces que utilizan las Redes Sociales como Facebook y
+Twitter.
 
 También puedes usar _prefetching_ para pre-popular consultas que un usuario
 pueda necesitar cuando la página se muestra--por ejemplo búsquedas comúnes
@@ -158,12 +160,12 @@ métodos juntos.
 
 > También conocido como "SSR" o "Dynamic Rendering"(Renderizado Dinámico).
 
-Su una página usa **Renderizado en el Lado del Servidor**, la página HTML es
+Si una página usa **Renderizado en el Lado del Servidor**, la página HTML es
 generada en **cada solicitud**.
 
 Para usar Renderizado en el Lado del Servidor para una página, debes utilizar
 `export` a una función `async` llamada `getServerSideProps`. Esta función será
 llamada por el servidor en cada solicitud.
 
-Mira la [documentación de `getServerSideProps`](./get-server-side-props) para más
-detalles.
+Mira la [documentación de `getServerSideProps`](./get-server-side-props) para
+más detalles.
