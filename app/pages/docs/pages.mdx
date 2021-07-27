@@ -1,21 +1,22 @@
 ---
-title: Pages
-sidebar_label: Pages
+title: Páginas
+sidebar_label: Páginas
 ---
 
-In Blitz, a **page** is a
-[React Component](https://reactjs.org/docs/components-and-props.html)
-exported from a `.js`, `.jsx`, `.ts`, or `.tsx` file in a `pages`
-directory. Each page is associated with a route based on its file path.
+En Blitz, una **página** es un
+[Componente de React](https://es.reactjs.org/docs/components-and-props.html)
+exportado desde un archivo `.js`, `.jsx`, `.ts`, o `.tsx` en un directorio
+`pages`. Cada página está asociada a una ruta de acuerdo a la ruta del
+archivo.
 
-All of the following are valid pages:
+Las siguientes son páginas válidas:
 
 - `app/pages/about.tsx`
 - `app/projects/pages/projects/index.tsx`
 - `app/tasks/pages/projects/[projectId]/tasks/[taskId].tsx`
 
-**Example**: If you create `app/pages/about.js` that exports a React
-component like below, it will be accessible at `/about`.
+**Ejemplo**: Si creas una página `app/pages/about.js`, que exporta un componente
+de React, como se muestra, será accesible a través de la ruta `/about`.
 
 ```jsx
 function About() {
@@ -25,43 +26,46 @@ function About() {
 export default About
 ```
 
-### Pages with Dynamic Routes {#pages-with-dynamic-routes}
+### Páginas con Rutas Dinámicas {#pages-with-dynamic-routes}
 
-Blitz supports pages with dynamic routes. For example, if you create a
-file called `app/pages/posts/[id].js`, then it will be accessible at
+Blitz tiene soporte para páginas con rutas dinámicas. Por ejemplo, si creas un
+archivo `app/pages/posts/[id].js`, será accesible a través de las rutas
 `posts/1`, `posts/2`, etc.
 
-> To learn more about routing, check the
-> [Routing documentation](./routing).
+> Para aprender más sobre el enrutamiento, mira la
+> [Documentación de Enrutamiento](./routing).
 
-### Automatic Static Optimization {#automatic-static-optimization}
+### Optimización Estática Automática {#automatic-static-optimization}
 
-By default, Blitz pre-renders the static HTML for every page unless you
-explicitly opt-in to server-side rendering.
+Por defecto, Blitz pre-renderiza el HTML estático para cada página, a menos que
+optes explícitamente por el renderizado en el lado del servidor.
 
-For pages with dynamic data, the page's loading fallback state will be
-rendered unless you [prefetch](./query-usage#prefetching) the data to
-populate the cache.
+Para páginas con datos dinámicos, el estado de carga de _fallback_ de la página
+será renderizado, a menos que realices un [_prefetch_](./query-usage#prefetching)
+de los datos para popular el caché.
 
-In some cases, the static optimization can cause an undesirable UX where
-the first render shows one thing but the second render shows another. For
-example this happens when using `useSession()`.
+En algunos casos, la optimización estática puede causar una experiencia de
+usuario(UX) indeseada, donde el primer renderizado muestra una cosa, pero el
+segundo renderizado muestra otra. Esto sucede por ejemplo cuando usas
+`useSession()`.
 
-Next, we'll introduce some ways to improve the way Blitz pre-renders your
-pages.
+A continuación vamos a introducir algunas maneras de mejorar el modo en que
+Blitz pre-renderiza tus páginas estáticas.
 
-### First Render UX {#first-render-ux}
+### UX del Primer Renderizado {#first-render-ux}
 
-To provide a better User Experience (UX), Blitz tries to automatically
-pre-render the HTML for your pages, but if your page contains dynamic data
-fetched with [useQuery](./use-query) hooks, Blitz will fallback to the
-page's loading state and you will not see much benefit from the automatic
-pre-rendering, because the application will need to immediately make
-another request to fetch the data it needs to satisfy the query.
+Con el fin de proveer una mejor experiencia de usuario(UX), Blitz
+automáticamente intenta pre-renderizar el HTML de tus páginas, pero si tu
+página contiene datos dinámicos pedidos con _hooks_ [useQuery](./use-query),
+Blitz hará un _fallback_ al estado de carga de la página y no notarás muchos de
+los beneficios del pre-renderizado automático, porque la aplicación requerirá
+hacer otra solicitud inmediatamente para pedir los datos que necesita para
+satisfacier la consulta.
 
-In this case you can set `Page.suppressFirstRenderFlicker = true`, and
-Blitz will hide the first render's content. This will result in a tiny
-delay of first paint but will greatly improve the perceived UX.
+En este caso puedes asignar `Page.suppressFirstRenderFlicker = true`, y Blitz
+va a esconder el contenido de la primer renderización. Esto resulta en un leve
+retraso al mostrar la página inicialmente, pero mejorará significativamente la
+UX percibida.
 
 ```tsx
 const Page: BlitzPage = () => {
@@ -75,20 +79,19 @@ Page.suppressFirstRenderFlicker = true
 export default Page
 ```
 
-In case you have set `Page.authenticate = true` or
-`Page.redirectAuthenticatedTo = true`, Blitz will hide the first render's
-content. For these cases, you can simply ignore setting
+En caso que hayas asignado `Page.authenticate = true` o
+`Page.redirectAuthenticatedTo = true`, Blitz no mostrará el contenido del primer
+renderizado. Para estos casos, puedes simplemente ignorar la configuración
 `Page.suppressFirstRenderFlicker = true`.
 
-You can also consider prefetching all of the necessary queries that your
-page needs to complete its first render. You can use either the
-`getStaticProps` or `getServerSideProps` page functions, depending on what
-you need.
+También puedes considerar hacer un _prefetch_ de todas las consultas necesarias
+para completar el primer renderizado de tu página. Puedes usar las funciones de
+página `getStaticProps` o `getServerSideProps`, dependiendo de tus necesidades.
 
-If you create an instance of QueryClient and populate it with query data,
-then you can pass it as `dehydratedState` to your page props. Blitz will
-automatically use the state to build the query cache later when the page
-tries to render.
+Si creas una instancia de `QueryClient` y la populas con datos de una consulta,
+entonces puedes pasarla como `dehydratedState` a los _props_ de tu página.
+Automáticamente Blitz usará el estado para construir el caché de la consulta
+cuando la página intente renderizar luego.
 
 ```tsx
 import {
@@ -126,42 +129,43 @@ export async function getServerSideProps(ctx: GetServerSidePropsContext) {
 }
 ```
 
-In this way, the pre-rendered version of your page HTML will not have to
-make a request as soon as it loads to fetch any data and will avoid any
-screen flickering. This is very useful for Search Engine Optimization and
-the Link Previews used by Social Media sites like Facebook and Twitter.
+De este modo, la versión pre-renderizada de tu página HTML no tendrá que hacer
+un pedido apenas cargue para solicitar los datos y se evita cualquier parpadeo
+en la pantalla. Esto es muy útil para la optimización de motores de búsqueda y
+los _previews_ de enlaces que utilizan las Redes Sociales como Facebook y
+Twitter.
 
-You can also use prefetching to pre-populate queries that a user might
-need shortly after the page loads--such a common searches or filter
-criteria--by setting a [staleTime](./use-query#options) on the query being
-prefetched.
+También puedes usar _prefetching_ para pre-popular consultas que un usuario
+pueda necesitar cuando la página se muestra--por ejemplo búsquedas comúnes
+o criterios de filtros-- configurando un [staleTime](./use-query#options) en la
+consulta sobre la cual se realiza el _prefetch_.
 
-### Static Page Generation for Unauthenticated Pages {#static-page-generation-for-unauthenticated-pages}
+### Generación de Páginas Estáticas para Páginas No Autenticadas {#static-page-generation-for-unauthenticated-pages}
 
-For pages accessible by anyone without authentication, we recommend using
-`getStaticProps` so the page, along with it's data, is 100% statically
-generated during pre-rendering (like Gatsby). Then the entire static page
-can be cached on a CDN. This is perfect for public pages like blog posts.
+Para páginas accesibles por quien sea sin autenticación, recomendamos usar
+`getStaticProps` para que la página, junto con sus datos, sea estadísticamente
+100% generada durante el pre-renderizado(como Gatsby). Entonces la página
+estática completa puede cachearse en un CDN. Esto es perfecto para páginas
+públicas como entradas de blogs.
 
-There are two methods for use with static generation, and you'll often use
-both together.
+Existen dos métodos para usar generación estática, usualmente usarás ambos
+métodos juntos.
 
-1. `getStaticProps` - To load the **data** for your page. See the
-   [`getStaticProps` documentation](./get-static-props) for more details.
-2. `getStaticPaths` - To load the possible **paths** for your page. See
-   the [`getStaticPaths` documentation](./get-static-paths) for more
-   details.
+1. `getStaticProps` - Para cargar los **datos** para tu página. Mira la
+[documentación de `getStaticProps`](./get-static-props) para más detalles.
+2. `getStaticPaths` - Para cargar las posibles **rutas** para tu página. Mira la
+[documentación de `getStaticPaths`](./get-static-paths) para más detalles.
 
-### Server-side Rendering {#server-side-rendering}
+### Renderizado en el Lado del Servidor {#server-side-rendering}
 
-> Also referred to as "SSR" or "Dynamic Rendering".
+> También conocido como "SSR" o "Dynamic Rendering"(Renderizado Dinámico).
 
-If a page uses **Server-side Rendering**, the page HTML is generated on
-**each request**.
+Si una página usa **Renderizado en el Lado del Servidor**, la página HTML es
+generada en **cada solicitud**.
 
-To use Server-side Rendering for a page, you need to `export` an `async`
-function called `getServerSideProps`. This function will be called by the
-server on every request.
+Para usar Renderizado en el Lado del Servidor para una página, debes utilizar
+`export` a una función `async` llamada `getServerSideProps`. Esta función será
+llamada por el servidor en cada solicitud.
 
-See the `getServerSideProps` [documentation](./get-server-side-props) for
-more details.
+Mira la [documentación de `getServerSideProps`](./get-server-side-props) para
+más detalles.
