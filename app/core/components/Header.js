@@ -96,7 +96,7 @@ const Header = ({
       href: isDesktop ? "/docs/get-started" : "/docs",
     },
     {
-      name: "Muestrario",
+      name: "Exhibición",
       href: "/showcase",
     },
     {name: "Versiones", href: "https://github.com/blitz-js/blitz/releases"},
