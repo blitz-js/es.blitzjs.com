@@ -1,17 +1,18 @@
 ---
-title: Error Pages
-sidebar_label: Error Pages
+title: Paginas de Errores
+sidebar_label: Paginas de Errores
 ---
 
-## 404 Page {#404-page}
+## Pagina 404 {#404-page}
 
-A 404 page may be accessed very often so Blitz provides a static 404 page
-by default without having to add any additional files.
+La página 404 puede ser accedida con frequencia tal que Blitz provea una
+página estatica 404 por defecto sin tener que añadir archivos adicionales.
 
-### Customizing The 404 Page {#customizing-the-404-page}
+### Customizando La Pagina 404 {#customizing-the-404-page}
 
-To create a custom 404 page you can create a `app/pages/404.js` file. This
-file is statically generated at build time.
+Para crear una página 404 customizada puedes crear un archivo tal como:
+`app/pages/404.js`. Este archivo sera generado estàticamente en el momento
+de construcción.
 
 ```jsx
 // app/pages/404.js
@@ -20,18 +21,18 @@ export default function Custom404() {
 }
 ```
 
-## 500 Page {#500-page}
+## Pagina 500 {#500-page}
 
-By default Blitz provides a 500 error page that matches the default 404
-page’s style. This page is not statically optimized as it allows
-server-side errors to be reported. This is why 404 and 500 (other errors)
-are separated.
+Por defecto Blitz proveé una pagina de error 500 cual estilo coincide con
+el estilo de la pagina 404. Esta pagina no es optimizada estaticamente por
+lo que permite el reportaje de errores en el servidor. Esta es la razon
+que 404 y 500 (otros errores) son separados.
 
-### Customizing The Error Page {#customizing-the-error-page}
+### Customizando La pagina De Error {#customizing-the-error-page}
 
-500 errors are handled both client-side and server-side by the `Error`
-component. If you wish to override it, define the file
-`app/pages/_error.js` and add the following code:
+Errores 500 son manajados por ambos lado del cliente y lado del servidor
+por medio del componente `Error`. Si deseas anularlo, define el archivo
+`app/pages/_error.js` y añade el codigo siguiente:
 
 ```jsx
 function Error({ statusCode }) {
@@ -52,18 +53,18 @@ Error.getInitialProps = ({ res, err }) => {
 export default Error
 ```
 
-> `app/pages/_error.js` is only used in production. In development you’ll
-> get an error with the call stack to know where the error originated
-> from.
+> `app/pages/_error.js` es solo utilisado en producción. En el desarollo
+> ud recibiras un error con la pila de llamadas para saber donde el error
+> fue originado.
 
-## Customize the Error Boundary Fallback Component {#custom-error-boundary-component}
+## componente de límite de error personalizado {#custom-error-boundary-component}
 
-The default `app/pages/_app.tsx` configures an error boundary which
-catches errors that happen during render, on the client side. This will
-also catch errors within `useQuery` or `useMutation` because they happen
-in suspense.
+El valor por defecto `app/pages/_app.tsx` configura un límite de error que
+detecta errores que ocurren durante el procesamiento, en el lado del
+cliente. Esta voluntad también detecta errores dentro de `useQuery`
+o` useMutation` porque ocurren en suspenso.
 
-In essence, the default configuration is:
+En esencia, la configuración por defecto es:
 
 ```tsx
 export default function App({ Component, pageProps }: AppProps) {
@@ -75,8 +76,8 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-The `RootErrorFallback` is rendered when a error happens within render, or
-a suspended mutation or query. By default:
+El `RootErrorFallback` es reproducido cuando ocurre un error dentro del
+procesamiento (render), o una mutación o consulta suspendida. Por defecto:
 
 ```tsx
 function RootErrorFallback({
