@@ -5,8 +5,9 @@ sidebar_label: Páginas de Error
 
 ## Página 404 {#404-page}
 
-La página 404 puede ser accedida con frequencia tal que Blitz provea una
-página estatica 404 por defecto sin tener que añadir archivos adicionales.
+Una página 404 puede ser requerida muy a menudo por lo que Blitz
+proporciona una página estatica 404 por defecto sin tener que añadir
+archivos adicionales.
 
 ### Customizando La Pagina 404 {#customizing-the-404-page}
 
@@ -23,16 +24,16 @@ export default function Custom404() {
 
 ## Pagina 500 {#500-page}
 
-Por defecto Blitz proveé una pagina de error 500 cual estilo coincide con
-el estilo de la pagina 404. Esta pagina no es optimizada estaticamente por
-lo que permite el reportaje de errores en el servidor. Esta es la razon
-que 404 y 500 (otros errores) son separados.
+Por defecto Blitz proporciona una página de error 500 que coincide con el
+estilo de la página 404. Esta página no esta optimizada estáticamente ya
+que permite errores del lado del servidor para ser reportados. Esta es la
+razon por la que 404 y 500 (otros errores) están separados.
 
-### Customizando La pagina De Error {#customizing-the-error-page}
+### Personalización De la Página de Error {#customizing-the-error-page}
 
-Errores 500 son manajados por ambos lado del cliente y lado del servidor
-por medio del componente `Error`. Si deseas anularlo, define el archivo
-`app/pages/_error.js` y añade el codigo siguiente:
+Los errores 500 se manejan tanto del lado del cliente como del lado del
+servidor por medio del componente `Error`. Si deseas anularlo, define el
+archivo `app/pages/_error.js` y añade el código siguiente:
 
 ```jsx
 function Error({ statusCode }) {
@@ -53,16 +54,16 @@ Error.getInitialProps = ({ res, err }) => {
 export default Error
 ```
 
-> `app/pages/_error.js` es solo utilisado en producción. En desarollo,
-> obtendrá un error con la pila de llamadas para saber donde se originó el
+> `app/pages/_error.js` es sólo utilizado en producción. En desarrollo,
+> obtendrá un error con la pila de llamadas para saber dónde se originó el
 > error.
 
-## componente de límite de error personalizado {#custom-error-boundary-component}
+## Personalizando el Componente Error Boundary Fallback {#custom-error-boundary-component}
 
-El valor por defecto `app/pages/_app.tsx` configura un límite de error que
-detecta errores que ocurren durante el procesamiento, en el lado del
-cliente. Esta voluntad también detecta errores dentro de `useQuery`
-o` useMutation` porque ocurren en suspenso.
+El archivo por defecto `app/pages/_app.tsx` configura un límite de error
+que captura los errores que ocurren durante el renderizado, en el lado del
+cliente. Esto también detecta errores dentro de `useQuery` o` useMutation`
+porque ocurren en suspenso.
 
 En esencia, la configuración por defecto es:
 
@@ -76,8 +77,8 @@ export default function App({ Component, pageProps }: AppProps) {
 }
 ```
 
-El `RootErrorFallback` es reproducido cuando ocurre un error dentro del
-procesamiento (render), o una mutación o consulta suspendida. Por defecto:
+`RootErrorFallback` se renderiza cuando se produce un error dentro de
+renderización ,o una mutación o consulta suspendida. Por defecto:
 
 ```tsx
 function RootErrorFallback({
@@ -135,7 +136,7 @@ function RootErrorFallback({
 
 Su función de consulta, mutación o renderización puede llamar a
 `throw new AuthorizationError ()` cuando un usuario está autenticado pero
-no autorizado para hacer algo. La reserva de error puede manejar eso:
+no autorizado para hacer algo. El error fallback puede manejar eso:
 
 ```tsx
 function RootErrorFallback({
